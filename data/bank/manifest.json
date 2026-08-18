@@ -2,7 +2,7 @@
   "name": "gbot-bank",
   "level": "고졸",
   "version": "0.1.0",
-  "status": "slots-only",
+  "status": "slots-plus-originals",
   "policy": {
     "official_stems": "embargoed",
     "license": "none",
@@ -10,9 +10,9 @@
   },
   "counts": {
     "exams": 12,
-    "items": 1740,
+    "items": 1828,
     "embargoed": 1740,
-    "ready": 0,
+    "ready": 88,
     "items_per_exam": 145
   },
   "subjects": [

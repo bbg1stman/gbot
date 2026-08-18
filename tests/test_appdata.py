@@ -83,6 +83,28 @@ class TestAppData(unittest.TestCase):
             self.assertNotIn("choices", part)
             self.assertNotIn("answer", part)
 
+    def test_build_diagnostic_uses_original_ids(self) -> None:
+        parts = build_diagnostic("국어")
+        self.assertEqual(sum(p["n"] for p in parts), 12)
+        for part in parts:
+            self.assertIn("item_ids", part)
+            self.assertEqual(len(part["item_ids"]), part["n"])
+            self.assertNotIn("stem", part)
+            for iid in part["item_ids"]:
+                self.assertTrue(str(iid).startswith("orig-kor-"))
+                item = get(iid)
+                self.assertIsNotNone(item)
+                assert item is not None
+                self.assertTrue(item["stem"])
+                self.assertEqual(item["source"], "original")
+                self.assertEqual(item["status"], "ready")
+                axis = item.get("skill") or item.get("unit")
+                self.assertEqual(axis, part["axis"])
+        official = get("go-2026-2-kor-12")
+        self.assertIsNotNone(official)
+        assert official is not None
+        self.assertIsNone(official["stem"])
+
     def test_bank_loader_defaults(self) -> None:
         item = get("go-2026-2-kor-12")
         self.assertIsNotNone(item)

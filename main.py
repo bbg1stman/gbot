@@ -110,8 +110,9 @@ def cmd_diag(args: argparse.Namespace) -> int:
     )
     for part in parts:
         extra = ""
-        if part.get("slot_ids"):
-            extra = "  " + ",".join(part["slot_ids"])
+        ids = part.get("item_ids") or part.get("slot_ids") or []
+        if ids:
+            extra = "  " + ",".join(ids)
         print(f"  {part['axis']}  n={part['n']}{extra}")
     return 0
 

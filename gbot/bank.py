@@ -65,7 +65,11 @@ class Bank:
 
         items: list[Item] = []
         item_dir = root / "items"
-        for path in sorted(item_dir.glob("go-*.json")):
+        paths = list(sorted(item_dir.glob("go-*.json")))
+        original_dir = item_dir / "original"
+        if original_dir.is_dir():
+            paths.extend(sorted(original_dir.glob("*.json")))
+        for path in paths:
             batch = _read_json(path)
             if not isinstance(batch, list):
                 raise ValueError(f"item file must be an array: {path}")
@@ -112,6 +116,7 @@ class Bank:
         return self._by_id.get(id)
 
     def stats(self) -> dict[str, int]:
+        """Count exams and items. ready/embargoed include original and official."""
         self._ensure()
         embargoed = sum(1 for i in self.items if i.get("status") == "embargoed")
         ready = sum(1 for i in self.items if i.get("status") == "ready")

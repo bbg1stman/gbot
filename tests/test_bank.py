@@ -22,11 +22,15 @@ class TestBank(unittest.TestCase):
 
     def test_item_count(self) -> None:
         items = list_items()
-        self.assertEqual(len(items), 1740)
+        official = [i for i in items if i.get("source") == "official"]
+        originals = [i for i in items if i.get("source") == "original"]
+        self.assertEqual(len(official), 1740)
+        self.assertEqual(len(originals), 88)
+        self.assertEqual(len(items), 1828)
         self.assertEqual(12 * 145, 1740)
 
     def test_all_official_embargoed(self) -> None:
-        items = list_items()
+        items = [i for i in list_items() if i.get("source") == "official"]
         self.assertTrue(items)
         for item in items:
             self.assertEqual(item["type"], "item")
@@ -47,9 +51,9 @@ class TestBank(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)))
 
     def test_math_has_20_not_25(self) -> None:
-        math_items = list_items(subject="수학")
+        math_items = [i for i in list_items(subject="수학") if i.get("source") == "official"]
         self.assertEqual(len(math_items), 12 * 20)
-        math_by_code = list_items(subject="math")
+        math_by_code = [i for i in list_items(subject="math") if i.get("source") == "official"]
         self.assertEqual(len(math_by_code), 12 * 20)
         for exam in list_exams():
             sitting = exam["id"].removeprefix("go-")
@@ -100,9 +104,9 @@ class TestBank(unittest.TestCase):
     def test_stats(self) -> None:
         s = stats()
         self.assertEqual(s["exams"], 12)
-        self.assertEqual(s["items"], 1740)
+        self.assertEqual(s["items"], 1828)
         self.assertEqual(s["embargoed"], 1740)
-        self.assertEqual(s["ready"], 0)
+        self.assertEqual(s["ready"], 88)
 
     def test_filter_exam_and_subject(self) -> None:
         items = list_items(exam="2026-2", subject="국어")
@@ -114,7 +118,7 @@ class TestBank(unittest.TestCase):
 
     def test_filter_status(self) -> None:
         self.assertEqual(len(list_items(status="embargoed")), 1740)
-        self.assertEqual(len(list_items(status="ready")), 0)
+        self.assertEqual(len(list_items(status="ready")), 88)
 
     def test_stem_none_does_not_break_load(self) -> None:
         bank = Bank()
@@ -123,7 +127,47 @@ class TestBank(unittest.TestCase):
         self.assertIsNotNone(sample)
         assert sample is not None
         self.assertIsNone(sample["stem"])
-        self.assertEqual(bank.stats()["items"], 1740)
+        self.assertEqual(bank.stats()["items"], 1828)
+        self.assertEqual(bank.stats()["ready"], 88)
+
+
+class TestOriginals(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.bank = load()
+
+    def test_originals_load(self) -> None:
+        originals = [i for i in list_items() if i.get("source") == "original"]
+        self.assertEqual(len(originals), 88)
+        ids = [i["id"] for i in originals]
+        self.assertEqual(len(ids), len(set(ids)))
+        for item in originals:
+            self.assertEqual(item["status"], "ready")
+            self.assertEqual(item["kind"], "original")
+            self.assertEqual(item["license"], "gbot-original")
+            self.assertTrue(item["stem"])
+            self.assertEqual(len(item["choices"]), 4)
+            self.assertIn(item["answer"], (0, 1, 2, 3))
+
+    def test_ready_count_is_88(self) -> None:
+        self.assertEqual(len(list_items(status="ready")), 88)
+        self.assertEqual(stats()["ready"], 88)
+
+    def test_official_stems_still_null(self) -> None:
+        official = get("go-2026-2-kor-12")
+        self.assertIsNotNone(official)
+        assert official is not None
+        self.assertIsNone(official["stem"])
+        self.assertIsNone(official["choices"])
+        self.assertIsNone(official["answer"])
+
+    def test_original_get_has_stem(self) -> None:
+        item = get("orig-kor-001")
+        self.assertIsNotNone(item)
+        assert item is not None
+        self.assertTrue(item["stem"])
+        self.assertEqual(item["source"], "original")
+        self.assertEqual(item["skill"], "화법작문")
 
 
 if __name__ == "__main__":

@@ -30,6 +30,7 @@
 - 모든 공식 문항은 같은 id를 가진 `official-slot`이다. `stem`/`choices`/`answer`는 `null`.
 - 라이선스 확보 후 **같은 id로 ingest** 하면 은행 API는 그대로 쓴다.
 - 새 문제는 `source=original` 로 추가한다. 공식 기출을 흉내 내 만들지 않는다.
+- 연습 문제(original)는 채워져 있고 공식 기출은 여전히 엠바고.
 
 ## 구조
 
