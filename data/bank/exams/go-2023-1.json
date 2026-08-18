@@ -1,0 +1,41 @@
+{
+  "id": "go-2023-1",
+  "level": "고졸",
+  "year": 2023,
+  "round": 1,
+  "curriculum": "2015",
+  "subjects": [
+    {
+      "code": "kor",
+      "name": "국어",
+      "count": 25
+    },
+    {
+      "code": "math",
+      "name": "수학",
+      "count": 20
+    },
+    {
+      "code": "eng",
+      "name": "영어",
+      "count": 25
+    },
+    {
+      "code": "soc",
+      "name": "사회",
+      "count": 25
+    },
+    {
+      "code": "sci",
+      "name": "과학",
+      "count": 25
+    },
+    {
+      "code": "his",
+      "name": "한국사",
+      "count": 25
+    }
+  ],
+  "item_count": 145,
+  "status": "slots-only"
+}
