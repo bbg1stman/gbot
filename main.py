@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""gbot CLI. 런타임은 data/ 를 본다. 공식 원문(stem)은 요구하지 않는다."""
+"""gbot CLI. 앱은 pack/ 을 읽는다. 편집은 data/ + wiki/. 공식 원문(stem)은 요구하지 않는다."""
 
 from __future__ import annotations
 
@@ -136,6 +136,61 @@ def cmd_plan(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_pack(_args: argparse.Namespace) -> int:
+    from gbot.pack import build_pack
+
+    meta = build_pack()
+    counts = meta.get("counts", {})
+    print(f"pack/ 생성  version={meta.get('version')}  {meta.get('generated_at')}")
+    print(
+        f"문항 {counts.get('items')}  "
+        f"엠바고 {counts.get('embargoed')}  "
+        f"준비 {counts.get('ready')}  "
+        f"개념 {counts.get('concepts')}  "
+        f"유형 {counts.get('types')}"
+    )
+    return 0
+
+
+def cmd_notes(_args: argparse.Namespace) -> int:
+    from gbot.learner import load_sample, notes_open
+
+    user = load_sample()
+    notes = notes_open(user)
+    print(f"열린 오답노트 {len(notes)}건  ({user.get('id')})")
+    for note in notes:
+        print(
+            f"  {note.get('id')}  {note.get('item_id')}  "
+            f"{note.get('axis')}  {note.get('type_id')}  "
+            f"pattern={note.get('pattern_id') or '-'}"
+        )
+        hint = (note.get("auto_hint") or "").strip()
+        if hint:
+            print(f"    hint: {hint}")
+    return 0
+
+
+def cmd_hot(_args: argparse.Namespace) -> int:
+    from gbot.learner import hot_patterns, hot_types, load_sample
+
+    user = load_sample()
+    types = hot_types(user)
+    patterns = hot_patterns(user)
+    print(f"반복 오답 유형 {len(types)}건  ({user.get('id')})")
+    for row in types:
+        print(
+            f"  {row.get('type_id')}  {row.get('subject_code')}  "
+            f"misses={row.get('misses')}  streak={row.get('streak_wrong')}"
+        )
+    print(f"오답 패턴 {len(patterns)}건")
+    for row in patterns:
+        print(
+            f"  {row.get('pattern_id')}  {row.get('subject_code')}  "
+            f"miss_count={row.get('miss_count')}"
+        )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="gbot — 고졸 검정고시 진단·계획 (원문 없음)")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -166,6 +221,15 @@ def build_parser() -> argparse.ArgumentParser:
     p_plan = sub.add_parser("plan", help="주간 계획 템플릿")
     p_plan.add_argument("--band", required=True, help="밴드 (미달, 경계, 안정, 여유)")
     p_plan.set_defaults(func=cmd_plan)
+
+    p_pack = sub.add_parser("pack", help="data/ + wiki/ 를 pack/ 으로 컴파일")
+    p_pack.set_defaults(func=cmd_pack)
+
+    p_notes = sub.add_parser("notes", help="샘플 수험생 오답노트")
+    p_notes.set_defaults(func=cmd_notes)
+
+    p_hot = sub.add_parser("hot", help="샘플 수험생 반복 오답 유형·패턴")
+    p_hot.set_defaults(func=cmd_hot)
 
     return parser
 

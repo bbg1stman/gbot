@@ -1,6 +1,6 @@
 # 스키마 — 에이전트 규칙
 
-앱 본체는 `data/` 다. 위키는 교무실이다. 수험생은 위키를 돌아다니지 않는다.
+앱이 읽는 폴더는 `pack/` 이다. 편집은 `data/` + `wiki/` 다. 위키는 교무실이다. 수험생은 위키를 돌아다니지 않는다.
 
 ## 금지 (엠바고, 변경 없음)
 
@@ -17,8 +17,9 @@
 | `data/diagnostics/levels.json` | 밴드 4개, 합격 규칙 |
 | `data/diagnostics/subjects.json` | 필수 6과목 진단 설계 |
 | `data/plans/templates.json` | 밴드별 주간 템플릿 |
-| `data/app/schema.json` | User / Attempt / Session / Plan |
+| `data/app/schema.json` | User / Attempt / Session / Plan / WrongNote / ErrorPattern / TypeStat |
 | `data/app/sample_user.json` | 가짜 수험생 (실명 없음) |
+| `pack/` | 앱이 읽는 컴파일 테이블. `python3 main.py pack` |
 
 ### 밴드
 
@@ -40,11 +41,20 @@
 ### 런타임 기록
 
 - **User**: `id`, `created`, `subjects{code: {band, estimate, last_diagnostic}}`
-- **Attempt**: `id`, `user_id`, `item_id`, `correct`, `band_at_time`, `ts`
+- **Attempt**: `id`, `user_id`, `item_id`, `session_id`, `correct`, `choice`, `time_ms`, `axis`, `type_id`, `band_at_time`, `ts`
 - **Session**: `id`, `user_id`, `kind` (`diagnostic`\|`drill`\|`examset`), `subject`, `item_ids`, `score`
 - **Plan**: `id`, `user_id`, `week`, `items[{subject, band, action, count}]`
+- **WrongNote 오답노트**: `id`, `user_id`, `item_id`, `attempt_id`, `subject_code`, `type_id`, `axis`, `wrong_choice`, `correct_choice`, `learner_note`, `auto_hint`, `pattern_id`, `review_count`, `next_review`, `resolved`, `created`, `updated`. 공식 엠바고는 `auto_hint=""`.
+- **ErrorPattern 오답패턴**: 목록은 `pack/error_patterns.json`. 수험생 행은 `id`, `user_id`, `pattern_id`, `subject_code`, `type_id`, `miss_count`, `last_missed`, `note`.
+- **TypeStat 반복 오답 유형**: `id`, `user_id`, `type_id`, `subject_code`, `attempts`, `misses`, `streak_wrong`, `last_missed`. `misses>=3` 또는 `streak_wrong>=2` 이면 반복 유형.
 
 실제 개인정보를 두지 않는다.
+
+### pack/
+
+`gbot.pack.build_pack()` 이 `data/bank` + `data/diagnostics` + `data/plans` + `wiki/concepts` 를 읽어 `pack/` 을 쓴다.
+문항을 넣을 때 필드는 모두 유지하고 `type_id` / `trap_tags=[]` / `media=null` 을 채운다.
+공식 문항의 `stem`/`choices`/`answer` 는 계속 `null` 이다.
 
 ## 위키 (교무실)
 
@@ -74,6 +84,7 @@
 | `stem` `choices` `explanation` | `null` | 라이선스 원문 | 자작 원문 |
 
 로더 기본값 (JSON에 없어도 됨): `role=bank`, `unit=null`, `wiki_concept=null`, `wiki_type=null`. `stem`은 없어도 된다.
+pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `trap_tags=[]`, `media=null`.
 
 공식 슬롯 예 (`go-2026-2-kor-12`):
 
@@ -119,6 +130,17 @@
 `gbot.diagnostic`
 
 - `build_diagnostic(subject)` → `[{axis, n, ...}]`  지문 없음
+
+`gbot.pack`
+
+- `build_pack()` → `pack/` 재생성
+- `load_pack()` → pack 테이블 로드
+
+`gbot.learner`
+
+- `notes_open(user)` → 미해결 오답노트
+- `hot_types(user, min_misses=3)` → 반복 오답 유형
+- `hot_patterns(user)` → 오답 패턴 통계
 
 ## 코드표
 

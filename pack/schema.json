@@ -1,5 +1,5 @@
 {
-  "$comment": "런타임 기록 스키마. 실제 개인정보(이름·연락처·식별번호)는 두지 않는다.",
+  "$comment": "런타임 기록 스키마. 실제 개인정보(이름·연락처·식별번호)는 두지 않는다. 앱은 pack/ 만 읽는다. 편집은 data/ + wiki/.",
   "User": {
     "type": "object",
     "required": [
@@ -399,6 +399,214 @@
           "null"
         ],
         "format": "date-time"
+      }
+    }
+  },
+  "Item": {
+    "type": "object",
+    "description": "pack/items.json 한 행. 공식 슬롯은 stem/choices/answer가 null.",
+    "required": [
+      "id",
+      "type",
+      "source",
+      "status",
+      "subject_code"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "const": "item"
+      },
+      "source": {
+        "enum": [
+          "official",
+          "original"
+        ]
+      },
+      "status": {
+        "enum": [
+          "embargoed",
+          "ready"
+        ]
+      },
+      "kind": {
+        "type": "string"
+      },
+      "subject": {
+        "type": "string"
+      },
+      "subject_code": {
+        "type": "string"
+      },
+      "type_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "types.json id. unit/skill에서 매핑"
+      },
+      "trap_tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": []
+      },
+      "media": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "stem": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "choices": {
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "answer": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "explanation": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  },
+  "Concept": {
+    "type": "object",
+    "description": "wiki/concepts/*.md 를 컴파일한 개념 카드",
+    "required": [
+      "id",
+      "subject",
+      "axis",
+      "title",
+      "body"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "subject": {
+        "type": "string"
+      },
+      "subject_code": {
+        "type": "string"
+      },
+      "axis": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "body": {
+        "type": "string"
+      }
+    }
+  },
+  "Type": {
+    "type": "object",
+    "description": "진단 축에서 만든 채점 유형. 공식 문항이 아님",
+    "required": [
+      "id",
+      "subject_code",
+      "axis",
+      "label",
+      "description"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "subject_code": {
+        "type": "string"
+      },
+      "axis": {
+        "type": "string"
+      },
+      "label": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      }
+    }
+  },
+  "Level": {
+    "type": "object",
+    "description": "pack/levels.json. 밴드와 합격 규칙"
+  },
+  "Blueprint": {
+    "type": "object",
+    "description": "과목 진단 설계. axes는 교육과정 단원/기능",
+    "required": [
+      "subject",
+      "subject_code",
+      "item_count",
+      "axis",
+      "axes"
+    ]
+  },
+  "PlanTemplate": {
+    "type": "object",
+    "description": "밴드별 주간 계획 템플릿",
+    "required": [
+      "band",
+      "label",
+      "focus",
+      "daily_items"
+    ]
+  },
+  "ErrorPatternCatalog": {
+    "type": "object",
+    "description": "pack/error_patterns.json 공통 오답 패턴 목록",
+    "required": [
+      "id",
+      "label",
+      "description"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "subject_code": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "label": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
       }
     }
   }

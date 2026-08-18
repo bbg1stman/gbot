@@ -4,16 +4,53 @@
 
 위키를 돌아다니며 공부하는 구조가 아니다.
 
-## 앱 본체 = `data/`
+## 앱이 읽는 것 = `pack/`
+
+Android/web 런타임은 **`pack/` 만** 읽으면 된다. 작은 JSON 테이블 묶음이다.
+
+| 파일 | 내용 |
+|---|---|
+| `pack/meta.json` | 버전, 생성 시각, 개수 |
+| `pack/items.json` | 전 문항 1개 배열 (1740 엠바고 + 88 original) |
+| `pack/concepts.json` | 위키 개념 카드 컴파일 |
+| `pack/types.json` | 채점 유형 (~30, 진단 축) |
+| `pack/levels.json` | 밴드·합격 규칙 |
+| `pack/blueprints.json` | 과목 진단 설계 |
+| `pack/plan_templates.json` | 밴드별 주간 템플릿 |
+| `pack/error_patterns.json` | 공통 오답 패턴 목록 |
+| `pack/schema.json` | 콘텐츠 + 런타임 테이블 |
+| `pack/sample_learner.json` | 가짜 수험생 예시 |
+
+```bash
+python3 main.py pack
+```
+
+소스(`data/`, `wiki/`)를 읽어 `pack/` 을 다시 만든다. 공식 슬롯의 stem은 계속 `null`이다.
+
+## 편집은 `data/` + `wiki/`
 
 | 경로 | 역할 |
 |---|---|
-| `data/bank/` | 공식 기출 **슬롯**(원문 없음). 1740개 엠바고 |
+| `data/bank/` | 공식 기출 **슬롯**(원문 없음) + original 문항. 소스 오브 트루스 |
 | `data/diagnostics/` | 밴드, 과목 진단 설계 |
 | `data/plans/` | 밴드별 주간 계획 템플릿 |
-| `data/app/` | 사용자·시도·세션·계획 기록 스키마 |
+| `data/app/` | 사용자·시도·세션·계획·오답노트 스키마 |
+| `wiki/concepts/` | 개념 카드 (교무실) |
 
-수험생 런타임은 여기만 본다.
+`data/bank/` 소스 파일은 지우지 않는다. 앱용 한 벌은 `pack/` 으로 컴파일한다.
+
+## 오답노트 · 패턴 · 유형통계
+
+수험생 런타임 테이블 (`data/app/schema.json`, `pack/schema.json`):
+
+- **WrongNote 오답노트** — 문항 단위 복습 카드. `learner_note` + `auto_hint`. 공식 엠바고 문항은 `auto_hint`가 비어 있다.
+- **ErrorPattern 오답패턴** — 목록은 `pack/error_patterns.json` (부호실수, 선지함정, 시대착오 등). 수험생별 횟수는 런타임 행.
+- **TypeStat 반복 오답 유형** — `misses>=3` 또는 `streak_wrong>=2` 이면 “반복해서 틀리는 유형”.
+
+```bash
+python3 main.py notes   # 샘플 열린 오답노트
+python3 main.py hot     # 반복 유형·패턴
+```
 
 ## 위키 = 교무실
 
@@ -35,12 +72,15 @@
 ## 구조
 
 ```
-data/bank/          # 기출 슬롯 (원문 없음)
+pack/               # 앱이 읽는 유일한 폴더
+data/bank/          # 기출 슬롯 + original (소스)
 data/diagnostics/   # 밴드·과목 설계
 data/plans/         # 주간 계획 템플릿
 data/app/           # 런타임 기록 스키마
 wiki/               # 교무실: 개념/유형/교육과정
 gbot/bank.py        # 은행 로드·조회. stem 불필요
+gbot/pack.py        # data/+wiki/ → pack/
+gbot/learner.py     # 오답노트·반복 유형
 gbot/appdata.py     # 밴드·설계·계획
 gbot/diagnostic.py  # 진단 축 분배 (지문 없음)
 main.py             # CLI
@@ -54,6 +94,7 @@ main.py             # CLI
 저장소 루트(`/workspace/gbot`)에서:
 
 ```bash
+python3 main.py pack
 python3 main.py stats
 python3 main.py exams
 python3 main.py items --exam 2026-2 --subject 국어
@@ -61,7 +102,9 @@ python3 main.py show go-2026-2-kor-12
 python3 main.py bands
 python3 main.py diag --subject 국어
 python3 main.py plan --band 경계
-python3 -m unittest tests.test_bank tests.test_appdata
+python3 main.py notes
+python3 main.py hot
+python3 -m unittest tests.test_bank tests.test_appdata tests.test_pack
 ```
 
 자세한 목적과 규칙은 `purpose.md`, `schema.md` 를 본다.

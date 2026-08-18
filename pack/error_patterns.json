@@ -1,0 +1,86 @@
+[
+  {
+    "id": "pat-sign",
+    "subject_code": null,
+    "type_id": null,
+    "label": "부호실수",
+    "description": "플러스·마이너스나 부등식 방향을 반대로 쓰는 실수"
+  },
+  {
+    "id": "pat-omit",
+    "subject_code": null,
+    "type_id": null,
+    "label": "조건누락",
+    "description": "문제의 조건·범위를 하나 빠뜨리고 푸는 실수"
+  },
+  {
+    "id": "pat-trap",
+    "subject_code": null,
+    "type_id": null,
+    "label": "선지함정",
+    "description": "그럴듯한 오답 선지에 끌려 정답을 버리는 실수"
+  },
+  {
+    "id": "pat-anachronism",
+    "subject_code": null,
+    "type_id": null,
+    "label": "시대착오",
+    "description": "사건·제도를 다른 시대에 두는 실수"
+  },
+  {
+    "id": "pat-term",
+    "subject_code": null,
+    "type_id": null,
+    "label": "용어혼동",
+    "description": "비슷한 용어·개념을 바꿔 쓰는 실수"
+  },
+  {
+    "id": "pat-passage",
+    "subject_code": null,
+    "type_id": null,
+    "label": "지문일치실패",
+    "description": "지문에 없는 내용을 있다고 읽거나 있는 내용을 빠뜨리는 실수"
+  },
+  {
+    "id": "pat-calc",
+    "subject_code": null,
+    "type_id": null,
+    "label": "계산실수",
+    "description": "식은 맞았으나 산술에서 틀린 실수"
+  },
+  {
+    "id": "pat-formula",
+    "subject_code": null,
+    "type_id": null,
+    "label": "공식오용",
+    "description": "공식·정의를 잘못된 상황에 적용하는 실수"
+  },
+  {
+    "id": "pat-cause",
+    "subject_code": null,
+    "type_id": null,
+    "label": "인과혼동",
+    "description": "원인과 결과를 뒤집거나 상관을 인과로 읽는 실수"
+  },
+  {
+    "id": "pat-graph",
+    "subject_code": null,
+    "type_id": null,
+    "label": "그래프오독",
+    "description": "축·단위·기울기를 잘못 읽어 그래프를 오해하는 실수"
+  },
+  {
+    "id": "pat-exception",
+    "subject_code": null,
+    "type_id": null,
+    "label": "예외무시",
+    "description": "일반 규칙만 보고 예외·특수한 경우를 빠뜨리는 실수"
+  },
+  {
+    "id": "pat-rush",
+    "subject_code": null,
+    "type_id": null,
+    "label": "성급추론",
+    "description": "근거가 부족한 채 결론을 먼저 내리는 실수"
+  }
+]

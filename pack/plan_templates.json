@@ -1,0 +1,38 @@
+[
+  {
+    "band": "미달",
+    "label": "미달 주간 계획",
+    "focus": "개념과 유형을 먼저 다진다",
+    "daily_items": 8,
+    "include_concept": true,
+    "include_type": true,
+    "include_bank_slots": false
+  },
+  {
+    "band": "경계",
+    "label": "경계 주간 계획",
+    "focus": "유형 연습과 기출 슬롯으로 합격선에 붙인다",
+    "daily_items": 10,
+    "include_concept": false,
+    "include_type": true,
+    "include_bank_slots": true
+  },
+  {
+    "band": "안정",
+    "label": "안정 주간 계획",
+    "focus": "기출 세트로 점수를 고정한다",
+    "daily_items": 12,
+    "include_concept": false,
+    "include_type": false,
+    "include_bank_slots": true
+  },
+  {
+    "band": "여유",
+    "label": "여유 주간 계획",
+    "focus": "약한 과목에 집중한다",
+    "daily_items": 10,
+    "include_concept": false,
+    "include_type": true,
+    "include_bank_slots": true
+  }
+]

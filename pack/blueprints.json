@@ -1,0 +1,110 @@
+[
+  {
+    "subject": "국어",
+    "subject_code": "kor",
+    "item_count": 12,
+    "axis": "skill",
+    "axes": [
+      "화법작문",
+      "문법",
+      "문학",
+      "독서"
+    ],
+    "stop_rule": {
+      "consecutive_misses": 2,
+      "on_trigger": "easier_band_note",
+      "note": "연속 2문항을 틀리면 한 단계 쉬운 밴드로 메모한다"
+    }
+  },
+  {
+    "subject": "수학",
+    "subject_code": "math",
+    "item_count": 12,
+    "axis": "unit",
+    "axes": [
+      "다항식",
+      "방정식과부등식",
+      "도형의방정식",
+      "집합과명제",
+      "함수",
+      "경우의수"
+    ],
+    "stop_rule": {
+      "consecutive_misses": 2,
+      "on_trigger": "easier_band_note",
+      "note": "연속 2문항을 틀리면 한 단계 쉬운 밴드로 메모한다"
+    }
+  },
+  {
+    "subject": "영어",
+    "subject_code": "eng",
+    "item_count": 9,
+    "axis": "skill",
+    "axes": [
+      "어휘",
+      "생활영어",
+      "독해"
+    ],
+    "stop_rule": {
+      "consecutive_misses": 2,
+      "on_trigger": "easier_band_note",
+      "note": "연속 2문항을 틀리면 한 단계 쉬운 밴드로 메모한다"
+    }
+  },
+  {
+    "subject": "사회",
+    "subject_code": "soc",
+    "item_count": 9,
+    "axis": "unit",
+    "axes": [
+      "인간사회환경과행복",
+      "자연환경과인간",
+      "생활공간과사회",
+      "인권보장과헌법",
+      "시장경제와금융",
+      "사회정의와불평등",
+      "문화와다양성",
+      "세계화와평화",
+      "미래와지속가능한삶"
+    ],
+    "stop_rule": {
+      "consecutive_misses": 2,
+      "on_trigger": "easier_band_note",
+      "note": "연속 2문항을 틀리면 한 단계 쉬운 밴드로 메모한다"
+    }
+  },
+  {
+    "subject": "과학",
+    "subject_code": "sci",
+    "item_count": 8,
+    "axis": "unit",
+    "axes": [
+      "물질과규칙성",
+      "시스템과상호작용",
+      "변화와다양성",
+      "환경과에너지"
+    ],
+    "stop_rule": {
+      "consecutive_misses": 2,
+      "on_trigger": "easier_band_note",
+      "note": "연속 2문항을 틀리면 한 단계 쉬운 밴드로 메모한다"
+    }
+  },
+  {
+    "subject": "한국사",
+    "subject_code": "his",
+    "item_count": 8,
+    "axis": "unit",
+    "axes": [
+      "전근대",
+      "근대국민국가",
+      "일제와민족운동",
+      "대한민국의발전"
+    ],
+    "stop_rule": {
+      "consecutive_misses": 2,
+      "on_trigger": "easier_band_note",
+      "note": "연속 2문항을 틀리면 한 단계 쉬운 밴드로 메모한다"
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "version": "0.3.0",
+  "generated_at": "2026-08-18T14:53:57Z",
+  "counts": {
+    "items": 1828,
+    "embargoed": 1740,
+    "ready": 88,
+    "concepts": 30,
+    "types": 30,
+    "error_patterns": 12,
+    "blueprints": 6,
+    "plan_templates": 4,
+    "levels": 4
+  }
+}

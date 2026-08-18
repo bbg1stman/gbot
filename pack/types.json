@@ -1,0 +1,212 @@
+[
+  {
+    "id": "type-kor-speech",
+    "subject_code": "kor",
+    "axis": "화법작문",
+    "label": "화법작문",
+    "description": "말하기·듣기와 쓰기에서 목적·청자·상황을 고려하여 내용을 조직하고 표현하는 기능이다."
+  },
+  {
+    "id": "type-kor-grammar",
+    "subject_code": "kor",
+    "axis": "문법",
+    "label": "문법",
+    "description": "음운·단어·문장·담화의 규칙을 이해하고 실제 언어 사용에 적용하는 기능이다."
+  },
+  {
+    "id": "type-kor-lit",
+    "subject_code": "kor",
+    "axis": "문학",
+    "label": "문학",
+    "description": "갈래·시점·표현 방법을 통해 작품의 정서와 주제를 파악하는 기능이다."
+  },
+  {
+    "id": "type-kor-reading",
+    "subject_code": "kor",
+    "axis": "독서",
+    "label": "독서",
+    "description": "글을 읽고 중심 내용, 주장과 근거, 사실과 의견, 전개 방식을 파악하는 기능이다."
+  },
+  {
+    "id": "type-math-poly",
+    "subject_code": "math",
+    "axis": "다항식",
+    "label": "다항식",
+    "description": "다항식을 전개·인수분해하고 나눗셈의 몫과 나머지를 다루는 단원이다."
+  },
+  {
+    "id": "type-math-eqineq",
+    "subject_code": "math",
+    "axis": "방정식과부등식",
+    "label": "방정식과부등식",
+    "description": "등식과 부등식을 풀어 해 또는 해의 범위를 구하는 단원이다."
+  },
+  {
+    "id": "type-math-geoeq",
+    "subject_code": "math",
+    "axis": "도형의방정식",
+    "label": "도형의방정식",
+    "description": "좌표평면에서 점·직선·원의 조건을 식으로 나타내는 단원이다."
+  },
+  {
+    "id": "type-math-set",
+    "subject_code": "math",
+    "axis": "집합과명제",
+    "label": "집합과명제",
+    "description": "집합 연산과 명제의 역·이·대우를 다루는 단원이다."
+  },
+  {
+    "id": "type-math-func",
+    "subject_code": "math",
+    "axis": "함수",
+    "label": "함수",
+    "description": "두 변수 사이의 대응과 일차·이차함수의 그래프를 다루는 단원이다."
+  },
+  {
+    "id": "type-math-count",
+    "subject_code": "math",
+    "axis": "경우의수",
+    "label": "경우의수",
+    "description": "순열과 조합으로 가능한 방법의 수를 세는 단원이다."
+  },
+  {
+    "id": "type-eng-vocab",
+    "subject_code": "eng",
+    "axis": "어휘",
+    "label": "어휘",
+    "description": "문맥에 맞는 단어·반의어·구동사·혼동어를 고르는 기능이다."
+  },
+  {
+    "id": "type-eng-life",
+    "subject_code": "eng",
+    "axis": "생활영어",
+    "label": "생활영어",
+    "description": "식당, 길 찾기, 예약, 사과처럼 일상 장면에 맞는 대화를 고르는 기능이다."
+  },
+  {
+    "id": "type-eng-read",
+    "subject_code": "eng",
+    "axis": "독해",
+    "label": "독해",
+    "description": "짧은 글을 읽고 주제, 세부 사실, 빈칸, 글의 목적을 파악하는 기능이다."
+  },
+  {
+    "id": "type-soc-happiness",
+    "subject_code": "soc",
+    "axis": "인간사회환경과행복",
+    "label": "인간사회환경과행복",
+    "description": "삶의 질을 주관적 만족과 객관적 조건으로 함께 살펴보는 단원이다."
+  },
+  {
+    "id": "type-soc-nature",
+    "subject_code": "soc",
+    "axis": "자연환경과인간",
+    "label": "자연환경과인간",
+    "description": "기후·지형과 인간 생활, 자연재해의 조건을 다루는 단원이다."
+  },
+  {
+    "id": "type-soc-space",
+    "subject_code": "soc",
+    "axis": "생활공간과사회",
+    "label": "생활공간과사회",
+    "description": "도시화와 촌락·도시의 기능 차이를 다루는 단원이다."
+  },
+  {
+    "id": "type-soc-const",
+    "subject_code": "soc",
+    "axis": "인권보장과헌법",
+    "label": "인권보장과헌법",
+    "description": "헌법상 기본권과 권력 분립으로 인권을 보장하는 단원이다."
+  },
+  {
+    "id": "type-soc-market",
+    "subject_code": "soc",
+    "axis": "시장경제와금융",
+    "label": "시장경제와금융",
+    "description": "수요·공급과 가격, 금융 상품의 위험과 수익을 다루는 단원이다."
+  },
+  {
+    "id": "type-soc-justice",
+    "subject_code": "soc",
+    "axis": "사회정의와불평등",
+    "label": "사회정의와불평등",
+    "description": "불평등 완화 제도와 정의 이론의 기본 논점을 다루는 단원이다."
+  },
+  {
+    "id": "type-soc-culture",
+    "subject_code": "soc",
+    "axis": "문화와다양성",
+    "label": "문화와다양성",
+    "description": "문화 상대주의와 문화 변동을 다루는 단원이다."
+  },
+  {
+    "id": "type-soc-global",
+    "subject_code": "soc",
+    "axis": "세계화와평화",
+    "label": "세계화와평화",
+    "description": "상호 의존의 확대와 국제 평화 협력 기구를 다루는 단원이다."
+  },
+  {
+    "id": "type-soc-future",
+    "subject_code": "soc",
+    "axis": "미래와지속가능한삶",
+    "label": "미래와지속가능한삶",
+    "description": "지속가능 발전과 저출산·고령화 같은 미래 과제를 다루는 단원이다."
+  },
+  {
+    "id": "type-sci-matter",
+    "subject_code": "sci",
+    "axis": "물질과규칙성",
+    "label": "물질과규칙성",
+    "description": "원자·주기율·화학 결합처럼 물질의 규칙을 다루는 단원이다."
+  },
+  {
+    "id": "type-sci-system",
+    "subject_code": "sci",
+    "axis": "시스템과상호작용",
+    "label": "시스템과상호작용",
+    "description": "힘, 생명 시스템, 지구 판 구조처럼 상호 작용을 다루는 단원이다."
+  },
+  {
+    "id": "type-sci-change",
+    "subject_code": "sci",
+    "axis": "변화와다양성",
+    "label": "변화와다양성",
+    "description": "화학 변화, 진화, 지질 시대 화석을 다루는 단원이다."
+  },
+  {
+    "id": "type-sci-energy",
+    "subject_code": "sci",
+    "axis": "환경과에너지",
+    "label": "환경과에너지",
+    "description": "에너지 보존, 온실 효과, 생태계 구성 단계를 다루는 단원이다."
+  },
+  {
+    "id": "type-his-premodern",
+    "subject_code": "his",
+    "axis": "전근대",
+    "label": "전근대",
+    "description": "고대부터 조선까지 제도와 주요 사건을 다루는 단원이다."
+  },
+  {
+    "id": "type-his-modern",
+    "subject_code": "his",
+    "axis": "근대국민국가",
+    "label": "근대국민국가",
+    "description": "개항 이후 개혁과 대한제국 수립을 다루는 단원이다."
+  },
+  {
+    "id": "type-his-colonial",
+    "subject_code": "his",
+    "axis": "일제와민족운동",
+    "label": "일제와민족운동",
+    "description": "식민 통치와 국내외 독립운동을 다루는 단원이다."
+  },
+  {
+    "id": "type-his-rok",
+    "subject_code": "his",
+    "axis": "대한민국의발전",
+    "label": "대한민국의발전",
+    "description": "정부 수립 이후 전쟁과 민주화 과정을 다루는 단원이다."
+  }
+]
