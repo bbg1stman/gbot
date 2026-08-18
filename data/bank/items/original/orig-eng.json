@@ -29,7 +29,8 @@
     ],
     "stem": "다음 밑줄 친 말과 의미가 가장 가까운 것은?\n\nTicket prices are expected to increase next month.",
     "explanation": "increase는 ‘늘다, 오르다’이므로 rise가 가장 가깝다. refuse는 거절, remain은 그대로 남다, reduce는 줄이다로 의미가 다르다. 가격이 오른다는 문맥이다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-vocab"
   },
   {
     "id": "orig-eng-002",
@@ -61,7 +62,8 @@
     ],
     "stem": "다음 밑줄 친 말의 반의어로 가장 알맞은 것은?\n\nThey visited an ancient castle on the hill.",
     "explanation": "ancient는 ‘고대의, 아주 오래된’이므로 반의어는 modern이다. silent, distant, heavy는 새것과 옛것의 대립과 무관하다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-vocab"
   },
   {
     "id": "orig-eng-003",
@@ -93,7 +95,8 @@
     ],
     "stem": "빈칸에 들어갈 말로 가장 알맞은 것은?\n\nShe decided to _____ smoking after the doctor’s warning.",
     "explanation": "습관이나 시도를 그만둔다는 뜻은 give up이다. look after는 돌보다, turn on은 켜다, pick up은 집다/태우다이다. 의사 경고 뒤 금연하는 문맥이다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-vocab"
   },
   {
     "id": "orig-eng-004",
@@ -125,7 +128,8 @@
     ],
     "stem": "빈칸에 알맞은 것은?\n\nCould you _____ for a minute? I forgot mine.",
     "explanation": "lend는 ‘남에게 빌려 주다’, borrow는 ‘남에게서 빌리다’이다. 상대에게 빌려 달라는 요청이므로 lend me your pen이 맞다. borrow me는 목적어 구조가 어색하다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-vocab"
   },
   {
     "id": "orig-eng-005",
@@ -157,7 +161,8 @@
     ],
     "stem": "식당에서 음식을 고를 때 할 말로 가장 알맞은 것은?\n\nWaiter: Are you ready to order?",
     "explanation": "주문 상황에서는 메뉴를 말하는 I’d like the tomato soup가 알맞다. ①은 좌석, ③은 길 묻기, ④는 물건 반품으로 장면이 다르다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-life"
   },
   {
     "id": "orig-eng-006",
@@ -189,7 +194,8 @@
     ],
     "stem": "길을 모를 때 지나가는 사람에게 물을 말로 가장 알맞은 것은?",
     "explanation": "위치를 묻는 말은 how can I get to ~?이다. ②③④는 이미 우체국에 있거나 업무를 볼 때의 말이다. Excuse me로 시작하는 길 묻기가 생활영어의 기본이다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-life"
   },
   {
     "id": "orig-eng-007",
@@ -221,7 +227,8 @@
     ],
     "stem": "병원에서 진료 시간을 잡을 때 환자가 할 말로 가장 알맞은 것은?\n\nReceptionist: How can I help you?",
     "explanation": "예약을 잡는 표현은 make an appointment이다. ①은 취소, ②는 듣기 요청, ④는 의료진의 말이다. Friday afternoon이 시간을 구체화한다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-life"
   },
   {
     "id": "orig-eng-008",
@@ -253,7 +260,8 @@
     ],
     "stem": "다음 대화의 빈칸에 가장 알맞은 것은?\n\nA: I’m sorry I’m late.\nB: __________",
     "explanation": "사과에는 안심시키는 응답이 자연스럽다. That’s all right는 용서를 나타낸다. ①은 비난, ②③은 사과와 연결되지 않는다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-life"
   },
   {
     "id": "orig-eng-009",
@@ -285,7 +293,8 @@
     ],
     "stem": "다음 글의 주제로 가장 알맞은 것은?\n\nMina used to take a crowded bus to school. Last spring she began walking the twenty-minute route. She spends less on bus tickets, arrives more awake, and her doctor says her blood pressure has improved. A few classmates now walk with her on clear mornings.",
     "explanation": "글은 걸어서 등교하면 비용이 줄고 건강이 좋아진다는 사례다. ②가 이 내용을 묶는다. 책을 없애거나 버스를 전면 금지하는 주장은 글에 없다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-read"
   },
   {
     "id": "orig-eng-010",
@@ -317,7 +326,8 @@
     ],
     "stem": "다음 글의 내용과 일치하는 것은?\n\nOn our street, recycling trucks come every Tuesday. Families rinse bottles and flatten paper boxes the night before. Food waste goes in a separate small bin. The rule is simple: clean and sort, then put the bins by the gate before 7 a.m.",
     "explanation": "글은 수거 전날 병과 종이를 분류한다고 했다. ①이 일치한다. 한 봉지에 섞거나 플라스틱을 태운다는 내용은 없다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-read"
   },
   {
     "id": "orig-eng-011",
@@ -349,7 +359,8 @@
     ],
     "stem": "빈칸에 들어갈 말로 가장 알맞은 것은?\n\nOur apartment building posted a notice about electricity bills. The manager wrote that many chargers stay plugged in all night. If residents _____, the building can cut nighttime use without changing daytime study hours.",
     "explanation": "밤사이 충전기가 꽂혀 있다는 문제이므로 쓰지 않는 조명·충전기를 끄라는 처방이 맞다. 기기를 늘리거나 늦게 자는 것은 반대 방향이다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-read"
   },
   {
     "id": "orig-eng-012",
@@ -381,6 +392,7 @@
     ],
     "stem": "다음 글의 목적으로 가장 알맞은 것은?\n\nThe student council will hold a used-book sale in the cafeteria this Saturday from 10 a.m. to 2 p.m. Bring books you have finished and label the price. Money will support the school radio club. Volunteers should meet at 9:30 a.m.",
     "explanation": "글은 중고 책 장터의 시간·장소·준비물을 알리고 참여를 권한다. 목적은 초대·안내이다. 공연 판매나 소음 항의, 등산 묘사가 아니다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-eng-read"
   }
 ]

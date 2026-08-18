@@ -14,6 +14,7 @@ Android/web 런타임은 **`pack/` 만** 읽으면 된다. 작은 JSON 테이블
 | `pack/items.json` | 전 문항 1개 배열 (1740 엠바고 + 88 original) |
 | `pack/concepts.json` | 위키 개념 카드 컴파일 |
 | `pack/types.json` | 채점 유형 (~30, 진단 축) |
+| `pack/chapters.json` | 2015 교과서 대단원·소단원 |
 | `pack/levels.json` | 밴드·합격 규칙 |
 | `pack/blueprints.json` | 과목 진단 설계 |
 | `pack/plan_templates.json` | 밴드별 주간 템플릿 |
@@ -50,10 +51,10 @@ python3 main.py pack
 ```bash
 python3 main.py notes   # 샘플 열린 오답노트
 python3 main.py hot     # 반복 유형·패턴
-python3 main.py eval    # 종합 평가 (취약 과목·유형·문항)
+python3 main.py eval    # 종합 평가 (취약 과목·단원·유형·문항)
 ```
 
-문항별 **ItemStat**으로 봤는지·몇 번 틀렸는지·복습 기한을 관리하고, `evaluate()`가 취약 과목·유형·문항을 뽑는다. 합격선은 과목 40 / 평균 60.
+문항별 **ItemStat**으로 봤는지·몇 번 틀렸는지·복습 기한을 관리하고, `evaluate()`가 취약 과목·유형·문항을 뽑는다. 취약 구간은 교과서 챕터(chapters)로 본다. 합격선은 과목 40 / 평균 60.
 
 ## 위키 = 교무실
 
@@ -84,7 +85,8 @@ wiki/               # 교무실: 개념/유형/교육과정
 gbot/bank.py        # 은행 로드·조회. stem 불필요
 gbot/pack.py        # data/+wiki/ → pack/
 gbot/learner.py     # 오답노트·반복 유형·문항 숙달
-gbot/evaluate.py    # 종합 평가 (취약 과목/유형/문항)
+gbot/evaluate.py    # 종합 평가 (취약 과목/단원/유형/문항)
+gbot/chapters.py    # 2015 교과서 챕터 트리
 gbot/appdata.py     # 밴드·설계·계획
 gbot/diagnostic.py  # 진단 축 분배 (지문 없음)
 main.py             # CLI

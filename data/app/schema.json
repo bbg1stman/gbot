@@ -526,13 +526,14 @@
   },
   "Evaluation": {
     "type": "object",
-    "description": "종합 평가. 계산 결과이며 스냅샷으로도 저장한다. pass_rules: 과목 40, 평균 60.",
+    "description": "종합 평가. 계산 결과이며 스냅샷으로도 저장한다. pass_rules: 과목 40, 평균 60. 취약 구간은 교과서 챕터(chapters)로 본다.",
     "required": [
       "user_id",
       "generated_at",
       "overall",
       "subjects",
       "weak_axes",
+      "weak_chapters",
       "weak_types",
       "weak_patterns",
       "weak_items",
@@ -739,6 +740,51 @@
             },
             "action": {
               "type": "string"
+            }
+          }
+        }
+      },
+      "weak_chapters": {
+        "type": "array",
+        "description": "교과서 단원. accuracy < 0.6 또는 misses>=2",
+        "items": {
+          "type": "object",
+          "required": [
+            "chapter_id",
+            "subject_code",
+            "title",
+            "attempts",
+            "misses",
+            "accuracy",
+            "parent_id"
+          ],
+          "properties": {
+            "chapter_id": {
+              "type": "string"
+            },
+            "subject_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "title": {
+              "type": "string"
+            },
+            "attempts": {
+              "type": "integer"
+            },
+            "misses": {
+              "type": "integer"
+            },
+            "accuracy": {
+              "type": "number"
+            },
+            "parent_id": {
+              "type": [
+                "string",
+                "null"
+              ]
             }
           }
         }

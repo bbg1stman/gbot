@@ -147,7 +147,8 @@ def cmd_pack(_args: argparse.Namespace) -> int:
         f"엠바고 {counts.get('embargoed')}  "
         f"준비 {counts.get('ready')}  "
         f"개념 {counts.get('concepts')}  "
-        f"유형 {counts.get('types')}"
+        f"유형 {counts.get('types')}  "
+        f"단원 {counts.get('chapters')}"
     )
     return 0
 
@@ -221,6 +222,18 @@ def cmd_eval(_args: argparse.Namespace) -> int:
     for s in weak_subj:
         label = names.get(s["code"], s["code"])
         print(f"  {label}({s['code']})  {s.get('band')}  {s.get('estimate')}")
+    print("취약 단원")
+    chapters = ev.get("weak_chapters") or []
+    if not chapters:
+        print("  (없음)")
+    for ch in chapters:
+        label = names.get(ch.get("subject_code"), ch.get("subject_code"))
+        acc = ch.get("accuracy")
+        pct = f"{int(round((acc or 0) * 100))}%"
+        print(
+            f"  {label} · {ch.get('title')}  정답률 {pct}  "
+            f"({ch.get('misses')}오답)"
+        )
     print("취약 유형")
     types = ev.get("weak_types") or []
     if not types:

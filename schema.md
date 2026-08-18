@@ -48,14 +48,14 @@
 - **ErrorPattern 오답패턴**: 목록은 `pack/error_patterns.json`. 수험생 행은 `id`, `user_id`, `pattern_id`, `subject_code`, `type_id`, `miss_count`, `last_missed`, `note`.
 - **TypeStat 반복 오답 유형**: `id`, `user_id`, `type_id`, `subject_code`, `attempts`, `misses`, `streak_wrong`, `last_missed`. `misses>=3` 또는 `streak_wrong>=2` 이면 반복 유형.
 - **ItemStat 문항 숙달**: `id`, `user_id`, `item_id`, `subject_code`, `type_id`, `axis`, `attempts`, `misses`, `last_correct`, `last_choice`, `last_ts`, `streak_wrong`, `ease` (0–1 또는 null), `next_review`, `history` (최근 최대 10). 봤는지·몇 번 틀렸는지·복습 기한.
-- **Evaluation 종합 평가**: 계산 결과 + 스냅샷. `overall{estimate_avg, pass_ready, subject_min_risk, average_risk}`, `subjects`, `weak_axes` (accuracy<0.6 또는 misses>=2), `weak_types`, `weak_patterns`, `weak_items` (misses>=1 미해결), `focus` (과락 과목 먼저, 그다음 약한 유형). 과목 40 / 평균 60.
+- **Evaluation 종합 평가**: 계산 결과 + 스냅샷. `overall{estimate_avg, pass_ready, subject_min_risk, average_risk}`, `subjects`, `weak_axes` (accuracy<0.6 또는 misses>=2), `weak_chapters` (같은 규칙, 교과서 단원), `weak_types`, `weak_patterns`, `weak_items` (misses>=1 미해결), `focus` (과락 과목 먼저, 그다음 약한 유형). 과목 40 / 평균 60.
 
 실제 개인정보를 두지 않는다.
 
 ### pack/
 
 `gbot.pack.build_pack()` 이 `data/bank` + `data/diagnostics` + `data/plans` + `wiki/concepts` 를 읽어 `pack/` 을 쓴다.
-문항을 넣을 때 필드는 모두 유지하고 `type_id` / `trap_tags=[]` / `media=null` 을 채운다.
+문항을 넣을 때 필드는 모두 유지하고 `type_id` / `chapter_id` / `trap_tags=[]` / `media=null` 을 채운다.
 공식 문항의 `stem`/`choices`/`answer` 는 계속 `null` 이다.
 
 ## 위키 (교무실)
@@ -86,7 +86,7 @@
 | `stem` `choices` `explanation` | `null` | 라이선스 원문 | 자작 원문 |
 
 로더 기본값 (JSON에 없어도 됨): `role=bank`, `unit=null`, `wiki_concept=null`, `wiki_type=null`. `stem`은 없어도 된다.
-pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `trap_tags=[]`, `media=null`.
+pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `chapter_id` (같은 축 → chapters.json, 없으면 null), `trap_tags=[]`, `media=null`.
 
 공식 슬롯 예 (`go-2026-2-kor-12`):
 
@@ -148,7 +148,7 @@ pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `trap_tags=
 `gbot.evaluate`
 
 - `item_stats_from_attempts(user)` → 시도에서 ItemStat 파생
-- `evaluate(user)` → Evaluation (취약 과목·유형·문항)
+- `evaluate(user)` → Evaluation (취약 과목·단원·유형·문항)
 
 ## 코드표
 

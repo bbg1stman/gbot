@@ -24,6 +24,7 @@ class TestPack(unittest.TestCase):
             "items.json",
             "concepts.json",
             "types.json",
+            "chapters.json",
             "levels.json",
             "blueprints.json",
             "plan_templates.json",
@@ -57,6 +58,7 @@ class TestPack(unittest.TestCase):
         assert slot is not None
         self.assertIsNone(slot["stem"])
         self.assertIsNone(slot["type_id"])
+        self.assertIsNone(slot.get("chapter_id"))
         self.assertEqual(slot["trap_tags"], [])
         self.assertIsNone(slot["media"])
 
@@ -73,6 +75,9 @@ class TestPack(unittest.TestCase):
         kor = self.pack.get("orig-kor-005")
         assert kor is not None
         self.assertEqual(kor["type_id"], "type-kor-grammar")
+        self.assertEqual(math["chapter_id"], "ch-math-poly")
+        self.assertEqual(his["chapter_id"], "ch-his-premodern")
+        self.assertEqual(kor["chapter_id"], "ch-kor-grammar")
 
     def test_types_match_axes(self) -> None:
         types = self.pack.types
@@ -112,8 +117,30 @@ class TestPack(unittest.TestCase):
 
     def test_pack_schema_has_content_tables(self) -> None:
         schema = self.pack.schema
-        for name in ("Item", "Concept", "Type", "Blueprint", "ErrorPatternCatalog"):
+        for name in ("Item", "Concept", "Type", "Chapter", "Blueprint", "ErrorPatternCatalog"):
             self.assertIn(name, schema)
+
+    def test_chapters_six_subjects(self) -> None:
+        chapters = self.pack.chapters
+        self.assertTrue(chapters)
+        codes = {c["subject_code"] for c in chapters}
+        self.assertEqual(codes, {"kor", "math", "eng", "soc", "sci", "his"})
+        ids = [c["id"] for c in chapters]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertIn("ch-math-poly", ids)
+        self.assertIn("ch-soc-market", ids)
+        self.assertIn("ch-kor-grammar", ids)
+        for c in chapters:
+            for key in ("id", "subject_code", "textbook", "number", "title", "axis", "type_id"):
+                self.assertIn(key, c, msg=f"{c.get('id')} {key}")
+            self.assertIn("parent_id", c)
+        tops = [c for c in chapters if not c.get("parent_id")]
+        self.assertEqual(len(tops), 30)
+        poly = next(c for c in chapters if c["id"] == "ch-math-poly")
+        self.assertEqual(poly["title"], "다항식")
+        self.assertEqual(poly["axis"], "다항식")
+        self.assertEqual(poly["type_id"], "type-math-poly")
+        self.assertEqual(self.meta["counts"].get("chapters"), len(chapters))
 
     def test_error_patterns_seeded(self) -> None:
         labels = {p["label"] for p in self.pack.error_patterns}

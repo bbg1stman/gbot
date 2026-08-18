@@ -1,4 +1,4 @@
-"""종합 평가: 문항 숙달(ItemStat)과 취약 과목·유형·문항."""
+"""종합 평가: 문항 숙달(ItemStat)과 취약 과목·단원·유형·문항."""
 
 from __future__ import annotations
 
@@ -181,6 +181,102 @@ def _weak_types(user: Learner) -> list[dict[str, Any]]:
     ]
 
 
+def _chapter_lookups() -> tuple[
+    dict[str, dict[str, Any]],
+    dict[tuple[Optional[str], str], dict[str, Any]],
+    dict[str, dict[str, Any]],
+    dict[str, dict[str, Any]],
+]:
+    """Load chapters + items. Join key: chapter_id / axis / type_id."""
+    import json
+    from pathlib import Path
+
+    from gbot.chapters import compile_chapters
+
+    chapters = compile_chapters()
+    by_id: dict[str, dict[str, Any]] = {}
+    by_axis: dict[tuple[Optional[str], str], dict[str, Any]] = {}
+    by_type: dict[str, dict[str, Any]] = {}
+    for ch in chapters:
+        by_id[ch["id"]] = ch
+        axis = ch.get("axis")
+        if axis:
+            key = (ch.get("subject_code"), str(axis))
+            prev = by_axis.get(key)
+            if prev is None or (prev.get("parent_id") and not ch.get("parent_id")):
+                by_axis[key] = ch
+        if ch.get("type_id") and not ch.get("parent_id"):
+            by_type[str(ch["type_id"])] = ch
+    items_by_id: dict[str, dict[str, Any]] = {}
+    items_path = Path(__file__).resolve().parent.parent / "pack" / "items.json"
+    if items_path.is_file():
+        with items_path.open(encoding="utf-8") as f:
+            raw = json.load(f)
+        for item in raw:
+            if isinstance(item, dict) and item.get("id"):
+                items_by_id[str(item["id"])] = item
+    return by_id, by_axis, by_type, items_by_id
+
+
+def _resolve_chapter(
+    att: dict[str, Any],
+    by_id: dict[str, dict[str, Any]],
+    by_axis: dict[tuple[Optional[str], str], dict[str, Any]],
+    by_type: dict[str, dict[str, Any]],
+    items_by_id: dict[str, dict[str, Any]],
+) -> Optional[dict[str, Any]]:
+    item = items_by_id.get(str(att.get("item_id") or "")) or {}
+    cid = att.get("chapter_id") or item.get("chapter_id")
+    if cid and cid in by_id:
+        return by_id[str(cid)]
+    code = subject_code_of(att) or item.get("subject_code")
+    axis = att.get("axis") or item.get("unit") or item.get("skill")
+    if axis:
+        ch = by_axis.get((code, str(axis)))
+        if ch:
+            return ch
+    tid = att.get("type_id") or item.get("type_id")
+    if tid and tid in by_type:
+        return by_type[str(tid)]
+    return None
+
+
+def _weak_chapters(
+    attempts: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Same weakness rule as axes: accuracy < 0.6 or misses >= 2."""
+    by_id, by_axis, by_type, items_by_id = _chapter_lookups()
+    if not by_id:
+        return []
+    stats: dict[str, dict[str, Any]] = {}
+    for att in attempts:
+        ch = _resolve_chapter(att, by_id, by_axis, by_type, items_by_id)
+        if not ch:
+            continue
+        row = stats.setdefault(
+            ch["id"],
+            {
+                "chapter_id": ch["id"],
+                "subject_code": ch.get("subject_code"),
+                "title": ch.get("title"),
+                "attempts": 0,
+                "misses": 0,
+                "parent_id": ch.get("parent_id"),
+            },
+        )
+        row["attempts"] += 1
+        if not att.get("correct"):
+            row["misses"] += 1
+    weak: list[dict[str, Any]] = []
+    for row in stats.values():
+        att_n, miss_n = row["attempts"], row["misses"]
+        acc = round((att_n - miss_n) / att_n, 4) if att_n else 0.0
+        if acc < 0.6 or miss_n >= 2:
+            weak.append({**row, "accuracy": acc})
+    weak.sort(key=lambda r: (r["accuracy"], -r["misses"], r.get("title") or ""))
+    return weak
+
+
 def _weak_patterns(user: Learner) -> list[dict[str, Any]]:
     pats = hot_patterns(user)
     if pats:
@@ -276,6 +372,7 @@ def evaluate(user: Learner) -> Evaluation:
 
     weak_types = _weak_types(user)
     weak_patterns = _weak_patterns(user)
+    weak_chapters = _weak_chapters(attempts)
 
     weak_codes = {s["code"] for s in subjects_out if s["weak"]}
     stat_by_item = {s.get("item_id"): s for s in stats}
@@ -332,6 +429,7 @@ def evaluate(user: Learner) -> Evaluation:
         },
         "subjects": subjects_out,
         "weak_axes": weak_axes,
+        "weak_chapters": weak_chapters,
         "weak_types": weak_types,
         "weak_patterns": weak_patterns,
         "weak_items": weak_items,

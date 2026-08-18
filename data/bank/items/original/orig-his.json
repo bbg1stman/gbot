@@ -29,7 +29,8 @@
     ],
     "stem": "훈민정음에 대한 설명으로 옳은 것은?",
     "explanation": "훈민정음은 15세기 세종 때 창제(1443)되고 반포(1446)되었다. 백성이 쉽게 배우게 하려는 목적이 명시되어 있다. 광종 과거(958), 무신 정권, 고종 대와는 시기가 다르다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-premodern"
   },
   {
     "id": "orig-his-002",
@@ -61,7 +62,8 @@
     ],
     "stem": "전근대 관리 등용 제도에 대한 설명으로 옳은 것은?",
     "explanation": "고려 광종 9년(958) 쌍기의 건의로 과거가 시작되어 유학 관료 등용의 길을 열었다. 신라는 독서삼품과 등이 있었고, 조선은 고려의 과거를 이어 받았다. 일제와는 무관하다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-premodern"
   },
   {
     "id": "orig-his-003",
@@ -93,7 +95,8 @@
     ],
     "stem": "임진왜란에 대한 설명으로 옳은 것은?",
     "explanation": "임진왜란은 1592년(선조 25) 일본의 침입으로 시작되었다. 이순신 지휘의 수군과 각지의 의병이 저항하였다. 몽골 침입·병자호란(1636)과는 다른 사건이고, 조선이 일본을 병합한 일은 없다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-premodern"
   },
   {
     "id": "orig-his-004",
@@ -125,7 +128,8 @@
     ],
     "stem": "강화도 조약에 대한 설명으로 옳은 것은?",
     "explanation": "강화도 조약(조일 수호 조규)은 1876년에 체결된 근대 최초의 불평등 조약이다. 부산 등 개항, 해안 측량권 등이 포함되었다. 대한제국 선포(1897), 광복(1945)과 시기가 다르다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-modern"
   },
   {
     "id": "orig-his-005",
@@ -157,7 +161,8 @@
     ],
     "stem": "갑오개혁에 대한 설명으로 옳은 것은?",
     "explanation": "갑오개혁은 1894년 동학 농민 운동과 청일 전쟁 국면에서 추진된 개혁이다. 신분제 폐지, 조세·행정 정비 등이 포함된다. 조선 전기 문화 정책이나 20세기 혁명·미군정과 혼동하면 안 된다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-modern"
   },
   {
     "id": "orig-his-006",
@@ -189,7 +194,8 @@
     ],
     "stem": "대한제국 수립에 대한 설명으로 옳은 것은?",
     "explanation": "고종은 1897년 환구단에서 황제에 즉위하고 국호를 대한제국으로 정했다. 갑신정변은 1884년, 3·1 운동은 1919년, 대한민국 정부는 1948년이다. 연표를 구분해야 한다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-modern"
   },
   {
     "id": "orig-his-007",
@@ -221,7 +227,8 @@
     ],
     "stem": "3·1 운동에 대한 설명으로 옳은 것은?",
     "explanation": "3·1 운동은 1919년 3월 1일 시작되어 전국으로 확산된 독립 운동이다. 고종의 국장 국면, 윌슨의 민족 자결 논의 등이 배경이다. 동학, 4·19, 부마항쟁과 연대를 섞으면 안 된다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-colonial"
   },
   {
     "id": "orig-his-008",
@@ -253,7 +260,8 @@
     ],
     "stem": "대한민국 임시 정부에 대한 설명으로 옳은 것은?",
     "explanation": "3·1 운동 직후 1919년 상하이에서 대한민국 임시 정부가 수립되었다. 이후 충칭 등으로 이전하며 독립운동을 지도하였다. 대한제국 선포나 1948년 정부 수립과 구분한다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-colonial"
   },
   {
     "id": "orig-his-009",
@@ -285,7 +293,8 @@
     ],
     "stem": "청산리 전투에 대한 설명으로 옳은 것은?",
     "explanation": "청산리 전투는 1920년 김좌진 등 독립군 부대가 만주 청산리 일대에서 일본군에 승리한 전투다. 봉오동 전투(같은 해)와 함께 무장 독립 전쟁의 성과로 배운다. 을사늑약·광복·유신과 시기가 다르다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-colonial"
   },
   {
     "id": "orig-his-010",
@@ -317,7 +326,8 @@
     ],
     "stem": "대한민국 정부 수립에 대한 설명으로 옳은 것은?",
     "explanation": "제헌 국회가 헌법을 제정한 뒤 1948년 8월 15일 대한민국 정부가 수립되었다. 1919년은 임시 정부, 1950년 6월 25일은 한국 전쟁 발발, 1961년 5월 16일은 군사 정변이다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-rok"
   },
   {
     "id": "orig-his-011",
@@ -349,7 +359,8 @@
     ],
     "stem": "6·25 전쟁에 대한 설명으로 옳은 것은?",
     "explanation": "한국 전쟁은 1950년 6월 25일 북한의 남침으로 시작되었다. 유엔군 참전, 인천 상륙, 중국군 개입, 1953년 정전 협정으로 이어진다. 3·1 운동·강화도 조약·6월 항쟁과 연대를 섞지 않는다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-rok"
   },
   {
     "id": "orig-his-012",
@@ -381,6 +392,7 @@
     ],
     "stem": "6월 민주 항쟁에 대한 설명으로 옳은 것은?",
     "explanation": "1987년 6월 항쟁은 4·13 호헌 조치에 반대하고 대통령 직선제를 요구하였다. 6·29 선언과 헌법 개정으로 이어졌다. 4·19는 1960년, 5·18은 1980년으로 더 앞선 사건이다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-his-rok"
   }
 ]

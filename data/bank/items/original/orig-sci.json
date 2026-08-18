@@ -29,7 +29,8 @@
     ],
     "stem": "원자의 원자번호에 대한 설명으로 옳은 것은?",
     "explanation": "원자번호는 핵의 양성자 수와 같다. 중성자 수는 질량수에서 양성자 수를 뺀 값이고, 전자 껍질 수는 주기와 관련된다. 중성 원자에서는 전자 수도 원자번호와 같다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-matter"
   },
   {
     "id": "orig-sci-002",
@@ -61,7 +62,8 @@
     ],
     "stem": "이온 결합에 대한 설명으로 옳은 것은?",
     "explanation": "이온 결합은 금속이 전자를 잃고 비금속이 전자를 얻어 이온이 된 뒤 끌어당기는 결합이다. ②는 공유 결합, ③은 금속 결합, ④는 분자 간 힘이다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-matter"
   },
   {
     "id": "orig-sci-003",
@@ -93,7 +95,8 @@
     ],
     "stem": "주기율표의 규칙으로 옳은 것은?",
     "explanation": "같은 족은 원자가 전자 수가 같아 성질이 비슷하다. 원자번호가 커지면 양성자 수는 늘고, 비활성 기체는 안정하여 반응성이 작다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-matter"
   },
   {
     "id": "orig-sci-004",
@@ -125,7 +128,8 @@
     ],
     "stem": "뉴턴 운동 제3법칙(작용 반작용)에 대한 설명으로 옳은 것은?",
     "explanation": "작용과 반작용은 서로 다른 물체에 작용하고 크기 같으며 방향이 반대다. 한 물체의 평형힘(예: 중력과 수직항력)과 혼동하지 않는다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-system"
   },
   {
     "id": "orig-sci-005",
@@ -157,7 +161,8 @@
     ],
     "stem": "광합성에 대한 설명으로 옳은 것은?",
     "explanation": "광합성은 빛에너지를 써서 이산화탄소와 물로부터 포도당을 합성하고 산소를 방출한다. 동물의 세포호흡과는 반대 방향에 가깝다. 미토콘드리아가 아니라 엽록체에서 일어난다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-system"
   },
   {
     "id": "orig-sci-006",
@@ -189,7 +194,8 @@
     ],
     "stem": "지구 시스템과 판 구조에 대한 설명으로 옳은 것은?",
     "explanation": "지각 판은 천천히 움직이고, 경계에서 지진·화산이 잦다. 해령은 새로운 판이 만들어지는 발산 경계이고, 수렴 경계에서 판이 소멸한다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-system"
   },
   {
     "id": "orig-sci-007",
@@ -221,7 +227,8 @@
     ],
     "stem": "화학 변화로 옳은 것은?",
     "explanation": "화학 변화는 새로운 물질이 생기는 변화다. 철의 산화(녹)가 해당한다. 융해·증발·절단은 상태나 모양만 바뀌는 물리 변화다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-change"
   },
   {
     "id": "orig-sci-008",
@@ -253,7 +260,8 @@
     ],
     "stem": "자연 선택에 대한 설명으로 옳은 것은?",
     "explanation": "변이가 있는 집단에서 환경에 유리한 형질이 더 많이 남으면 세대가 지나며 그 형질의 비율이 높아진다. 의지로 형질을 바꾸는 것이 아니고, ‘강함’도 환경에 따라 다르다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-change"
   },
   {
     "id": "orig-sci-009",
@@ -285,7 +293,8 @@
     ],
     "stem": "화석에 대한 설명으로 옳은 것은?",
     "explanation": "표준 화석은 생존 기간이 짧고 지리적으로 넓게 퍼져 지층 시대 대비에 쓰인다. 시상 화석은 당시 환경을 알려 준다. 화석은 주로 퇴적암에서 발견된다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-change"
   },
   {
     "id": "orig-sci-010",
@@ -317,7 +326,8 @@
     ],
     "stem": "에너지 전환과 보존에 대한 설명으로 옳은 것은?",
     "explanation": "마찰이 없으면 운동 에너지와 위치 에너지의 합(역학적 에너지)이 보존된다. 에너지는 형태가 바뀔 뿐 사라지지 않는다. 마찰이 있으면 일부는 열로 간다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-energy"
   },
   {
     "id": "orig-sci-011",
@@ -349,7 +359,8 @@
     ],
     "stem": "온실 효과에 대한 설명으로 옳은 것은?",
     "explanation": "이산화탄소, 메테인, 수증기 등은 지표의 적외선을 흡수·재방출해 지표 기온을 유지·상승시킨다. 농도 증가는 온난화와 관련된다. 햇빛의 가시광선은 상당 부분 통과한다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-energy"
   },
   {
     "id": "orig-sci-012",
@@ -381,6 +392,7 @@
     ],
     "stem": "생태계의 구성과 에너지 흐름으로 옳은 것은?",
     "explanation": "생산자(녹색 식물 등)는 광합성으로 유기물을 만든다. 에너지 흐름은 한 방향이고 물질은 순환한다. 분해자는 유기물을 무기물로 되돌려 순환에 기여한다.",
-    "official_index": null
+    "official_index": null,
+    "chapter_id": "ch-sci-energy"
   }
 ]

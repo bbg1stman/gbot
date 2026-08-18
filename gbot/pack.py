@@ -15,6 +15,7 @@ from typing import Any, Optional
 from gbot import __version__
 from gbot.appdata import load as load_app
 from gbot.bank import load as load_bank
+from gbot.chapters import chapter_index, compile_chapters, infer_chapter_id
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -158,6 +159,7 @@ CONTENT_TABLES: dict[str, Any] = {
             "subject": {"type": "string"},
             "subject_code": {"type": "string"},
             "type_id": {"type": ["string", "null"], "description": "types.json id. unit/skill에서 매핑"},
+            "chapter_id": {"type": ["string", "null"], "description": "chapters.json id. unit/skill에서 매핑"},
             "trap_tags": {"type": "array", "items": {"type": "string"}, "default": []},
             "media": {
                 "type": ["object", "null"],
@@ -221,6 +223,21 @@ CONTENT_TABLES: dict[str, Any] = {
             "type_id": {"type": ["string", "null"]},
             "label": {"type": "string"},
             "description": {"type": "string"},
+        },
+    },
+    "Chapter": {
+        "type": "object",
+        "description": "2015 고졸 검정고시 출제 범위 교과서 대단원/소단원",
+        "required": ["id", "subject_code", "textbook", "number", "title", "parent_id", "axis", "type_id"],
+        "properties": {
+            "id": {"type": "string"},
+            "subject_code": {"type": "string"},
+            "textbook": {"type": "string"},
+            "number": {"type": "string"},
+            "title": {"type": "string"},
+            "parent_id": {"type": ["string", "null"]},
+            "axis": {"type": "string"},
+            "type_id": {"type": ["string", "null"]},
         },
     },
 }
@@ -352,10 +369,15 @@ def compile_types(concepts: Optional[list[dict[str, Any]]] = None) -> list[dict[
     return types
 
 
-def pack_item(item: Item, index: Optional[dict[tuple[str, str], str]] = None) -> Item:
+def pack_item(
+    item: Item,
+    index: Optional[dict[tuple[str, str], str]] = None,
+    ch_index: Optional[dict[tuple[str, str], str]] = None,
+) -> Item:
     """Copy all fields and add pack defaults. Official stems stay null."""
     out = dict(item)
     out["type_id"] = infer_type_id(out, index)
+    out["chapter_id"] = infer_chapter_id(out, ch_index)
     out.setdefault("trap_tags", [])
     if "media" not in out:
         out["media"] = None
@@ -397,8 +419,10 @@ def build_pack(
 
     concepts = compile_concepts(wiki)
     types = compile_types(concepts)
+    chapters = compile_chapters()
     index = type_index()
-    items = [pack_item(item, index) for item in bank.items]
+    ch_index = chapter_index(chapters)
+    items = [pack_item(item, index, ch_index) for item in bank.items]
 
     embargoed = sum(1 for i in items if i.get("status") == "embargoed")
     ready = sum(1 for i in items if i.get("status") == "ready")
@@ -419,6 +443,7 @@ def build_pack(
             "ready": ready,
             "concepts": len(concepts),
             "types": len(types),
+            "chapters": len(chapters),
             "error_patterns": len(ERROR_PATTERNS),
             "blueprints": len(blueprints),
             "plan_templates": len(plan_templates),
@@ -430,6 +455,7 @@ def build_pack(
     _write_json(dest / "items.json", items)
     _write_json(dest / "concepts.json", concepts)
     _write_json(dest / "types.json", types)
+    _write_json(dest / "chapters.json", chapters)
     _write_json(dest / "levels.json", levels)
     _write_json(dest / "blueprints.json", blueprints)
     _write_json(dest / "plan_templates.json", plan_templates)
@@ -445,6 +471,7 @@ class Pack:
         self.items: list[Item] = []
         self.concepts: list[dict[str, Any]] = []
         self.types: list[dict[str, Any]] = []
+        self.chapters: list[dict[str, Any]] = []
         self.levels: dict[str, Any] = {}
         self.blueprints: list[dict[str, Any]] = []
         self.plan_templates: list[dict[str, Any]] = []
@@ -460,6 +487,8 @@ class Pack:
         self.items = _read_json(root / "items.json")
         self.concepts = _read_json(root / "concepts.json")
         self.types = _read_json(root / "types.json")
+        ch = root / "chapters.json"
+        self.chapters = _read_json(ch) if ch.is_file() else []
         self.levels = _read_json(root / "levels.json")
         self.blueprints = _read_json(root / "blueprints.json")
         self.plan_templates = _read_json(root / "plan_templates.json")

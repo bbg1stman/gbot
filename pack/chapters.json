@@ -1,0 +1,1192 @@
+[
+  {
+    "id": "ch-kor-speech",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "Ⅰ",
+    "title": "화법과 작문",
+    "parent_id": null,
+    "axis": "화법작문",
+    "type_id": "type-kor-speech"
+  },
+  {
+    "id": "ch-kor-speech-talk",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "1",
+    "title": "화법",
+    "parent_id": "ch-kor-speech",
+    "axis": "화법",
+    "type_id": "type-kor-speech"
+  },
+  {
+    "id": "ch-kor-speech-write",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "2",
+    "title": "작문",
+    "parent_id": "ch-kor-speech",
+    "axis": "작문",
+    "type_id": "type-kor-speech"
+  },
+  {
+    "id": "ch-kor-grammar",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "Ⅱ",
+    "title": "문법",
+    "parent_id": null,
+    "axis": "문법",
+    "type_id": "type-kor-grammar"
+  },
+  {
+    "id": "ch-kor-grammar-phon",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "1",
+    "title": "음운",
+    "parent_id": "ch-kor-grammar",
+    "axis": "음운",
+    "type_id": "type-kor-grammar"
+  },
+  {
+    "id": "ch-kor-grammar-word",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "2",
+    "title": "단어와 품사",
+    "parent_id": "ch-kor-grammar",
+    "axis": "단어와품사",
+    "type_id": "type-kor-grammar"
+  },
+  {
+    "id": "ch-kor-grammar-sent",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "3",
+    "title": "문장",
+    "parent_id": "ch-kor-grammar",
+    "axis": "문장",
+    "type_id": "type-kor-grammar"
+  },
+  {
+    "id": "ch-kor-grammar-norm",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "4",
+    "title": "국어 규범",
+    "parent_id": "ch-kor-grammar",
+    "axis": "국어규범",
+    "type_id": "type-kor-grammar"
+  },
+  {
+    "id": "ch-kor-lit",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "Ⅲ",
+    "title": "문학",
+    "parent_id": null,
+    "axis": "문학",
+    "type_id": "type-kor-lit"
+  },
+  {
+    "id": "ch-kor-lit-poem",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "1",
+    "title": "현대시",
+    "parent_id": "ch-kor-lit",
+    "axis": "현대시",
+    "type_id": "type-kor-lit"
+  },
+  {
+    "id": "ch-kor-lit-novel",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "2",
+    "title": "현대소설",
+    "parent_id": "ch-kor-lit",
+    "axis": "현대소설",
+    "type_id": "type-kor-lit"
+  },
+  {
+    "id": "ch-kor-lit-classic",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "3",
+    "title": "고전문학",
+    "parent_id": "ch-kor-lit",
+    "axis": "고전문학",
+    "type_id": "type-kor-lit"
+  },
+  {
+    "id": "ch-kor-lit-genre",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "4",
+    "title": "갈래와 표현",
+    "parent_id": "ch-kor-lit",
+    "axis": "갈래와표현",
+    "type_id": "type-kor-lit"
+  },
+  {
+    "id": "ch-kor-reading",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "Ⅳ",
+    "title": "독서",
+    "parent_id": null,
+    "axis": "독서",
+    "type_id": "type-kor-reading"
+  },
+  {
+    "id": "ch-kor-reading-fact",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "1",
+    "title": "사실적 이해",
+    "parent_id": "ch-kor-reading",
+    "axis": "사실적이해",
+    "type_id": "type-kor-reading"
+  },
+  {
+    "id": "ch-kor-reading-infer",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "2",
+    "title": "추론적 이해",
+    "parent_id": "ch-kor-reading",
+    "axis": "추론적이해",
+    "type_id": "type-kor-reading"
+  },
+  {
+    "id": "ch-kor-reading-crit",
+    "subject_code": "kor",
+    "textbook": "국어",
+    "number": "3",
+    "title": "비판적 이해",
+    "parent_id": "ch-kor-reading",
+    "axis": "비판적이해",
+    "type_id": "type-kor-reading"
+  },
+  {
+    "id": "ch-math-poly",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "Ⅰ",
+    "title": "다항식",
+    "parent_id": null,
+    "axis": "다항식",
+    "type_id": "type-math-poly"
+  },
+  {
+    "id": "ch-math-poly-ops",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "1",
+    "title": "다항식의 연산",
+    "parent_id": "ch-math-poly",
+    "axis": "다항식의연산",
+    "type_id": "type-math-poly"
+  },
+  {
+    "id": "ch-math-poly-factor",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "2",
+    "title": "나머지정리와 인수분해",
+    "parent_id": "ch-math-poly",
+    "axis": "나머지정리와인수분해",
+    "type_id": "type-math-poly"
+  },
+  {
+    "id": "ch-math-eqineq",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "Ⅱ",
+    "title": "방정식과 부등식",
+    "parent_id": null,
+    "axis": "방정식과부등식",
+    "type_id": "type-math-eqineq"
+  },
+  {
+    "id": "ch-math-eqineq-complex",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "1",
+    "title": "복소수와 이차방정식",
+    "parent_id": "ch-math-eqineq",
+    "axis": "복소수와이차방정식",
+    "type_id": "type-math-eqineq"
+  },
+  {
+    "id": "ch-math-eqineq-quad",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "2",
+    "title": "이차방정식과 이차함수",
+    "parent_id": "ch-math-eqineq",
+    "axis": "이차방정식과이차함수",
+    "type_id": "type-math-eqineq"
+  },
+  {
+    "id": "ch-math-eqineq-eq",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "3",
+    "title": "여러 가지 방정식",
+    "parent_id": "ch-math-eqineq",
+    "axis": "여러가지방정식",
+    "type_id": "type-math-eqineq"
+  },
+  {
+    "id": "ch-math-eqineq-ineq",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "4",
+    "title": "여러 가지 부등식",
+    "parent_id": "ch-math-eqineq",
+    "axis": "여러가지부등식",
+    "type_id": "type-math-eqineq"
+  },
+  {
+    "id": "ch-math-geoeq",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "Ⅲ",
+    "title": "도형의 방정식",
+    "parent_id": null,
+    "axis": "도형의방정식",
+    "type_id": "type-math-geoeq"
+  },
+  {
+    "id": "ch-math-geoeq-coord",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "1",
+    "title": "평면좌표",
+    "parent_id": "ch-math-geoeq",
+    "axis": "평면좌표",
+    "type_id": "type-math-geoeq"
+  },
+  {
+    "id": "ch-math-geoeq-line",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "2",
+    "title": "직선의 방정식",
+    "parent_id": "ch-math-geoeq",
+    "axis": "직선의방정식",
+    "type_id": "type-math-geoeq"
+  },
+  {
+    "id": "ch-math-geoeq-circle",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "3",
+    "title": "원의 방정식",
+    "parent_id": "ch-math-geoeq",
+    "axis": "원의방정식",
+    "type_id": "type-math-geoeq"
+  },
+  {
+    "id": "ch-math-geoeq-move",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "4",
+    "title": "도형의 이동",
+    "parent_id": "ch-math-geoeq",
+    "axis": "도형의이동",
+    "type_id": "type-math-geoeq"
+  },
+  {
+    "id": "ch-math-set",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "Ⅳ",
+    "title": "집합과 명제",
+    "parent_id": null,
+    "axis": "집합과명제",
+    "type_id": "type-math-set"
+  },
+  {
+    "id": "ch-math-set-set",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "1",
+    "title": "집합",
+    "parent_id": "ch-math-set",
+    "axis": "집합",
+    "type_id": "type-math-set"
+  },
+  {
+    "id": "ch-math-set-prop",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "2",
+    "title": "명제",
+    "parent_id": "ch-math-set",
+    "axis": "명제",
+    "type_id": "type-math-set"
+  },
+  {
+    "id": "ch-math-func",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "Ⅴ",
+    "title": "함수",
+    "parent_id": null,
+    "axis": "함수",
+    "type_id": "type-math-func"
+  },
+  {
+    "id": "ch-math-func-graph",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "1",
+    "title": "함수의 뜻과 그래프",
+    "parent_id": "ch-math-func",
+    "axis": "함수의뜻과그래프",
+    "type_id": "type-math-func"
+  },
+  {
+    "id": "ch-math-func-rat",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "2",
+    "title": "유리함수와 무리함수",
+    "parent_id": "ch-math-func",
+    "axis": "유리함수와무리함수",
+    "type_id": "type-math-func"
+  },
+  {
+    "id": "ch-math-count",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "Ⅵ",
+    "title": "경우의 수",
+    "parent_id": null,
+    "axis": "경우의수",
+    "type_id": "type-math-count"
+  },
+  {
+    "id": "ch-math-count-sumprod",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "1",
+    "title": "합의 법칙과 곱의 법칙",
+    "parent_id": "ch-math-count",
+    "axis": "합의법칙과곱의법칙",
+    "type_id": "type-math-count"
+  },
+  {
+    "id": "ch-math-count-permcomb",
+    "subject_code": "math",
+    "textbook": "수학",
+    "number": "2",
+    "title": "순열과 조합",
+    "parent_id": "ch-math-count",
+    "axis": "순열과조합",
+    "type_id": "type-math-count"
+  },
+  {
+    "id": "ch-eng-vocab",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "Ⅰ",
+    "title": "어휘",
+    "parent_id": null,
+    "axis": "어휘",
+    "type_id": "type-eng-vocab"
+  },
+  {
+    "id": "ch-eng-vocab-syn",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "1",
+    "title": "유의어와 반의어",
+    "parent_id": "ch-eng-vocab",
+    "axis": "유의어와반의어",
+    "type_id": "type-eng-vocab"
+  },
+  {
+    "id": "ch-eng-vocab-confuse",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "2",
+    "title": "혼동어",
+    "parent_id": "ch-eng-vocab",
+    "axis": "혼동어",
+    "type_id": "type-eng-vocab"
+  },
+  {
+    "id": "ch-eng-vocab-phrasal",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "3",
+    "title": "구동사",
+    "parent_id": "ch-eng-vocab",
+    "axis": "구동사",
+    "type_id": "type-eng-vocab"
+  },
+  {
+    "id": "ch-eng-life",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "Ⅱ",
+    "title": "생활 영어",
+    "parent_id": null,
+    "axis": "생활영어",
+    "type_id": "type-eng-life"
+  },
+  {
+    "id": "ch-eng-life-daily",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "1",
+    "title": "일상 대화",
+    "parent_id": "ch-eng-life",
+    "axis": "일상대화",
+    "type_id": "type-eng-life"
+  },
+  {
+    "id": "ch-eng-life-request",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "2",
+    "title": "요청과 제안",
+    "parent_id": "ch-eng-life",
+    "axis": "요청과제안",
+    "type_id": "type-eng-life"
+  },
+  {
+    "id": "ch-eng-life-guide",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "3",
+    "title": "안내와 설명",
+    "parent_id": "ch-eng-life",
+    "axis": "안내와설명",
+    "type_id": "type-eng-life"
+  },
+  {
+    "id": "ch-eng-read",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "Ⅲ",
+    "title": "독해",
+    "parent_id": null,
+    "axis": "독해",
+    "type_id": "type-eng-read"
+  },
+  {
+    "id": "ch-eng-read-topic",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "1",
+    "title": "주제",
+    "parent_id": "ch-eng-read",
+    "axis": "주제",
+    "type_id": "type-eng-read"
+  },
+  {
+    "id": "ch-eng-read-detail",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "2",
+    "title": "세부 사항",
+    "parent_id": "ch-eng-read",
+    "axis": "세부사항",
+    "type_id": "type-eng-read"
+  },
+  {
+    "id": "ch-eng-read-blank",
+    "subject_code": "eng",
+    "textbook": "영어",
+    "number": "3",
+    "title": "빈칸 추론",
+    "parent_id": "ch-eng-read",
+    "axis": "빈칸추론",
+    "type_id": "type-eng-read"
+  },
+  {
+    "id": "ch-soc-happiness",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅰ",
+    "title": "인간, 사회, 환경과 행복",
+    "parent_id": null,
+    "axis": "인간사회환경과행복",
+    "type_id": "type-soc-happiness"
+  },
+  {
+    "id": "ch-soc-happiness-view",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "인간, 사회, 환경을 보는 눈",
+    "parent_id": "ch-soc-happiness",
+    "axis": "인간사회환경을보는눈",
+    "type_id": "type-soc-happiness"
+  },
+  {
+    "id": "ch-soc-happiness-mean",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "행복의 의미와 기준",
+    "parent_id": "ch-soc-happiness",
+    "axis": "행복의의미와기준",
+    "type_id": "type-soc-happiness"
+  },
+  {
+    "id": "ch-soc-happiness-cond",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "행복한 삶을 실현하기 위한 조건",
+    "parent_id": "ch-soc-happiness",
+    "axis": "행복한삶의조건",
+    "type_id": "type-soc-happiness"
+  },
+  {
+    "id": "ch-soc-nature",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅱ",
+    "title": "자연환경과 인간",
+    "parent_id": null,
+    "axis": "자연환경과인간",
+    "type_id": "type-soc-nature"
+  },
+  {
+    "id": "ch-soc-nature-life",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "자연환경과 인간 생활",
+    "parent_id": "ch-soc-nature",
+    "axis": "자연환경과인간생활",
+    "type_id": "type-soc-nature"
+  },
+  {
+    "id": "ch-soc-nature-view",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "자연에 대한 다양한 관점",
+    "parent_id": "ch-soc-nature",
+    "axis": "자연에대한다양한관점",
+    "type_id": "type-soc-nature"
+  },
+  {
+    "id": "ch-soc-nature-env",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "환경 문제의 해결",
+    "parent_id": "ch-soc-nature",
+    "axis": "환경문제의해결",
+    "type_id": "type-soc-nature"
+  },
+  {
+    "id": "ch-soc-space",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅲ",
+    "title": "생활공간과 사회",
+    "parent_id": null,
+    "axis": "생활공간과사회",
+    "type_id": "type-soc-space"
+  },
+  {
+    "id": "ch-soc-space-urban",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "산업화와 도시화",
+    "parent_id": "ch-soc-space",
+    "axis": "산업화와도시화",
+    "type_id": "type-soc-space"
+  },
+  {
+    "id": "ch-soc-space-info",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "교통·통신의 발달과 정보화",
+    "parent_id": "ch-soc-space",
+    "axis": "교통과정보화",
+    "type_id": "type-soc-space"
+  },
+  {
+    "id": "ch-soc-space-change",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "생활공간의 변화",
+    "parent_id": "ch-soc-space",
+    "axis": "생활공간의변화",
+    "type_id": "type-soc-space"
+  },
+  {
+    "id": "ch-soc-const",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅳ",
+    "title": "인권 보장과 헌법",
+    "parent_id": null,
+    "axis": "인권보장과헌법",
+    "type_id": "type-soc-const"
+  },
+  {
+    "id": "ch-soc-const-rights",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "인권의 의미와 변화",
+    "parent_id": "ch-soc-const",
+    "axis": "인권의의미와변화",
+    "type_id": "type-soc-const"
+  },
+  {
+    "id": "ch-soc-const-basic",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "헌법과 기본권",
+    "parent_id": "ch-soc-const",
+    "axis": "헌법과기본권",
+    "type_id": "type-soc-const"
+  },
+  {
+    "id": "ch-soc-const-issue",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "인권 문제와 해결",
+    "parent_id": "ch-soc-const",
+    "axis": "인권문제와해결",
+    "type_id": "type-soc-const"
+  },
+  {
+    "id": "ch-soc-market",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅴ",
+    "title": "시장경제와 금융",
+    "parent_id": null,
+    "axis": "시장경제와금융",
+    "type_id": "type-soc-market"
+  },
+  {
+    "id": "ch-soc-market-cap",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "자본주의의 전개",
+    "parent_id": "ch-soc-market",
+    "axis": "자본주의의전개",
+    "type_id": "type-soc-market"
+  },
+  {
+    "id": "ch-soc-market-econ",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "시장경제의 이해",
+    "parent_id": "ch-soc-market",
+    "axis": "시장경제의이해",
+    "type_id": "type-soc-market"
+  },
+  {
+    "id": "ch-soc-market-trade",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "국제 분업과 무역",
+    "parent_id": "ch-soc-market",
+    "axis": "국제분업과무역",
+    "type_id": "type-soc-market"
+  },
+  {
+    "id": "ch-soc-market-fin",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "4",
+    "title": "금융 생활",
+    "parent_id": "ch-soc-market",
+    "axis": "금융생활",
+    "type_id": "type-soc-market"
+  },
+  {
+    "id": "ch-soc-justice",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅵ",
+    "title": "사회 정의와 불평등",
+    "parent_id": null,
+    "axis": "사회정의와불평등",
+    "type_id": "type-soc-justice"
+  },
+  {
+    "id": "ch-soc-justice-mean",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "정의의 의미",
+    "parent_id": "ch-soc-justice",
+    "axis": "정의의의미",
+    "type_id": "type-soc-justice"
+  },
+  {
+    "id": "ch-soc-justice-view",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "다양한 정의관",
+    "parent_id": "ch-soc-justice",
+    "axis": "다양한정의관",
+    "type_id": "type-soc-justice"
+  },
+  {
+    "id": "ch-soc-justice-ineq",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "사회 불평등과 해결",
+    "parent_id": "ch-soc-justice",
+    "axis": "사회불평등과해결",
+    "type_id": "type-soc-justice"
+  },
+  {
+    "id": "ch-soc-culture",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅶ",
+    "title": "문화와 다양성",
+    "parent_id": null,
+    "axis": "문화와다양성",
+    "type_id": "type-soc-culture"
+  },
+  {
+    "id": "ch-soc-culture-world",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "세계의 다양성",
+    "parent_id": "ch-soc-culture",
+    "axis": "세계의다양성",
+    "type_id": "type-soc-culture"
+  },
+  {
+    "id": "ch-soc-culture-mean",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "문화의 의미와 특징",
+    "parent_id": "ch-soc-culture",
+    "axis": "문화의의미와특징",
+    "type_id": "type-soc-culture"
+  },
+  {
+    "id": "ch-soc-culture-change",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "문화 변동과 세계화",
+    "parent_id": "ch-soc-culture",
+    "axis": "문화변동과세계화",
+    "type_id": "type-soc-culture"
+  },
+  {
+    "id": "ch-soc-global",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅷ",
+    "title": "세계화와 평화",
+    "parent_id": null,
+    "axis": "세계화와평화",
+    "type_id": "type-soc-global"
+  },
+  {
+    "id": "ch-soc-global-aspect",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "세계화의 양상",
+    "parent_id": "ch-soc-global",
+    "axis": "세계화의양상",
+    "type_id": "type-soc-global"
+  },
+  {
+    "id": "ch-soc-global-actor",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "국제 사회의 행위 주체",
+    "parent_id": "ch-soc-global",
+    "axis": "국제사회의행위주체",
+    "type_id": "type-soc-global"
+  },
+  {
+    "id": "ch-soc-global-peace",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "평화와 공존",
+    "parent_id": "ch-soc-global",
+    "axis": "평화와공존",
+    "type_id": "type-soc-global"
+  },
+  {
+    "id": "ch-soc-future",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "Ⅸ",
+    "title": "미래와 지속가능한 삶",
+    "parent_id": null,
+    "axis": "미래와지속가능한삶",
+    "type_id": "type-soc-future"
+  },
+  {
+    "id": "ch-soc-future-pop",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "1",
+    "title": "인구 문제",
+    "parent_id": "ch-soc-future",
+    "axis": "인구문제",
+    "type_id": "type-soc-future"
+  },
+  {
+    "id": "ch-soc-future-sd",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "2",
+    "title": "지속가능한 발전",
+    "parent_id": "ch-soc-future",
+    "axis": "지속가능한발전",
+    "type_id": "type-soc-future"
+  },
+  {
+    "id": "ch-soc-future-citizen",
+    "subject_code": "soc",
+    "textbook": "통합사회",
+    "number": "3",
+    "title": "세계시민과 미래",
+    "parent_id": "ch-soc-future",
+    "axis": "세계시민과미래",
+    "type_id": "type-soc-future"
+  },
+  {
+    "id": "ch-sci-matter",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "Ⅰ",
+    "title": "물질과 규칙성",
+    "parent_id": null,
+    "axis": "물질과규칙성",
+    "type_id": "type-sci-matter"
+  },
+  {
+    "id": "ch-sci-matter-bond",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "1",
+    "title": "물질의 규칙성과 결합",
+    "parent_id": "ch-sci-matter",
+    "axis": "물질의규칙성과결합",
+    "type_id": "type-sci-matter"
+  },
+  {
+    "id": "ch-sci-matter-comp",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "2",
+    "title": "자연의 구성 물질",
+    "parent_id": "ch-sci-matter",
+    "axis": "자연의구성물질",
+    "type_id": "type-sci-matter"
+  },
+  {
+    "id": "ch-sci-matter-mech",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "3",
+    "title": "역학적 시스템",
+    "parent_id": "ch-sci-matter",
+    "axis": "역학적시스템",
+    "type_id": "type-sci-matter"
+  },
+  {
+    "id": "ch-sci-system",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "Ⅱ",
+    "title": "시스템과 상호작용",
+    "parent_id": null,
+    "axis": "시스템과상호작용",
+    "type_id": "type-sci-system"
+  },
+  {
+    "id": "ch-sci-system-earth",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "1",
+    "title": "지구 시스템",
+    "parent_id": "ch-sci-system",
+    "axis": "지구시스템",
+    "type_id": "type-sci-system"
+  },
+  {
+    "id": "ch-sci-system-life",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "2",
+    "title": "생명 시스템",
+    "parent_id": "ch-sci-system",
+    "axis": "생명시스템",
+    "type_id": "type-sci-system"
+  },
+  {
+    "id": "ch-sci-change",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "Ⅲ",
+    "title": "변화와 다양성",
+    "parent_id": null,
+    "axis": "변화와다양성",
+    "type_id": "type-sci-change"
+  },
+  {
+    "id": "ch-sci-change-chem",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "1",
+    "title": "화학 변화",
+    "parent_id": "ch-sci-change",
+    "axis": "화학변화",
+    "type_id": "type-sci-change"
+  },
+  {
+    "id": "ch-sci-change-bio",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "2",
+    "title": "생물다양성과 유지",
+    "parent_id": "ch-sci-change",
+    "axis": "생물다양성과유지",
+    "type_id": "type-sci-change"
+  },
+  {
+    "id": "ch-sci-energy",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "Ⅳ",
+    "title": "환경과 에너지",
+    "parent_id": null,
+    "axis": "환경과에너지",
+    "type_id": "type-sci-energy"
+  },
+  {
+    "id": "ch-sci-energy-eco",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "1",
+    "title": "생태계와 환경",
+    "parent_id": "ch-sci-energy",
+    "axis": "생태계와환경",
+    "type_id": "type-sci-energy"
+  },
+  {
+    "id": "ch-sci-energy-power",
+    "subject_code": "sci",
+    "textbook": "통합과학",
+    "number": "2",
+    "title": "에너지와 환경",
+    "parent_id": "ch-sci-energy",
+    "axis": "에너지와환경",
+    "type_id": "type-sci-energy"
+  },
+  {
+    "id": "ch-his-premodern",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "Ⅰ",
+    "title": "전근대",
+    "parent_id": null,
+    "axis": "전근대",
+    "type_id": "type-his-premodern"
+  },
+  {
+    "id": "ch-his-premodern-ancient",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "1",
+    "title": "고대 국가의 형성과 발전",
+    "parent_id": "ch-his-premodern",
+    "axis": "고대사",
+    "type_id": "type-his-premodern"
+  },
+  {
+    "id": "ch-his-premodern-goryeo",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "2",
+    "title": "고려의 성립과 변천",
+    "parent_id": "ch-his-premodern",
+    "axis": "고려사",
+    "type_id": "type-his-premodern"
+  },
+  {
+    "id": "ch-his-premodern-joseon",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "3",
+    "title": "조선의 성립과 발전",
+    "parent_id": "ch-his-premodern",
+    "axis": "조선사",
+    "type_id": "type-his-premodern"
+  },
+  {
+    "id": "ch-his-premodern-late",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "4",
+    "title": "조선 후기의 변화",
+    "parent_id": "ch-his-premodern",
+    "axis": "조선후기",
+    "type_id": "type-his-premodern"
+  },
+  {
+    "id": "ch-his-modern",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "Ⅱ",
+    "title": "근대 국민국가",
+    "parent_id": null,
+    "axis": "근대국민국가",
+    "type_id": "type-his-modern"
+  },
+  {
+    "id": "ch-his-modern-open",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "1",
+    "title": "개항과 조선의 대응",
+    "parent_id": "ch-his-modern",
+    "axis": "개항",
+    "type_id": "type-his-modern"
+  },
+  {
+    "id": "ch-his-modern-reform",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "2",
+    "title": "개화 운동과 근대적 개혁",
+    "parent_id": "ch-his-modern",
+    "axis": "개화와개혁",
+    "type_id": "type-his-modern"
+  },
+  {
+    "id": "ch-his-modern-nation",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "3",
+    "title": "구국 민족 운동",
+    "parent_id": "ch-his-modern",
+    "axis": "구국민족운동",
+    "type_id": "type-his-modern"
+  },
+  {
+    "id": "ch-his-colonial",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "Ⅲ",
+    "title": "일제와 민족운동",
+    "parent_id": null,
+    "axis": "일제와민족운동",
+    "type_id": "type-his-colonial"
+  },
+  {
+    "id": "ch-his-colonial-rule",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "1",
+    "title": "일제 식민 통치",
+    "parent_id": "ch-his-colonial",
+    "axis": "일제식민통치",
+    "type_id": "type-his-colonial"
+  },
+  {
+    "id": "ch-his-colonial-samil",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "2",
+    "title": "3·1 운동과 임시 정부",
+    "parent_id": "ch-his-colonial",
+    "axis": "삼일운동과임정",
+    "type_id": "type-his-colonial"
+  },
+  {
+    "id": "ch-his-colonial-resist",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "3",
+    "title": "다양한 민족 운동",
+    "parent_id": "ch-his-colonial",
+    "axis": "다양한민족운동",
+    "type_id": "type-his-colonial"
+  },
+  {
+    "id": "ch-his-rok",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "Ⅳ",
+    "title": "대한민국의 발전",
+    "parent_id": null,
+    "axis": "대한민국의발전",
+    "type_id": "type-his-rok"
+  },
+  {
+    "id": "ch-his-rok-found",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "1",
+    "title": "대한민국 수립과 6·25 전쟁",
+    "parent_id": "ch-his-rok",
+    "axis": "정부수립과전쟁",
+    "type_id": "type-his-rok"
+  },
+  {
+    "id": "ch-his-rok-demo",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "2",
+    "title": "민주주의의 시련과 발전",
+    "parent_id": "ch-his-rok",
+    "axis": "민주주의발전",
+    "type_id": "type-his-rok"
+  },
+  {
+    "id": "ch-his-rok-econ",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "3",
+    "title": "경제 성장과 사회 변화",
+    "parent_id": "ch-his-rok",
+    "axis": "경제성장",
+    "type_id": "type-his-rok"
+  },
+  {
+    "id": "ch-his-rok-unify",
+    "subject_code": "his",
+    "textbook": "한국사",
+    "number": "4",
+    "title": "통일을 위한 노력",
+    "parent_id": "ch-his-rok",
+    "axis": "통일노력",
+    "type_id": "type-his-rok"
+  }
+]

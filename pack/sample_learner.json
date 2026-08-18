@@ -517,6 +517,26 @@
         "reason": "약한 유형 type-math-poly",
         "action": "유형 반복"
       }
+    ],
+    "weak_chapters": [
+      {
+        "chapter_id": "ch-math-poly",
+        "subject_code": "math",
+        "title": "다항식",
+        "attempts": 3,
+        "misses": 3,
+        "accuracy": 0.0,
+        "parent_id": null
+      },
+      {
+        "chapter_id": "ch-his-premodern",
+        "subject_code": "his",
+        "title": "전근대",
+        "attempts": 1,
+        "misses": 1,
+        "accuracy": 0.0,
+        "parent_id": null
+      }
     ]
   },
   "plans": [

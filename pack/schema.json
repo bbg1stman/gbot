@@ -526,13 +526,14 @@
   },
   "Evaluation": {
     "type": "object",
-    "description": "종합 평가. 계산 결과이며 스냅샷으로도 저장한다. pass_rules: 과목 40, 평균 60.",
+    "description": "종합 평가. 계산 결과이며 스냅샷으로도 저장한다. pass_rules: 과목 40, 평균 60. 취약 구간은 교과서 챕터(chapters)로 본다.",
     "required": [
       "user_id",
       "generated_at",
       "overall",
       "subjects",
       "weak_axes",
+      "weak_chapters",
       "weak_types",
       "weak_patterns",
       "weak_items",
@@ -742,6 +743,51 @@
             }
           }
         }
+      },
+      "weak_chapters": {
+        "type": "array",
+        "description": "교과서 단원. accuracy < 0.6 또는 misses>=2",
+        "items": {
+          "type": "object",
+          "required": [
+            "chapter_id",
+            "subject_code",
+            "title",
+            "attempts",
+            "misses",
+            "accuracy",
+            "parent_id"
+          ],
+          "properties": {
+            "chapter_id": {
+              "type": "string"
+            },
+            "subject_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "title": {
+              "type": "string"
+            },
+            "attempts": {
+              "type": "integer"
+            },
+            "misses": {
+              "type": "integer"
+            },
+            "accuracy": {
+              "type": "number"
+            },
+            "parent_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
       }
     }
   },
@@ -789,6 +835,13 @@
           "null"
         ],
         "description": "types.json id. unit/skill에서 매핑"
+      },
+      "chapter_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "chapters.json id. unit/skill에서 매핑"
       },
       "trap_tags": {
         "type": "array",
@@ -950,6 +1003,52 @@
       },
       "description": {
         "type": "string"
+      }
+    }
+  },
+  "Chapter": {
+    "type": "object",
+    "description": "2015 고졸 검정고시 출제 범위 교과서 대단원/소단원",
+    "required": [
+      "id",
+      "subject_code",
+      "textbook",
+      "number",
+      "title",
+      "parent_id",
+      "axis",
+      "type_id"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "subject_code": {
+        "type": "string"
+      },
+      "textbook": {
+        "type": "string"
+      },
+      "number": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "parent_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "axis": {
+        "type": "string"
+      },
+      "type_id": {
+        "type": [
+          "string",
+          "null"
+        ]
       }
     }
   }
