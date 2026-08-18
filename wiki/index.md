@@ -19,7 +19,9 @@
 - 목적: [purpose.md](../purpose.md)
 - 스키마·엠바고: [schema.md](../schema.md)
 
-## 교육과정 (2015 고졸 범위)
+런타임 단원 트리는 `data/curriculum/editions.json` 의 edition이다. 앱은 응시 연도로 판을 고른다. 아래 카드는 2015-go (2021–2026) 교무실 메모.
+
+## 교육과정 (2015 고졸 범위, edition 2015-go)
 
 - [국어](curriculum/국어.md)
 - [수학](curriculum/수학.md)

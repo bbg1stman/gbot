@@ -1,6 +1,8 @@
 {
-  "version": "0.3.0",
-  "generated_at": "2026-08-18T15:15:06Z",
+  "version": "0.4.0",
+  "generated_at": "2026-08-18T15:20:43Z",
+  "current_edition": "2015-go",
+  "current_year": 2026,
   "counts": {
     "items": 1828,
     "embargoed": 1740,
@@ -8,6 +10,7 @@
     "concepts": 30,
     "types": 30,
     "chapters": 119,
+    "editions": 1,
     "error_patterns": 12,
     "blueprints": 6,
     "plan_templates": 4,

@@ -394,6 +394,8 @@
   "evaluation": {
     "user_id": "u-demo",
     "generated_at": "2026-08-18T15:00:00+09:00",
+    "target_year": 2026,
+    "edition_id": "2015-go",
     "overall": {
       "estimate_avg": 56.67,
       "pass_ready": false,

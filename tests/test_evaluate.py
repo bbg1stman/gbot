@@ -37,7 +37,18 @@ class TestEvaluate(unittest.TestCase):
         others_weak = [s["code"] for s in ev["subjects"] if s["weak"] and s["code"] != "math"]
         self.assertEqual(others_weak, [])
 
+    def test_evaluate_edition_2026(self) -> None:
+        ev = evaluate(self.user, target_year=2026)
+        self.assertEqual(ev["target_year"], 2026)
+        self.assertEqual(ev["edition_id"], "2015-go")
+        ids = [c["chapter_id"] for c in ev["weak_chapters"]]
+        self.assertIn("ch-math-poly", ids)
+        poly = next(c for c in ev["weak_chapters"] if c["chapter_id"] == "ch-math-poly")
+        self.assertEqual(poly["title"], "다항식")
+
     def test_weak_chapters_includes_math_poly(self) -> None:
+        self.assertEqual(self.ev.get("target_year"), 2026)
+        self.assertEqual(self.ev.get("edition_id"), "2015-go")
         rows = self.ev["weak_chapters"]
         ids = [c["chapter_id"] for c in rows]
         self.assertIn("ch-math-poly", ids)
@@ -125,7 +136,7 @@ class TestEvaluate(unittest.TestCase):
             self.assertIn("Evaluation", schema, msg=schema_path.name)
             for field in ("attempts", "misses", "last_correct", "next_review", "history"):
                 self.assertIn(field, schema["ItemStat"]["required"], msg=field)
-            for field in ("overall", "weak_chapters", "weak_types", "weak_items", "focus"):
+            for field in ("overall", "weak_chapters", "weak_types", "weak_items", "focus", "target_year", "edition_id"):
                 self.assertIn(field, schema["Evaluation"]["required"], msg=field)
 
     def test_official_stems_still_unused(self) -> None:

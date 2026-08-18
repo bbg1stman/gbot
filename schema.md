@@ -19,7 +19,8 @@
 | `data/plans/templates.json` | 밴드별 주간 템플릿 |
 | `data/app/schema.json` | User / Attempt / Session / Plan / WrongNote / ErrorPattern / TypeStat / ItemStat / Evaluation |
 | `data/app/sample_user.json` | 가짜 수험생 (실명 없음) |
-| `pack/` | 앱이 읽는 컴파일 테이블. `python3 main.py pack` |
+| `data/curriculum/editions.json` | 출제 범위 판. 단원 트리는 edition |
+| `pack/` | 앱이 읽는 컴파일 테이블. `python3 main.py pack rebuild` |
 
 ### 밴드
 
@@ -35,7 +36,7 @@
 ### 진단 설계
 
 과목당 `item_count` 8–12. 국어·영어는 `axis=skill`, 수학·사회·과학·한국사는 `axis=unit`.
-축 이름은 2015 고졸 **교육과정 단원/기능**이다. 기출 문항이 아니다.
+축 이름은 해당 edition의 **교육과정 단원/기능**이다. 기출 문항이 아니다. 2026은 2015-go.
 `stop_rule`: 연속 2문항 오답 → 한 단계 쉬운 밴드 메모.
 
 ### 런타임 기록
@@ -48,15 +49,19 @@
 - **ErrorPattern 오답패턴**: 목록은 `pack/error_patterns.json`. 수험생 행은 `id`, `user_id`, `pattern_id`, `subject_code`, `type_id`, `miss_count`, `last_missed`, `note`.
 - **TypeStat 반복 오답 유형**: `id`, `user_id`, `type_id`, `subject_code`, `attempts`, `misses`, `streak_wrong`, `last_missed`. `misses>=3` 또는 `streak_wrong>=2` 이면 반복 유형.
 - **ItemStat 문항 숙달**: `id`, `user_id`, `item_id`, `subject_code`, `type_id`, `axis`, `attempts`, `misses`, `last_correct`, `last_choice`, `last_ts`, `streak_wrong`, `ease` (0–1 또는 null), `next_review`, `history` (최근 최대 10). 봤는지·몇 번 틀렸는지·복습 기한.
-- **Evaluation 종합 평가**: 계산 결과 + 스냅샷. `overall{estimate_avg, pass_ready, subject_min_risk, average_risk}`, `subjects`, `weak_axes` (accuracy<0.6 또는 misses>=2), `weak_chapters` (같은 규칙, 교과서 단원), `weak_types`, `weak_patterns`, `weak_items` (misses>=1 미해결), `focus` (과락 과목 먼저, 그다음 약한 유형). 과목 40 / 평균 60.
+- **Evaluation 종합 평가**: 계산 결과 + 스냅샷. `target_year`, `edition_id`, `overall{estimate_avg, pass_ready, subject_min_risk, average_risk}`, `subjects`, `weak_axes` (accuracy<0.6 또는 misses>=2), `weak_chapters` (같은 규칙, `target_year` edition 단원), `weak_types`, `weak_patterns`, `weak_items` (misses>=1 미해결), `focus` (과락 과목 먼저, 그다음 약한 유형). 과목 40 / 평균 60.
 
 실제 개인정보를 두지 않는다.
 
 ### pack/
 
-`gbot.pack.build_pack()` 이 `data/bank` + `data/diagnostics` + `data/plans` + `wiki/concepts` 를 읽어 `pack/` 을 쓴다.
+`gbot.pack.build_pack()` 이 `data/bank` + `data/diagnostics` + `data/plans` + `data/curriculum` + `wiki/concepts` 를 읽어 `pack/` 을 쓴다.
 문항을 넣을 때 필드는 모두 유지하고 `type_id` / `chapter_id` / `trap_tags=[]` / `media=null` 을 채운다.
+`chapter_id` 는 `item.curriculum` / `item.year` / 기본 2026 으로 edition을 고른 뒤 매핑한다. 공식 2021 한국사(`curriculum=2009`)는 edition이 없어 `chapter_id` 가 null이어도 된다.
 공식 문항의 `stem`/`choices`/`answer` 는 계속 `null` 이다.
+`pack/meta.json` 에 `current_edition`, `current_year` 가 있다. `pack/editions.json` 은 판 목록이다.
+
+단원 트리는 edition이다. 매년 출제계획을 보고 `editions.json` 에 새 판을 추가하고, 새 챕터 파일을 둔다. 옛 문항은 옛 `edition_id`를 유지한다. 앱은 응시 연도로 edition을 고른다.
 
 ## 위키 (교무실)
 
@@ -86,7 +91,7 @@
 | `stem` `choices` `explanation` | `null` | 라이선스 원문 | 자작 원문 |
 
 로더 기본값 (JSON에 없어도 됨): `role=bank`, `unit=null`, `wiki_concept=null`, `wiki_type=null`. `stem`은 없어도 된다.
-pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `chapter_id` (같은 축 → chapters.json, 없으면 null), `trap_tags=[]`, `media=null`.
+pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `chapter_id` (item.curriculum/year로 edition 선택 후 같은 축 → chapters.json, 없으면 null), `trap_tags=[]`, `media=null`.
 
 공식 슬롯 예 (`go-2026-2-kor-12`):
 
@@ -148,7 +153,8 @@ pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `chapter_id
 `gbot.evaluate`
 
 - `item_stats_from_attempts(user)` → 시도에서 ItemStat 파생
-- `evaluate(user)` → Evaluation (취약 과목·단원·유형·문항)
+- `evaluate(user, target_year=2026)` → Evaluation (취약 과목·단원·유형·문항, edition_id)
+- `gbot.chapters.edition_for_year(year)` / `chapters_for_year(year)` / `chapter_id_for(axis, year=2026)`
 
 ## 코드표
 

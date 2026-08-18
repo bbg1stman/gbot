@@ -1,14 +1,22 @@
-"""2015 고졸 검정고시 출제 범위 교과서 챕터 트리.
+"""교육과정 edition에 묶인 고졸 검정고시 교과서 챕터 트리.
 
-대단원 + 소단원. 축 문자열(unit/skill)을 chapter_id 로 매핑한다.
-공식 기출 원문은 여기에 없다.
+단원 트리는 edition이다. 지금은 2015-go (2015 개정, 2021–2026)만 둔다.
+2022 트리는 만들지 않는다. 공식 기출 원문은 여기에 없다.
 """
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Any, Optional
 
 Chapter = dict[str, Any]
+Edition = dict[str, Any]
+
+ROOT = Path(__file__).resolve().parent.parent
+CURRICULUM_DIR = ROOT / "data" / "curriculum"
+DEFAULT_YEAR = 2026
+DEFAULT_EDITION_ID = "2015-go"
 
 # 대단원. children 은 소단원 (optional).
 # axis 는 문항 unit/skill 과 같은 문자열. title 은 교과서 표기.
@@ -464,14 +472,113 @@ CHAPTER_TREE: list[dict[str, Any]] = [
     },
 ]
 
-_FIELDS = ("id", "subject_code", "textbook", "number", "title", "parent_id", "axis", "type_id")
+_BASE_FIELDS = ("id", "subject_code", "textbook", "number", "title", "parent_id", "axis", "type_id")
+_EDITION_FIELDS = ("edition_id", "curriculum", "valid_from", "valid_to")
+_FIELDS = _BASE_FIELDS + _EDITION_FIELDS
 
 
-def compile_chapters() -> list[Chapter]:
-    """Flatten 대단원 + 소단원 into pack/chapters.json rows."""
+def load_editions(path: Optional[Path] = None) -> list[Edition]:
+    """Load data/curriculum/editions.json."""
+    src = Path(path) if path is not None else CURRICULUM_DIR / "editions.json"
+    if not src.is_file():
+        return []
+    with src.open(encoding="utf-8") as f:
+        data = json.load(f)
+    return [row for row in data if isinstance(row, dict)]
+
+
+def _edition_by_id(edition_id: str) -> Optional[Edition]:
+    for ed in load_editions():
+        if ed.get("id") == edition_id:
+            return ed
+    return None
+
+
+def edition_for_year(year: int) -> Optional[Edition]:
+    """Edition covering year (valid_from <= year <= valid_to). Prefer current_for_year."""
+    year_i = int(year)
+    hits: list[Edition] = []
+    for ed in load_editions():
+        vf, vt = ed.get("valid_from"), ed.get("valid_to")
+        if vf is not None and year_i < int(vf):
+            continue
+        if vt is not None and year_i > int(vt):
+            continue
+        hits.append(ed)
+    if not hits:
+        return None
+    for ed in hits:
+        if ed.get("current_for_year") == year_i:
+            return ed
+    return hits[0]
+
+
+def edition_for_curriculum(
+    curriculum: str,
+    year: Optional[int] = None,
+) -> Optional[Edition]:
+    """Edition whose curriculum matches. If year is set, it must also cover that year."""
+    curr = str(curriculum)
+    hits = [ed for ed in load_editions() if str(ed.get("curriculum")) == curr]
+    if year is not None:
+        year_i = int(year)
+        covered = []
+        for ed in hits:
+            vf, vt = ed.get("valid_from"), ed.get("valid_to")
+            if vf is not None and year_i < int(vf):
+                continue
+            if vt is not None and year_i > int(vt):
+                continue
+            covered.append(ed)
+        hits = covered
+    if not hits:
+        return None
+    if year is not None:
+        for ed in hits:
+            if ed.get("current_for_year") == int(year):
+                return ed
+    return hits[0]
+
+
+def edition_for_item(item: dict[str, Any]) -> Optional[Edition]:
+    """Resolve edition from item.curriculum / item.year / default 2026.
+
+    Official 2021 한국사 (curriculum=2009) has no edition yet → None.
+    """
+    curr = item.get("curriculum")
+    raw_year = item.get("year")
+    year: Optional[int]
+    try:
+        year = int(raw_year) if raw_year is not None else None
+    except (TypeError, ValueError):
+        year = None
+    if curr:
+        return edition_for_curriculum(str(curr), year)
+    return edition_for_year(year if year is not None else DEFAULT_YEAR)
+
+
+def _stamp(edition: Optional[Edition]) -> dict[str, Any]:
+    ed = edition or _edition_by_id(DEFAULT_EDITION_ID) or {}
+    return {
+        "edition_id": ed.get("id") or DEFAULT_EDITION_ID,
+        "curriculum": ed.get("curriculum") or "2015",
+        "valid_from": ed.get("valid_from"),
+        "valid_to": ed.get("valid_to"),
+    }
+
+
+def flatten(
+    tree: Optional[list[dict[str, Any]]] = None,
+    edition: Optional[Edition] = None,
+) -> list[Chapter]:
+    """Flatten 대단원 + 소단원 and stamp edition_id / curriculum / valid_from / valid_to."""
+    spec_tree = tree if tree is not None else CHAPTER_TREE
+    stamp = _stamp(edition if edition is not None else _edition_by_id(DEFAULT_EDITION_ID))
     out: list[Chapter] = []
-    for spec in CHAPTER_TREE:
-        out.append({key: spec[key] for key in _FIELDS})
+    for spec in spec_tree:
+        row = {key: spec[key] for key in _BASE_FIELDS}
+        row.update(stamp)
+        out.append(row)
         for child in spec.get("children") or []:
             out.append(
                 {
@@ -483,24 +590,100 @@ def compile_chapters() -> list[Chapter]:
                     "parent_id": spec["id"],
                     "axis": child["axis"],
                     "type_id": spec["type_id"],
+                    **stamp,
                 }
             )
     return out
 
 
+def _load_extra_chapter_files() -> list[Chapter]:
+    """Future editions live in data/curriculum/chapters-<id>.json. 2015-go stays in CHAPTER_TREE."""
+    extra: list[Chapter] = []
+    if not CURRICULUM_DIR.is_dir():
+        return extra
+    for path in sorted(CURRICULUM_DIR.glob("chapters-*.json")):
+        eid = path.name[len("chapters-") : -len(".json")]
+        if eid == DEFAULT_EDITION_ID:
+            continue
+        ed = _edition_by_id(eid)
+        if not ed:
+            continue
+        with path.open(encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, list) or not data:
+            continue
+        first = data[0]
+        if isinstance(first, dict) and "children" in first:
+            extra.extend(flatten(data, ed))
+        elif isinstance(first, dict):
+            stamp = _stamp(ed)
+            for row in data:
+                if isinstance(row, dict):
+                    extra.append({**row, **stamp})
+    return extra
+
+
+def compile_chapters() -> list[Chapter]:
+    """All chapter rows from every known edition (currently 2015-go only)."""
+    rows = flatten(CHAPTER_TREE, _edition_by_id(DEFAULT_EDITION_ID))
+    rows.extend(_load_extra_chapter_files())
+    return rows
+
+
+def chapters_for_year(year: int) -> list[Chapter]:
+    """Chapters whose edition covers year. 2020 → empty (2015-go starts 2021)."""
+    ed = edition_for_year(year)
+    if not ed:
+        return []
+    eid = ed.get("id")
+    return [c for c in compile_chapters() if c.get("edition_id") == eid]
+
+
+def chapter_id_for(axis: str, year: int = DEFAULT_YEAR, subject_code: Optional[str] = None) -> Optional[str]:
+    """chapter_id for an axis in the edition that covers year. Prefer 대단원."""
+    rows = chapters_for_year(year)
+    matches = [
+        c
+        for c in rows
+        if c.get("axis") == axis and (subject_code is None or c.get("subject_code") == subject_code)
+    ]
+    if not matches:
+        return None
+    tops = [c for c in matches if not c.get("parent_id")]
+    return (tops or matches)[0]["id"]
+
+
 def chapter_index(
     chapters: Optional[list[Chapter]] = None,
+    year: Optional[int] = None,
+    edition_id: Optional[str] = None,
 ) -> dict[tuple[str, str], str]:
     """(subject_code, axis) → chapter_id. 소단원 axis 도 포함."""
-    rows = chapters if chapters is not None else compile_chapters()
+    if chapters is not None:
+        rows = list(chapters)
+    elif edition_id:
+        rows = [c for c in compile_chapters() if c.get("edition_id") == edition_id]
+    elif year is not None:
+        rows = chapters_for_year(year)
+    else:
+        rows = compile_chapters()
     return {(c["subject_code"], c["axis"]): c["id"] for c in rows}
 
 
 def chapter_by_type_id(
     chapters: Optional[list[Chapter]] = None,
+    year: Optional[int] = None,
+    edition_id: Optional[str] = None,
 ) -> dict[str, str]:
     """type_id → 대단원 chapter_id."""
-    rows = chapters if chapters is not None else compile_chapters()
+    if chapters is not None:
+        rows = list(chapters)
+    elif edition_id:
+        rows = [c for c in compile_chapters() if c.get("edition_id") == edition_id]
+    elif year is not None:
+        rows = chapters_for_year(year)
+    else:
+        rows = compile_chapters()
     return {
         c["type_id"]: c["id"]
         for c in rows
@@ -513,11 +696,26 @@ def infer_chapter_id(
     index: Optional[dict[tuple[str, str], str]] = None,
     type_map: Optional[dict[str, str]] = None,
 ) -> Optional[str]:
-    """Map item unit/skill (or type_id) to a chapter id. Official slots stay null."""
+    """Map item unit/skill (or type_id) to a chapter id in the item's edition.
+
+    Uses item.curriculum / item.year / default 2026. Official slots stay null
+    when they have no axis. Official 2021 한국사 (curriculum=2009) stays null
+    because there is no 2009 edition yet.
+    """
     existing = item.get("chapter_id")
     if existing:
         return existing
-    idx = index if index is not None else chapter_index()
+    edition = edition_for_item(item)
+    if not edition:
+        return None
+    eid = edition.get("id")
+    scoped = [c for c in compile_chapters() if c.get("edition_id") == eid]
+    idx = {(c["subject_code"], c["axis"]): c["id"] for c in scoped}
+    if index is not None:
+        # keep caller index only for keys that exist in this edition
+        for key, cid in index.items():
+            if any(c["id"] == cid and c.get("edition_id") == eid for c in scoped):
+                idx[key] = cid
     axis = item.get("unit") or item.get("skill")
     code = item.get("subject_code")
     if axis and code:
@@ -526,6 +724,10 @@ def infer_chapter_id(
             return found
     tid = item.get("type_id")
     if tid:
-        tmap = type_map if type_map is not None else chapter_by_type_id()
+        tmap = {c["type_id"]: c["id"] for c in scoped if c.get("type_id") and not c.get("parent_id")}
+        if type_map is not None:
+            for key, cid in type_map.items():
+                if any(c["id"] == cid and c.get("edition_id") == eid for c in scoped):
+                    tmap[key] = cid
         return tmap.get(tid)
     return None

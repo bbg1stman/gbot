@@ -6,6 +6,13 @@ import json
 import unittest
 from pathlib import Path
 
+from gbot.chapters import (
+    chapter_id_for,
+    chapters_for_year,
+    edition_for_year,
+    flatten,
+    load_editions,
+)
 from gbot.learner import hot_patterns, hot_types, load_sample, notes_open
 from gbot.pack import PACK_DIR, build_pack, load_pack
 
@@ -25,6 +32,7 @@ class TestPack(unittest.TestCase):
             "concepts.json",
             "types.json",
             "chapters.json",
+            "editions.json",
             "levels.json",
             "blueprints.json",
             "plan_templates.json",
@@ -117,7 +125,7 @@ class TestPack(unittest.TestCase):
 
     def test_pack_schema_has_content_tables(self) -> None:
         schema = self.pack.schema
-        for name in ("Item", "Concept", "Type", "Chapter", "Blueprint", "ErrorPatternCatalog"):
+        for name in ("Item", "Concept", "Type", "Chapter", "Edition", "Blueprint", "ErrorPatternCatalog"):
             self.assertIn(name, schema)
 
     def test_chapters_six_subjects(self) -> None:
@@ -130,10 +138,15 @@ class TestPack(unittest.TestCase):
         self.assertIn("ch-math-poly", ids)
         self.assertIn("ch-soc-market", ids)
         self.assertIn("ch-kor-grammar", ids)
+        self.assertEqual(len(chapters), 119)
         for c in chapters:
-            for key in ("id", "subject_code", "textbook", "number", "title", "axis", "type_id"):
+            for key in ("id", "subject_code", "textbook", "number", "title", "axis", "type_id", "edition_id", "curriculum", "valid_from", "valid_to"):
                 self.assertIn(key, c, msg=f"{c.get('id')} {key}")
             self.assertIn("parent_id", c)
+            self.assertEqual(c["edition_id"], "2015-go")
+            self.assertEqual(c["curriculum"], "2015")
+            self.assertEqual(c["valid_from"], 2021)
+            self.assertEqual(c["valid_to"], 2026)
         tops = [c for c in chapters if not c.get("parent_id")]
         self.assertEqual(len(tops), 30)
         poly = next(c for c in chapters if c["id"] == "ch-math-poly")
@@ -212,6 +225,60 @@ class TestLearner(unittest.TestCase):
         his = next(s for s in stats if s["type_id"] == "type-his-premodern")
         self.assertEqual(his["misses"], 1)
         self.assertEqual(his["streak_wrong"], 1)
+
+
+class TestEditions(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.pack = load_pack()
+
+    def test_editions_2015_go_covers_2026(self) -> None:
+        editions = load_editions()
+        self.assertTrue(editions)
+        ids = [e["id"] for e in editions]
+        self.assertIn("2015-go", ids)
+        ed = next(e for e in editions if e["id"] == "2015-go")
+        self.assertEqual(ed["curriculum"], "2015")
+        self.assertEqual(ed["valid_from"], 2021)
+        self.assertEqual(ed["valid_to"], 2026)
+        self.assertEqual(ed["current_for_year"], 2026)
+        self.assertEqual(ed["level"], "고졸")
+        packed = self.pack.editions
+        self.assertEqual(len(packed), 1)
+        self.assertEqual(packed[0]["id"], "2015-go")
+        current = edition_for_year(2026)
+        self.assertIsNotNone(current)
+        assert current is not None
+        self.assertEqual(current["id"], "2015-go")
+        self.assertEqual(self.pack.meta.get("current_edition"), "2015-go")
+        self.assertEqual(self.pack.meta.get("current_year"), 2026)
+
+    def test_flatten_stamps_edition_fields(self) -> None:
+        rows = flatten()
+        self.assertEqual(len(rows), 119)
+        for row in rows:
+            self.assertEqual(row["edition_id"], "2015-go")
+            self.assertEqual(row["curriculum"], "2015")
+            self.assertEqual(row["valid_from"], 2021)
+            self.assertEqual(row["valid_to"], 2026)
+
+    def test_chapters_for_year_2020_empty(self) -> None:
+        rows = chapters_for_year(2020)
+        self.assertEqual(rows, [])
+        self.assertIsNone(edition_for_year(2020))
+        self.assertNotIn("2015-go", {c.get("edition_id") for c in rows})
+        self.assertIsNone(chapter_id_for("다항식", 2020))
+
+    def test_chapter_id_for_2026(self) -> None:
+        self.assertEqual(chapter_id_for("다항식", 2026), "ch-math-poly")
+        self.assertEqual(chapter_id_for("문법"), "ch-kor-grammar")
+
+    def test_official_2021_his_chapter_id_null(self) -> None:
+        his = [i for i in self.pack.items if i.get("subject_code") == "his" and i.get("year") == 2021]
+        self.assertEqual(len(his), 50)
+        for item in his:
+            self.assertEqual(item["curriculum"], "2009", msg=item["id"])
+            self.assertIsNone(item.get("chapter_id"), msg=item["id"])
 
 
 if __name__ == "__main__":

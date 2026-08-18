@@ -148,7 +148,12 @@ def cmd_pack(_args: argparse.Namespace) -> int:
         f"준비 {counts.get('ready')}  "
         f"개념 {counts.get('concepts')}  "
         f"유형 {counts.get('types')}  "
-        f"단원 {counts.get('chapters')}"
+        f"단원 {counts.get('chapters')}  "
+        f"판 {counts.get('editions')}"
+    )
+    print(
+        f"current_edition={meta.get('current_edition')}  "
+        f"current_year={meta.get('current_year')}"
     )
     return 0
 
@@ -209,6 +214,8 @@ def cmd_eval(_args: argparse.Namespace) -> int:
     yn = {True: "예", False: "아니오"}
     overall = ev["overall"]
     print(f"수험생 {ev.get('user_id')}  종합 평가")
+    if ev.get("target_year") or ev.get("edition_id"):
+        print(f"응시 연도 {ev.get('target_year')}  edition {ev.get('edition_id')}")
     print(f"합격 가능: {yn[bool(overall['pass_ready'])]}")
     print(
         f"  추정 평균 {overall['estimate_avg']}  "
@@ -287,6 +294,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_plan.set_defaults(func=cmd_plan)
 
     p_pack = sub.add_parser("pack", help="data/ + wiki/ 를 pack/ 으로 컴파일")
+    p_pack.add_argument(
+        "action",
+        nargs="?",
+        default="rebuild",
+        choices=["rebuild"],
+        help="rebuild: pack/ 을 다시 만든다",
+    )
     p_pack.set_defaults(func=cmd_pack)
 
     p_notes = sub.add_parser("notes", help="샘플 수험생 오답노트")

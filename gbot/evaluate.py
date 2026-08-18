@@ -6,6 +6,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from typing import Any, Optional
 
+from gbot.chapters import edition_for_year
 from gbot.learner import hot_patterns, hot_types
 
 Learner = dict[str, Any]
@@ -181,19 +182,21 @@ def _weak_types(user: Learner) -> list[dict[str, Any]]:
     ]
 
 
-def _chapter_lookups() -> tuple[
+def _chapter_lookups(
+    target_year: int = 2026,
+) -> tuple[
     dict[str, dict[str, Any]],
     dict[tuple[Optional[str], str], dict[str, Any]],
     dict[str, dict[str, Any]],
     dict[str, dict[str, Any]],
 ]:
-    """Load chapters + items. Join key: chapter_id / axis / type_id."""
+    """Load chapters for target_year + items. Join key: chapter_id / axis / type_id."""
     import json
     from pathlib import Path
 
-    from gbot.chapters import compile_chapters
+    from gbot.chapters import chapters_for_year
 
-    chapters = compile_chapters()
+    chapters = chapters_for_year(target_year)
     by_id: dict[str, dict[str, Any]] = {}
     by_axis: dict[tuple[Optional[str], str], dict[str, Any]] = {}
     by_type: dict[str, dict[str, Any]] = {}
@@ -243,9 +246,13 @@ def _resolve_chapter(
 
 def _weak_chapters(
     attempts: list[dict[str, Any]],
+    target_year: int = 2026,
 ) -> list[dict[str, Any]]:
-    """Same weakness rule as axes: accuracy < 0.6 or misses >= 2."""
-    by_id, by_axis, by_type, items_by_id = _chapter_lookups()
+    """Same weakness rule as axes: accuracy < 0.6 or misses >= 2.
+
+    Chapter tree is the edition covering target_year.
+    """
+    by_id, by_axis, by_type, items_by_id = _chapter_lookups(target_year)
     if not by_id:
         return []
     stats: dict[str, dict[str, Any]] = {}
@@ -301,8 +308,11 @@ def _weak_patterns(user: Learner) -> list[dict[str, Any]]:
     ]
 
 
-def evaluate(user: Learner) -> Evaluation:
-    """종합 평가. 과락선 40 / 평균 60. 공식 원문은 쓰지 않는다."""
+def evaluate(user: Learner, target_year: int = 2026) -> Evaluation:
+    """종합 평가. 과락선 40 / 평균 60. 공식 원문은 쓰지 않는다.
+
+    weak_chapters 는 target_year 의 edition 단원 트리를 쓴다.
+    """
     subject_min, average_min = _pass_rules()
     stats = _stored_item_stats(user)
     attempts = _rows(user, "attempts", "Attempt")
@@ -372,7 +382,7 @@ def evaluate(user: Learner) -> Evaluation:
 
     weak_types = _weak_types(user)
     weak_patterns = _weak_patterns(user)
-    weak_chapters = _weak_chapters(attempts)
+    weak_chapters = _weak_chapters(attempts, target_year=target_year)
 
     weak_codes = {s["code"] for s in subjects_out if s["weak"]}
     stat_by_item = {s.get("item_id"): s for s in stats}
@@ -417,10 +427,13 @@ def evaluate(user: Learner) -> Evaluation:
             }
         )
 
+    edition = edition_for_year(target_year)
     generated_at = datetime.now(KST).strftime("%Y-%m-%dT%H:%M:%S+09:00")
     return {
         "user_id": user.get("id") or user.get("user_id"),
         "generated_at": generated_at,
+        "target_year": target_year,
+        "edition_id": (edition or {}).get("id"),
         "overall": {
             "estimate_avg": estimate_avg,
             "pass_ready": pass_ready,

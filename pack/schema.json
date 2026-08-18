@@ -526,10 +526,12 @@
   },
   "Evaluation": {
     "type": "object",
-    "description": "종합 평가. 계산 결과이며 스냅샷으로도 저장한다. pass_rules: 과목 40, 평균 60. 취약 구간은 교과서 챕터(chapters)로 본다.",
+    "description": "종합 평가. 계산 결과이며 스냅샷으로도 저장한다. pass_rules: 과목 40, 평균 60. 취약 구간은 target_year 의 edition 챕터로 본다.",
     "required": [
       "user_id",
       "generated_at",
+      "target_year",
+      "edition_id",
       "overall",
       "subjects",
       "weak_axes",
@@ -546,6 +548,17 @@
       "generated_at": {
         "type": "string",
         "format": "date-time"
+      },
+      "target_year": {
+        "type": "integer",
+        "description": "응시 연도. 이 해의 edition 단원 트리를 쓴다"
+      },
+      "edition_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "target_year 에 해당하는 editions.json id"
       },
       "overall": {
         "type": "object",
@@ -841,7 +854,7 @@
           "string",
           "null"
         ],
-        "description": "chapters.json id. unit/skill에서 매핑"
+        "description": "chapters.json id. item.curriculum/year로 edition을 고른 뒤 unit/skill에서 매핑"
       },
       "trap_tags": {
         "type": "array",
@@ -1008,7 +1021,7 @@
   },
   "Chapter": {
     "type": "object",
-    "description": "2015 고졸 검정고시 출제 범위 교과서 대단원/소단원",
+    "description": "교육과정 edition에 묶인 교과서 대단원/소단원. 옛 문항은 옛 edition_id를 유지한다.",
     "required": [
       "id",
       "subject_code",
@@ -1017,7 +1030,11 @@
       "title",
       "parent_id",
       "axis",
-      "type_id"
+      "type_id",
+      "edition_id",
+      "curriculum",
+      "valid_from",
+      "valid_to"
     ],
     "properties": {
       "id": {
@@ -1045,6 +1062,70 @@
         "type": "string"
       },
       "type_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "edition_id": {
+        "type": "string",
+        "description": "editions.json id. 예: 2015-go"
+      },
+      "curriculum": {
+        "type": "string",
+        "description": "교육과정 연도 코드. 예: 2015"
+      },
+      "valid_from": {
+        "type": "integer"
+      },
+      "valid_to": {
+        "type": "integer"
+      }
+    }
+  },
+  "Edition": {
+    "type": "object",
+    "description": "출제 범위 판. 매년 출제계획을 보고 새 행을 추가한다. 옛 문항은 옛 edition을 유지.",
+    "required": [
+      "id",
+      "level",
+      "curriculum",
+      "label",
+      "valid_from",
+      "valid_to"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "level": {
+        "type": "string"
+      },
+      "curriculum": {
+        "type": "string"
+      },
+      "label": {
+        "type": "string"
+      },
+      "valid_from": {
+        "type": "integer"
+      },
+      "valid_to": {
+        "type": "integer"
+      },
+      "current_for_year": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "source": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "note": {
         "type": [
           "string",
           "null"

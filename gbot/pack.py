@@ -15,7 +15,7 @@ from typing import Any, Optional
 from gbot import __version__
 from gbot.appdata import load as load_app
 from gbot.bank import load as load_bank
-from gbot.chapters import chapter_index, compile_chapters, infer_chapter_id
+from gbot.chapters import DEFAULT_YEAR, chapter_index, compile_chapters, edition_for_year, infer_chapter_id, load_editions
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -159,7 +159,7 @@ CONTENT_TABLES: dict[str, Any] = {
             "subject": {"type": "string"},
             "subject_code": {"type": "string"},
             "type_id": {"type": ["string", "null"], "description": "types.json id. unit/skill에서 매핑"},
-            "chapter_id": {"type": ["string", "null"], "description": "chapters.json id. unit/skill에서 매핑"},
+            "chapter_id": {"type": ["string", "null"], "description": "chapters.json id. item.curriculum/year로 edition을 고른 뒤 unit/skill에서 매핑"},
             "trap_tags": {"type": "array", "items": {"type": "string"}, "default": []},
             "media": {
                 "type": ["object", "null"],
@@ -227,8 +227,21 @@ CONTENT_TABLES: dict[str, Any] = {
     },
     "Chapter": {
         "type": "object",
-        "description": "2015 고졸 검정고시 출제 범위 교과서 대단원/소단원",
-        "required": ["id", "subject_code", "textbook", "number", "title", "parent_id", "axis", "type_id"],
+        "description": "교육과정 edition에 묶인 교과서 대단원/소단원. 옛 문항은 옛 edition_id를 유지한다.",
+        "required": [
+            "id",
+            "subject_code",
+            "textbook",
+            "number",
+            "title",
+            "parent_id",
+            "axis",
+            "type_id",
+            "edition_id",
+            "curriculum",
+            "valid_from",
+            "valid_to",
+        ],
         "properties": {
             "id": {"type": "string"},
             "subject_code": {"type": "string"},
@@ -238,6 +251,26 @@ CONTENT_TABLES: dict[str, Any] = {
             "parent_id": {"type": ["string", "null"]},
             "axis": {"type": "string"},
             "type_id": {"type": ["string", "null"]},
+            "edition_id": {"type": "string", "description": "editions.json id. 예: 2015-go"},
+            "curriculum": {"type": "string", "description": "교육과정 연도 코드. 예: 2015"},
+            "valid_from": {"type": "integer"},
+            "valid_to": {"type": "integer"},
+        },
+    },
+    "Edition": {
+        "type": "object",
+        "description": "출제 범위 판. 매년 출제계획을 보고 새 행을 추가한다. 옛 문항은 옛 edition을 유지.",
+        "required": ["id", "level", "curriculum", "label", "valid_from", "valid_to"],
+        "properties": {
+            "id": {"type": "string"},
+            "level": {"type": "string"},
+            "curriculum": {"type": "string"},
+            "label": {"type": "string"},
+            "valid_from": {"type": "integer"},
+            "valid_to": {"type": "integer"},
+            "current_for_year": {"type": ["integer", "null"]},
+            "source": {"type": ["string", "null"]},
+            "note": {"type": ["string", "null"]},
         },
     },
 }
@@ -419,6 +452,9 @@ def build_pack(
 
     concepts = compile_concepts(wiki)
     types = compile_types(concepts)
+    editions = load_editions(data / "curriculum" / "editions.json")
+    if not editions:
+        editions = load_editions()
     chapters = compile_chapters()
     index = type_index()
     ch_index = chapter_index(chapters)
@@ -434,9 +470,12 @@ def build_pack(
     schema = build_pack_schema(data)
     sample = _read_json(data / "app" / "sample_user.json")
 
+    current = edition_for_year(DEFAULT_YEAR)
     meta = {
         "version": __version__,
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "current_edition": (current or {}).get("id"),
+        "current_year": DEFAULT_YEAR,
         "counts": {
             "items": len(items),
             "embargoed": embargoed,
@@ -444,6 +483,7 @@ def build_pack(
             "concepts": len(concepts),
             "types": len(types),
             "chapters": len(chapters),
+            "editions": len(editions),
             "error_patterns": len(ERROR_PATTERNS),
             "blueprints": len(blueprints),
             "plan_templates": len(plan_templates),
@@ -456,6 +496,7 @@ def build_pack(
     _write_json(dest / "concepts.json", concepts)
     _write_json(dest / "types.json", types)
     _write_json(dest / "chapters.json", chapters)
+    _write_json(dest / "editions.json", editions)
     _write_json(dest / "levels.json", levels)
     _write_json(dest / "blueprints.json", blueprints)
     _write_json(dest / "plan_templates.json", plan_templates)
@@ -472,6 +513,7 @@ class Pack:
         self.concepts: list[dict[str, Any]] = []
         self.types: list[dict[str, Any]] = []
         self.chapters: list[dict[str, Any]] = []
+        self.editions: list[dict[str, Any]] = []
         self.levels: dict[str, Any] = {}
         self.blueprints: list[dict[str, Any]] = []
         self.plan_templates: list[dict[str, Any]] = []
@@ -489,6 +531,8 @@ class Pack:
         self.types = _read_json(root / "types.json")
         ch = root / "chapters.json"
         self.chapters = _read_json(ch) if ch.is_file() else []
+        ed = root / "editions.json"
+        self.editions = _read_json(ed) if ed.is_file() else []
         self.levels = _read_json(root / "levels.json")
         self.blueprints = _read_json(root / "blueprints.json")
         self.plan_templates = _read_json(root / "plan_templates.json")

@@ -7,7 +7,11 @@
     "title": "화법과 작문",
     "parent_id": null,
     "axis": "화법작문",
-    "type_id": "type-kor-speech"
+    "type_id": "type-kor-speech",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-speech-talk",
@@ -17,7 +21,11 @@
     "title": "화법",
     "parent_id": "ch-kor-speech",
     "axis": "화법",
-    "type_id": "type-kor-speech"
+    "type_id": "type-kor-speech",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-speech-write",
@@ -27,7 +35,11 @@
     "title": "작문",
     "parent_id": "ch-kor-speech",
     "axis": "작문",
-    "type_id": "type-kor-speech"
+    "type_id": "type-kor-speech",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-grammar",
@@ -37,7 +49,11 @@
     "title": "문법",
     "parent_id": null,
     "axis": "문법",
-    "type_id": "type-kor-grammar"
+    "type_id": "type-kor-grammar",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-grammar-phon",
@@ -47,7 +63,11 @@
     "title": "음운",
     "parent_id": "ch-kor-grammar",
     "axis": "음운",
-    "type_id": "type-kor-grammar"
+    "type_id": "type-kor-grammar",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-grammar-word",
@@ -57,7 +77,11 @@
     "title": "단어와 품사",
     "parent_id": "ch-kor-grammar",
     "axis": "단어와품사",
-    "type_id": "type-kor-grammar"
+    "type_id": "type-kor-grammar",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-grammar-sent",
@@ -67,7 +91,11 @@
     "title": "문장",
     "parent_id": "ch-kor-grammar",
     "axis": "문장",
-    "type_id": "type-kor-grammar"
+    "type_id": "type-kor-grammar",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-grammar-norm",
@@ -77,7 +105,11 @@
     "title": "국어 규범",
     "parent_id": "ch-kor-grammar",
     "axis": "국어규범",
-    "type_id": "type-kor-grammar"
+    "type_id": "type-kor-grammar",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-lit",
@@ -87,7 +119,11 @@
     "title": "문학",
     "parent_id": null,
     "axis": "문학",
-    "type_id": "type-kor-lit"
+    "type_id": "type-kor-lit",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-lit-poem",
@@ -97,7 +133,11 @@
     "title": "현대시",
     "parent_id": "ch-kor-lit",
     "axis": "현대시",
-    "type_id": "type-kor-lit"
+    "type_id": "type-kor-lit",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-lit-novel",
@@ -107,7 +147,11 @@
     "title": "현대소설",
     "parent_id": "ch-kor-lit",
     "axis": "현대소설",
-    "type_id": "type-kor-lit"
+    "type_id": "type-kor-lit",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-lit-classic",
@@ -117,7 +161,11 @@
     "title": "고전문학",
     "parent_id": "ch-kor-lit",
     "axis": "고전문학",
-    "type_id": "type-kor-lit"
+    "type_id": "type-kor-lit",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-lit-genre",
@@ -127,7 +175,11 @@
     "title": "갈래와 표현",
     "parent_id": "ch-kor-lit",
     "axis": "갈래와표현",
-    "type_id": "type-kor-lit"
+    "type_id": "type-kor-lit",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-reading",
@@ -137,7 +189,11 @@
     "title": "독서",
     "parent_id": null,
     "axis": "독서",
-    "type_id": "type-kor-reading"
+    "type_id": "type-kor-reading",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-reading-fact",
@@ -147,7 +203,11 @@
     "title": "사실적 이해",
     "parent_id": "ch-kor-reading",
     "axis": "사실적이해",
-    "type_id": "type-kor-reading"
+    "type_id": "type-kor-reading",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-reading-infer",
@@ -157,7 +217,11 @@
     "title": "추론적 이해",
     "parent_id": "ch-kor-reading",
     "axis": "추론적이해",
-    "type_id": "type-kor-reading"
+    "type_id": "type-kor-reading",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-kor-reading-crit",
@@ -167,7 +231,11 @@
     "title": "비판적 이해",
     "parent_id": "ch-kor-reading",
     "axis": "비판적이해",
-    "type_id": "type-kor-reading"
+    "type_id": "type-kor-reading",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-poly",
@@ -177,7 +245,11 @@
     "title": "다항식",
     "parent_id": null,
     "axis": "다항식",
-    "type_id": "type-math-poly"
+    "type_id": "type-math-poly",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-poly-ops",
@@ -187,7 +259,11 @@
     "title": "다항식의 연산",
     "parent_id": "ch-math-poly",
     "axis": "다항식의연산",
-    "type_id": "type-math-poly"
+    "type_id": "type-math-poly",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-poly-factor",
@@ -197,7 +273,11 @@
     "title": "나머지정리와 인수분해",
     "parent_id": "ch-math-poly",
     "axis": "나머지정리와인수분해",
-    "type_id": "type-math-poly"
+    "type_id": "type-math-poly",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-eqineq",
@@ -207,7 +287,11 @@
     "title": "방정식과 부등식",
     "parent_id": null,
     "axis": "방정식과부등식",
-    "type_id": "type-math-eqineq"
+    "type_id": "type-math-eqineq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-eqineq-complex",
@@ -217,7 +301,11 @@
     "title": "복소수와 이차방정식",
     "parent_id": "ch-math-eqineq",
     "axis": "복소수와이차방정식",
-    "type_id": "type-math-eqineq"
+    "type_id": "type-math-eqineq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-eqineq-quad",
@@ -227,7 +315,11 @@
     "title": "이차방정식과 이차함수",
     "parent_id": "ch-math-eqineq",
     "axis": "이차방정식과이차함수",
-    "type_id": "type-math-eqineq"
+    "type_id": "type-math-eqineq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-eqineq-eq",
@@ -237,7 +329,11 @@
     "title": "여러 가지 방정식",
     "parent_id": "ch-math-eqineq",
     "axis": "여러가지방정식",
-    "type_id": "type-math-eqineq"
+    "type_id": "type-math-eqineq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-eqineq-ineq",
@@ -247,7 +343,11 @@
     "title": "여러 가지 부등식",
     "parent_id": "ch-math-eqineq",
     "axis": "여러가지부등식",
-    "type_id": "type-math-eqineq"
+    "type_id": "type-math-eqineq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-geoeq",
@@ -257,7 +357,11 @@
     "title": "도형의 방정식",
     "parent_id": null,
     "axis": "도형의방정식",
-    "type_id": "type-math-geoeq"
+    "type_id": "type-math-geoeq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-geoeq-coord",
@@ -267,7 +371,11 @@
     "title": "평면좌표",
     "parent_id": "ch-math-geoeq",
     "axis": "평면좌표",
-    "type_id": "type-math-geoeq"
+    "type_id": "type-math-geoeq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-geoeq-line",
@@ -277,7 +385,11 @@
     "title": "직선의 방정식",
     "parent_id": "ch-math-geoeq",
     "axis": "직선의방정식",
-    "type_id": "type-math-geoeq"
+    "type_id": "type-math-geoeq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-geoeq-circle",
@@ -287,7 +399,11 @@
     "title": "원의 방정식",
     "parent_id": "ch-math-geoeq",
     "axis": "원의방정식",
-    "type_id": "type-math-geoeq"
+    "type_id": "type-math-geoeq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-geoeq-move",
@@ -297,7 +413,11 @@
     "title": "도형의 이동",
     "parent_id": "ch-math-geoeq",
     "axis": "도형의이동",
-    "type_id": "type-math-geoeq"
+    "type_id": "type-math-geoeq",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-set",
@@ -307,7 +427,11 @@
     "title": "집합과 명제",
     "parent_id": null,
     "axis": "집합과명제",
-    "type_id": "type-math-set"
+    "type_id": "type-math-set",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-set-set",
@@ -317,7 +441,11 @@
     "title": "집합",
     "parent_id": "ch-math-set",
     "axis": "집합",
-    "type_id": "type-math-set"
+    "type_id": "type-math-set",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-set-prop",
@@ -327,7 +455,11 @@
     "title": "명제",
     "parent_id": "ch-math-set",
     "axis": "명제",
-    "type_id": "type-math-set"
+    "type_id": "type-math-set",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-func",
@@ -337,7 +469,11 @@
     "title": "함수",
     "parent_id": null,
     "axis": "함수",
-    "type_id": "type-math-func"
+    "type_id": "type-math-func",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-func-graph",
@@ -347,7 +483,11 @@
     "title": "함수의 뜻과 그래프",
     "parent_id": "ch-math-func",
     "axis": "함수의뜻과그래프",
-    "type_id": "type-math-func"
+    "type_id": "type-math-func",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-func-rat",
@@ -357,7 +497,11 @@
     "title": "유리함수와 무리함수",
     "parent_id": "ch-math-func",
     "axis": "유리함수와무리함수",
-    "type_id": "type-math-func"
+    "type_id": "type-math-func",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-count",
@@ -367,7 +511,11 @@
     "title": "경우의 수",
     "parent_id": null,
     "axis": "경우의수",
-    "type_id": "type-math-count"
+    "type_id": "type-math-count",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-count-sumprod",
@@ -377,7 +525,11 @@
     "title": "합의 법칙과 곱의 법칙",
     "parent_id": "ch-math-count",
     "axis": "합의법칙과곱의법칙",
-    "type_id": "type-math-count"
+    "type_id": "type-math-count",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-math-count-permcomb",
@@ -387,7 +539,11 @@
     "title": "순열과 조합",
     "parent_id": "ch-math-count",
     "axis": "순열과조합",
-    "type_id": "type-math-count"
+    "type_id": "type-math-count",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-vocab",
@@ -397,7 +553,11 @@
     "title": "어휘",
     "parent_id": null,
     "axis": "어휘",
-    "type_id": "type-eng-vocab"
+    "type_id": "type-eng-vocab",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-vocab-syn",
@@ -407,7 +567,11 @@
     "title": "유의어와 반의어",
     "parent_id": "ch-eng-vocab",
     "axis": "유의어와반의어",
-    "type_id": "type-eng-vocab"
+    "type_id": "type-eng-vocab",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-vocab-confuse",
@@ -417,7 +581,11 @@
     "title": "혼동어",
     "parent_id": "ch-eng-vocab",
     "axis": "혼동어",
-    "type_id": "type-eng-vocab"
+    "type_id": "type-eng-vocab",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-vocab-phrasal",
@@ -427,7 +595,11 @@
     "title": "구동사",
     "parent_id": "ch-eng-vocab",
     "axis": "구동사",
-    "type_id": "type-eng-vocab"
+    "type_id": "type-eng-vocab",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-life",
@@ -437,7 +609,11 @@
     "title": "생활 영어",
     "parent_id": null,
     "axis": "생활영어",
-    "type_id": "type-eng-life"
+    "type_id": "type-eng-life",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-life-daily",
@@ -447,7 +623,11 @@
     "title": "일상 대화",
     "parent_id": "ch-eng-life",
     "axis": "일상대화",
-    "type_id": "type-eng-life"
+    "type_id": "type-eng-life",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-life-request",
@@ -457,7 +637,11 @@
     "title": "요청과 제안",
     "parent_id": "ch-eng-life",
     "axis": "요청과제안",
-    "type_id": "type-eng-life"
+    "type_id": "type-eng-life",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-life-guide",
@@ -467,7 +651,11 @@
     "title": "안내와 설명",
     "parent_id": "ch-eng-life",
     "axis": "안내와설명",
-    "type_id": "type-eng-life"
+    "type_id": "type-eng-life",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-read",
@@ -477,7 +665,11 @@
     "title": "독해",
     "parent_id": null,
     "axis": "독해",
-    "type_id": "type-eng-read"
+    "type_id": "type-eng-read",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-read-topic",
@@ -487,7 +679,11 @@
     "title": "주제",
     "parent_id": "ch-eng-read",
     "axis": "주제",
-    "type_id": "type-eng-read"
+    "type_id": "type-eng-read",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-read-detail",
@@ -497,7 +693,11 @@
     "title": "세부 사항",
     "parent_id": "ch-eng-read",
     "axis": "세부사항",
-    "type_id": "type-eng-read"
+    "type_id": "type-eng-read",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-eng-read-blank",
@@ -507,7 +707,11 @@
     "title": "빈칸 추론",
     "parent_id": "ch-eng-read",
     "axis": "빈칸추론",
-    "type_id": "type-eng-read"
+    "type_id": "type-eng-read",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-happiness",
@@ -517,7 +721,11 @@
     "title": "인간, 사회, 환경과 행복",
     "parent_id": null,
     "axis": "인간사회환경과행복",
-    "type_id": "type-soc-happiness"
+    "type_id": "type-soc-happiness",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-happiness-view",
@@ -527,7 +735,11 @@
     "title": "인간, 사회, 환경을 보는 눈",
     "parent_id": "ch-soc-happiness",
     "axis": "인간사회환경을보는눈",
-    "type_id": "type-soc-happiness"
+    "type_id": "type-soc-happiness",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-happiness-mean",
@@ -537,7 +749,11 @@
     "title": "행복의 의미와 기준",
     "parent_id": "ch-soc-happiness",
     "axis": "행복의의미와기준",
-    "type_id": "type-soc-happiness"
+    "type_id": "type-soc-happiness",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-happiness-cond",
@@ -547,7 +763,11 @@
     "title": "행복한 삶을 실현하기 위한 조건",
     "parent_id": "ch-soc-happiness",
     "axis": "행복한삶의조건",
-    "type_id": "type-soc-happiness"
+    "type_id": "type-soc-happiness",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-nature",
@@ -557,7 +777,11 @@
     "title": "자연환경과 인간",
     "parent_id": null,
     "axis": "자연환경과인간",
-    "type_id": "type-soc-nature"
+    "type_id": "type-soc-nature",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-nature-life",
@@ -567,7 +791,11 @@
     "title": "자연환경과 인간 생활",
     "parent_id": "ch-soc-nature",
     "axis": "자연환경과인간생활",
-    "type_id": "type-soc-nature"
+    "type_id": "type-soc-nature",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-nature-view",
@@ -577,7 +805,11 @@
     "title": "자연에 대한 다양한 관점",
     "parent_id": "ch-soc-nature",
     "axis": "자연에대한다양한관점",
-    "type_id": "type-soc-nature"
+    "type_id": "type-soc-nature",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-nature-env",
@@ -587,7 +819,11 @@
     "title": "환경 문제의 해결",
     "parent_id": "ch-soc-nature",
     "axis": "환경문제의해결",
-    "type_id": "type-soc-nature"
+    "type_id": "type-soc-nature",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-space",
@@ -597,7 +833,11 @@
     "title": "생활공간과 사회",
     "parent_id": null,
     "axis": "생활공간과사회",
-    "type_id": "type-soc-space"
+    "type_id": "type-soc-space",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-space-urban",
@@ -607,7 +847,11 @@
     "title": "산업화와 도시화",
     "parent_id": "ch-soc-space",
     "axis": "산업화와도시화",
-    "type_id": "type-soc-space"
+    "type_id": "type-soc-space",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-space-info",
@@ -617,7 +861,11 @@
     "title": "교통·통신의 발달과 정보화",
     "parent_id": "ch-soc-space",
     "axis": "교통과정보화",
-    "type_id": "type-soc-space"
+    "type_id": "type-soc-space",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-space-change",
@@ -627,7 +875,11 @@
     "title": "생활공간의 변화",
     "parent_id": "ch-soc-space",
     "axis": "생활공간의변화",
-    "type_id": "type-soc-space"
+    "type_id": "type-soc-space",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-const",
@@ -637,7 +889,11 @@
     "title": "인권 보장과 헌법",
     "parent_id": null,
     "axis": "인권보장과헌법",
-    "type_id": "type-soc-const"
+    "type_id": "type-soc-const",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-const-rights",
@@ -647,7 +903,11 @@
     "title": "인권의 의미와 변화",
     "parent_id": "ch-soc-const",
     "axis": "인권의의미와변화",
-    "type_id": "type-soc-const"
+    "type_id": "type-soc-const",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-const-basic",
@@ -657,7 +917,11 @@
     "title": "헌법과 기본권",
     "parent_id": "ch-soc-const",
     "axis": "헌법과기본권",
-    "type_id": "type-soc-const"
+    "type_id": "type-soc-const",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-const-issue",
@@ -667,7 +931,11 @@
     "title": "인권 문제와 해결",
     "parent_id": "ch-soc-const",
     "axis": "인권문제와해결",
-    "type_id": "type-soc-const"
+    "type_id": "type-soc-const",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-market",
@@ -677,7 +945,11 @@
     "title": "시장경제와 금융",
     "parent_id": null,
     "axis": "시장경제와금융",
-    "type_id": "type-soc-market"
+    "type_id": "type-soc-market",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-market-cap",
@@ -687,7 +959,11 @@
     "title": "자본주의의 전개",
     "parent_id": "ch-soc-market",
     "axis": "자본주의의전개",
-    "type_id": "type-soc-market"
+    "type_id": "type-soc-market",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-market-econ",
@@ -697,7 +973,11 @@
     "title": "시장경제의 이해",
     "parent_id": "ch-soc-market",
     "axis": "시장경제의이해",
-    "type_id": "type-soc-market"
+    "type_id": "type-soc-market",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-market-trade",
@@ -707,7 +987,11 @@
     "title": "국제 분업과 무역",
     "parent_id": "ch-soc-market",
     "axis": "국제분업과무역",
-    "type_id": "type-soc-market"
+    "type_id": "type-soc-market",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-market-fin",
@@ -717,7 +1001,11 @@
     "title": "금융 생활",
     "parent_id": "ch-soc-market",
     "axis": "금융생활",
-    "type_id": "type-soc-market"
+    "type_id": "type-soc-market",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-justice",
@@ -727,7 +1015,11 @@
     "title": "사회 정의와 불평등",
     "parent_id": null,
     "axis": "사회정의와불평등",
-    "type_id": "type-soc-justice"
+    "type_id": "type-soc-justice",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-justice-mean",
@@ -737,7 +1029,11 @@
     "title": "정의의 의미",
     "parent_id": "ch-soc-justice",
     "axis": "정의의의미",
-    "type_id": "type-soc-justice"
+    "type_id": "type-soc-justice",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-justice-view",
@@ -747,7 +1043,11 @@
     "title": "다양한 정의관",
     "parent_id": "ch-soc-justice",
     "axis": "다양한정의관",
-    "type_id": "type-soc-justice"
+    "type_id": "type-soc-justice",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-justice-ineq",
@@ -757,7 +1057,11 @@
     "title": "사회 불평등과 해결",
     "parent_id": "ch-soc-justice",
     "axis": "사회불평등과해결",
-    "type_id": "type-soc-justice"
+    "type_id": "type-soc-justice",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-culture",
@@ -767,7 +1071,11 @@
     "title": "문화와 다양성",
     "parent_id": null,
     "axis": "문화와다양성",
-    "type_id": "type-soc-culture"
+    "type_id": "type-soc-culture",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-culture-world",
@@ -777,7 +1085,11 @@
     "title": "세계의 다양성",
     "parent_id": "ch-soc-culture",
     "axis": "세계의다양성",
-    "type_id": "type-soc-culture"
+    "type_id": "type-soc-culture",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-culture-mean",
@@ -787,7 +1099,11 @@
     "title": "문화의 의미와 특징",
     "parent_id": "ch-soc-culture",
     "axis": "문화의의미와특징",
-    "type_id": "type-soc-culture"
+    "type_id": "type-soc-culture",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-culture-change",
@@ -797,7 +1113,11 @@
     "title": "문화 변동과 세계화",
     "parent_id": "ch-soc-culture",
     "axis": "문화변동과세계화",
-    "type_id": "type-soc-culture"
+    "type_id": "type-soc-culture",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-global",
@@ -807,7 +1127,11 @@
     "title": "세계화와 평화",
     "parent_id": null,
     "axis": "세계화와평화",
-    "type_id": "type-soc-global"
+    "type_id": "type-soc-global",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-global-aspect",
@@ -817,7 +1141,11 @@
     "title": "세계화의 양상",
     "parent_id": "ch-soc-global",
     "axis": "세계화의양상",
-    "type_id": "type-soc-global"
+    "type_id": "type-soc-global",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-global-actor",
@@ -827,7 +1155,11 @@
     "title": "국제 사회의 행위 주체",
     "parent_id": "ch-soc-global",
     "axis": "국제사회의행위주체",
-    "type_id": "type-soc-global"
+    "type_id": "type-soc-global",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-global-peace",
@@ -837,7 +1169,11 @@
     "title": "평화와 공존",
     "parent_id": "ch-soc-global",
     "axis": "평화와공존",
-    "type_id": "type-soc-global"
+    "type_id": "type-soc-global",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-future",
@@ -847,7 +1183,11 @@
     "title": "미래와 지속가능한 삶",
     "parent_id": null,
     "axis": "미래와지속가능한삶",
-    "type_id": "type-soc-future"
+    "type_id": "type-soc-future",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-future-pop",
@@ -857,7 +1197,11 @@
     "title": "인구 문제",
     "parent_id": "ch-soc-future",
     "axis": "인구문제",
-    "type_id": "type-soc-future"
+    "type_id": "type-soc-future",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-future-sd",
@@ -867,7 +1211,11 @@
     "title": "지속가능한 발전",
     "parent_id": "ch-soc-future",
     "axis": "지속가능한발전",
-    "type_id": "type-soc-future"
+    "type_id": "type-soc-future",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-soc-future-citizen",
@@ -877,7 +1225,11 @@
     "title": "세계시민과 미래",
     "parent_id": "ch-soc-future",
     "axis": "세계시민과미래",
-    "type_id": "type-soc-future"
+    "type_id": "type-soc-future",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-matter",
@@ -887,7 +1239,11 @@
     "title": "물질과 규칙성",
     "parent_id": null,
     "axis": "물질과규칙성",
-    "type_id": "type-sci-matter"
+    "type_id": "type-sci-matter",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-matter-bond",
@@ -897,7 +1253,11 @@
     "title": "물질의 규칙성과 결합",
     "parent_id": "ch-sci-matter",
     "axis": "물질의규칙성과결합",
-    "type_id": "type-sci-matter"
+    "type_id": "type-sci-matter",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-matter-comp",
@@ -907,7 +1267,11 @@
     "title": "자연의 구성 물질",
     "parent_id": "ch-sci-matter",
     "axis": "자연의구성물질",
-    "type_id": "type-sci-matter"
+    "type_id": "type-sci-matter",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-matter-mech",
@@ -917,7 +1281,11 @@
     "title": "역학적 시스템",
     "parent_id": "ch-sci-matter",
     "axis": "역학적시스템",
-    "type_id": "type-sci-matter"
+    "type_id": "type-sci-matter",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-system",
@@ -927,7 +1295,11 @@
     "title": "시스템과 상호작용",
     "parent_id": null,
     "axis": "시스템과상호작용",
-    "type_id": "type-sci-system"
+    "type_id": "type-sci-system",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-system-earth",
@@ -937,7 +1309,11 @@
     "title": "지구 시스템",
     "parent_id": "ch-sci-system",
     "axis": "지구시스템",
-    "type_id": "type-sci-system"
+    "type_id": "type-sci-system",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-system-life",
@@ -947,7 +1323,11 @@
     "title": "생명 시스템",
     "parent_id": "ch-sci-system",
     "axis": "생명시스템",
-    "type_id": "type-sci-system"
+    "type_id": "type-sci-system",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-change",
@@ -957,7 +1337,11 @@
     "title": "변화와 다양성",
     "parent_id": null,
     "axis": "변화와다양성",
-    "type_id": "type-sci-change"
+    "type_id": "type-sci-change",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-change-chem",
@@ -967,7 +1351,11 @@
     "title": "화학 변화",
     "parent_id": "ch-sci-change",
     "axis": "화학변화",
-    "type_id": "type-sci-change"
+    "type_id": "type-sci-change",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-change-bio",
@@ -977,7 +1365,11 @@
     "title": "생물다양성과 유지",
     "parent_id": "ch-sci-change",
     "axis": "생물다양성과유지",
-    "type_id": "type-sci-change"
+    "type_id": "type-sci-change",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-energy",
@@ -987,7 +1379,11 @@
     "title": "환경과 에너지",
     "parent_id": null,
     "axis": "환경과에너지",
-    "type_id": "type-sci-energy"
+    "type_id": "type-sci-energy",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-energy-eco",
@@ -997,7 +1393,11 @@
     "title": "생태계와 환경",
     "parent_id": "ch-sci-energy",
     "axis": "생태계와환경",
-    "type_id": "type-sci-energy"
+    "type_id": "type-sci-energy",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-sci-energy-power",
@@ -1007,7 +1407,11 @@
     "title": "에너지와 환경",
     "parent_id": "ch-sci-energy",
     "axis": "에너지와환경",
-    "type_id": "type-sci-energy"
+    "type_id": "type-sci-energy",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-premodern",
@@ -1017,7 +1421,11 @@
     "title": "전근대",
     "parent_id": null,
     "axis": "전근대",
-    "type_id": "type-his-premodern"
+    "type_id": "type-his-premodern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-premodern-ancient",
@@ -1027,7 +1435,11 @@
     "title": "고대 국가의 형성과 발전",
     "parent_id": "ch-his-premodern",
     "axis": "고대사",
-    "type_id": "type-his-premodern"
+    "type_id": "type-his-premodern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-premodern-goryeo",
@@ -1037,7 +1449,11 @@
     "title": "고려의 성립과 변천",
     "parent_id": "ch-his-premodern",
     "axis": "고려사",
-    "type_id": "type-his-premodern"
+    "type_id": "type-his-premodern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-premodern-joseon",
@@ -1047,7 +1463,11 @@
     "title": "조선의 성립과 발전",
     "parent_id": "ch-his-premodern",
     "axis": "조선사",
-    "type_id": "type-his-premodern"
+    "type_id": "type-his-premodern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-premodern-late",
@@ -1057,7 +1477,11 @@
     "title": "조선 후기의 변화",
     "parent_id": "ch-his-premodern",
     "axis": "조선후기",
-    "type_id": "type-his-premodern"
+    "type_id": "type-his-premodern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-modern",
@@ -1067,7 +1491,11 @@
     "title": "근대 국민국가",
     "parent_id": null,
     "axis": "근대국민국가",
-    "type_id": "type-his-modern"
+    "type_id": "type-his-modern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-modern-open",
@@ -1077,7 +1505,11 @@
     "title": "개항과 조선의 대응",
     "parent_id": "ch-his-modern",
     "axis": "개항",
-    "type_id": "type-his-modern"
+    "type_id": "type-his-modern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-modern-reform",
@@ -1087,7 +1519,11 @@
     "title": "개화 운동과 근대적 개혁",
     "parent_id": "ch-his-modern",
     "axis": "개화와개혁",
-    "type_id": "type-his-modern"
+    "type_id": "type-his-modern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-modern-nation",
@@ -1097,7 +1533,11 @@
     "title": "구국 민족 운동",
     "parent_id": "ch-his-modern",
     "axis": "구국민족운동",
-    "type_id": "type-his-modern"
+    "type_id": "type-his-modern",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-colonial",
@@ -1107,7 +1547,11 @@
     "title": "일제와 민족운동",
     "parent_id": null,
     "axis": "일제와민족운동",
-    "type_id": "type-his-colonial"
+    "type_id": "type-his-colonial",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-colonial-rule",
@@ -1117,7 +1561,11 @@
     "title": "일제 식민 통치",
     "parent_id": "ch-his-colonial",
     "axis": "일제식민통치",
-    "type_id": "type-his-colonial"
+    "type_id": "type-his-colonial",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-colonial-samil",
@@ -1127,7 +1575,11 @@
     "title": "3·1 운동과 임시 정부",
     "parent_id": "ch-his-colonial",
     "axis": "삼일운동과임정",
-    "type_id": "type-his-colonial"
+    "type_id": "type-his-colonial",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-colonial-resist",
@@ -1137,7 +1589,11 @@
     "title": "다양한 민족 운동",
     "parent_id": "ch-his-colonial",
     "axis": "다양한민족운동",
-    "type_id": "type-his-colonial"
+    "type_id": "type-his-colonial",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-rok",
@@ -1147,7 +1603,11 @@
     "title": "대한민국의 발전",
     "parent_id": null,
     "axis": "대한민국의발전",
-    "type_id": "type-his-rok"
+    "type_id": "type-his-rok",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-rok-found",
@@ -1157,7 +1617,11 @@
     "title": "대한민국 수립과 6·25 전쟁",
     "parent_id": "ch-his-rok",
     "axis": "정부수립과전쟁",
-    "type_id": "type-his-rok"
+    "type_id": "type-his-rok",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-rok-demo",
@@ -1167,7 +1631,11 @@
     "title": "민주주의의 시련과 발전",
     "parent_id": "ch-his-rok",
     "axis": "민주주의발전",
-    "type_id": "type-his-rok"
+    "type_id": "type-his-rok",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-rok-econ",
@@ -1177,7 +1645,11 @@
     "title": "경제 성장과 사회 변화",
     "parent_id": "ch-his-rok",
     "axis": "경제성장",
-    "type_id": "type-his-rok"
+    "type_id": "type-his-rok",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   },
   {
     "id": "ch-his-rok-unify",
@@ -1187,6 +1659,10 @@
     "title": "통일을 위한 노력",
     "parent_id": "ch-his-rok",
     "axis": "통일노력",
-    "type_id": "type-his-rok"
+    "type_id": "type-his-rok",
+    "edition_id": "2015-go",
+    "curriculum": "2015",
+    "valid_from": 2021,
+    "valid_to": 2026
   }
 ]

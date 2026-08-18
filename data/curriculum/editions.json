@@ -1,0 +1,13 @@
+[
+  {
+    "id": "2015-go",
+    "level": "고졸",
+    "curriculum": "2015",
+    "label": "2015 개정 교육과정",
+    "valid_from": 2021,
+    "valid_to": 2026,
+    "current_for_year": 2026,
+    "source": "https://www.goe.go.kr/resource/goe/na/bbs_1942/2025/11/0448dbbf-8835-416b-8654-d1ba214f3c00.pdf",
+    "note": "고졸 필수: 국어/수학/영어/통합사회/통합과학/한국사. 한국사 2015는 2022부터."
+  }
+]
