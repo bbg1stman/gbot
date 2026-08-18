@@ -1,47 +1,35 @@
-# gbot 문제은행 위키
+# 교무실
 
-이 위키는 **슬롯 색인**이다. 공식 문항 원문(지문·보기·정답)은 없다.
+이 위키는 **가르치는 그래프**다. 개념·유형·교육과정만 둔다.
 
-- 은행 데이터: [`data/bank/manifest.json`](../data/bank/manifest.json)
-- 규칙: [`schema.md`](../schema.md)
-- 목적: [`purpose.md`](../purpose.md)
+문항 저장소가 아니다. 수험생이 둘러보는 곳이 아니다.
 
-## 엠바고
+런타임(진단·계획·풀이)은 전부 `data/` 에 있다.
 
-시도교육청 저작 기출은 라이선스 전까지 `status=embargoed`, `kind=official-slot`.
-에이전트는 기억으로 지문·보기를 채워 넣지 않는다.
+| 런타임 | 경로 |
+|---|---|
+| 기출 슬롯(원문 없음) | [`data/bank/`](../data/bank/) |
+| 진단 밴드 | [`data/diagnostics/levels.json`](../data/diagnostics/levels.json) |
+| 과목 진단 설계 | [`data/diagnostics/subjects.json`](../data/diagnostics/subjects.json) |
+| 주간 계획 템플릿 | [`data/plans/templates.json`](../data/plans/templates.json) |
+| 사용자·시도·세션 스키마 | [`data/app/schema.json`](../data/app/schema.json) |
 
-## 고졸 시행
+- 밴드 설명: [levels.md](levels.md)
+- 목적: [purpose.md](../purpose.md)
+- 스키마·엠바고: [schema.md](../schema.md)
 
-| 시행 | 위키 | 시험 파일 | 문항 수 | 상태 |
-|---|---|---|---:|---|
-| 2021-1 | [go-2021-1](exams/go-2021-1.md) | [`go-2021-1.json`](../data/bank/exams/go-2021-1.json) | 145 | slots-only |
-| 2021-2 | [go-2021-2](exams/go-2021-2.md) | [`go-2021-2.json`](../data/bank/exams/go-2021-2.json) | 145 | slots-only |
-| 2022-1 | [go-2022-1](exams/go-2022-1.md) | [`go-2022-1.json`](../data/bank/exams/go-2022-1.json) | 145 | slots-only |
-| 2022-2 | [go-2022-2](exams/go-2022-2.md) | [`go-2022-2.json`](../data/bank/exams/go-2022-2.json) | 145 | slots-only |
-| 2023-1 | [go-2023-1](exams/go-2023-1.md) | [`go-2023-1.json`](../data/bank/exams/go-2023-1.json) | 145 | slots-only |
-| 2023-2 | [go-2023-2](exams/go-2023-2.md) | [`go-2023-2.json`](../data/bank/exams/go-2023-2.json) | 145 | slots-only |
-| 2024-1 | [go-2024-1](exams/go-2024-1.md) | [`go-2024-1.json`](../data/bank/exams/go-2024-1.json) | 145 | slots-only |
-| 2024-2 | [go-2024-2](exams/go-2024-2.md) | [`go-2024-2.json`](../data/bank/exams/go-2024-2.json) | 145 | slots-only |
-| 2025-1 | [go-2025-1](exams/go-2025-1.md) | [`go-2025-1.json`](../data/bank/exams/go-2025-1.json) | 145 | slots-only |
-| 2025-2 | [go-2025-2](exams/go-2025-2.md) | [`go-2025-2.json`](../data/bank/exams/go-2025-2.json) | 145 | slots-only |
-| 2026-1 | [go-2026-1](exams/go-2026-1.md) | [`go-2026-1.json`](../data/bank/exams/go-2026-1.json) | 145 | slots-only |
-| 2026-2 | [go-2026-2](exams/go-2026-2.md) | [`go-2026-2.json`](../data/bank/exams/go-2026-2.json) | 145 | slots-only |
+## 교육과정 (2015 고졸 범위)
 
-## 필수 과목
+- [국어](curriculum/국어.md)
+- [수학](curriculum/수학.md)
+- [영어](curriculum/영어.md)
+- [사회](curriculum/사회.md)
+- [과학](curriculum/과학.md)
+- [한국사](curriculum/한국사.md)
 
-| 코드 | 과목 | 문항 수 |
-|---|---|---:|
-| `kor` | 국어 | 25 |
-| `math` | 수학 | 20 |
-| `eng` | 영어 | 25 |
-| `soc` | 사회 | 25 |
-| `sci` | 과학 | 25 |
-| `his` | 한국사 | 25 |
+## 개념·유형
 
-한국사 2021-1·2021-2만 `curriculum=2009`. 나머지 필수 문항은 `2015`.
+카드 템플릿만 있다. 교무실용이다.
 
-## 다음에 할 일
-
-1. 라이선스 후 같은 id로 원문 ingest
-2. `source=original` 신규 문항으로 진단·학습 공백 메우기
+- [개념 카드 템플릿](concepts/개념%20카드%20템플릿.md)
+- [유형 카드 템플릿](types/유형%20카드%20템플릿.md)

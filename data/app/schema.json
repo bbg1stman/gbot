@@ -1,0 +1,181 @@
+{
+  "$comment": "런타임 기록 스키마. 실제 개인정보(이름·연락처·식별번호)는 두지 않는다.",
+  "User": {
+    "type": "object",
+    "required": [
+      "id",
+      "created",
+      "subjects"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "내부 사용자 id. 실명 아님"
+      },
+      "created": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "subjects": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "required": [
+            "band",
+            "estimate",
+            "last_diagnostic"
+          ],
+          "properties": {
+            "band": {
+              "enum": [
+                "미달",
+                "경계",
+                "안정",
+                "여유"
+              ]
+            },
+            "estimate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "last_diagnostic": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "description": "키는 subject_code (kor, math, eng, soc, sci, his)"
+      }
+    }
+  },
+  "Attempt": {
+    "type": "object",
+    "required": [
+      "id",
+      "user_id",
+      "item_id",
+      "correct",
+      "band_at_time",
+      "ts"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "item_id": {
+        "type": "string"
+      },
+      "correct": {
+        "type": "boolean"
+      },
+      "band_at_time": {
+        "enum": [
+          "미달",
+          "경계",
+          "안정",
+          "여유"
+        ]
+      },
+      "ts": {
+        "type": "string",
+        "format": "date-time"
+      }
+    }
+  },
+  "Session": {
+    "type": "object",
+    "required": [
+      "id",
+      "user_id",
+      "kind",
+      "subject",
+      "item_ids",
+      "score"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "kind": {
+        "enum": [
+          "diagnostic",
+          "drill",
+          "examset"
+        ]
+      },
+      "subject": {
+        "type": "string"
+      },
+      "item_ids": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "score": {
+        "type": "number"
+      }
+    }
+  },
+  "Plan": {
+    "type": "object",
+    "required": [
+      "id",
+      "user_id",
+      "week",
+      "items"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "week": {
+        "type": "string",
+        "description": "ISO 주, 예: 2026-W33"
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "subject",
+            "band",
+            "action",
+            "count"
+          ],
+          "properties": {
+            "subject": {
+              "type": "string"
+            },
+            "band": {
+              "enum": [
+                "미달",
+                "경계",
+                "안정",
+                "여유"
+              ]
+            },
+            "action": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

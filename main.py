@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""gbot 문제은행 CLI. 슬롯 메타만 출력한다. 원문(stem)은 요구하지 않는다."""
+"""gbot CLI. 런타임은 data/ 를 본다. 공식 원문(stem)은 요구하지 않는다."""
 
 from __future__ import annotations
 
 import argparse
 import sys
 
-from gbot.bank import get, list_exams, list_items, load, stats
+from gbot.appdata import diagnostic_blueprint, list_bands, load as load_app, plan_for
+from gbot.bank import get, list_exams, list_items, load as load_bank, stats
+from gbot.diagnostic import build_diagnostic
 
 
 def cmd_stats(_args: argparse.Namespace) -> int:
@@ -50,6 +52,7 @@ def cmd_show(args: argparse.Namespace) -> int:
         ("id", item.get("id")),
         ("type", item.get("type")),
         ("kind", item.get("kind")),
+        ("role", item.get("role")),
         ("source", item.get("source")),
         ("status", item.get("status")),
         ("license", item.get("license")),
@@ -62,6 +65,9 @@ def cmd_show(args: argparse.Namespace) -> int:
         ("round", item.get("round")),
         ("number", item.get("number")),
         ("official_index", item.get("official_index")),
+        ("unit", item.get("unit")),
+        ("wiki_concept", item.get("wiki_concept")),
+        ("wiki_type", item.get("wiki_type")),
         ("answer", "없음 (엠바고)"),
         ("topic", "없음 (엠바고)"),
         ("skill", "없음 (엠바고)"),
@@ -75,8 +81,62 @@ def cmd_show(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_bands(_args: argparse.Namespace) -> int:
+    from gbot.appdata import _APP
+
+    rules = _APP.levels.get("pass_rules", {})
+    print(
+        f"합격 규칙: 과목 최저 {rules.get('subject_min')}  "
+        f"평균 최저 {rules.get('average_min')}"
+    )
+    for band in list_bands():
+        print(
+            f"{band['id']}  {band['score_min']}–{band['score_max']}  "
+            f"{band['next_action']}"
+        )
+    return 0
+
+
+def cmd_diag(args: argparse.Namespace) -> int:
+    try:
+        bp = diagnostic_blueprint(args.subject)
+        parts = build_diagnostic(args.subject)
+    except KeyError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(
+        f"{bp['subject']} ({bp['subject_code']})  "
+        f"axis={bp['axis']}  {bp['item_count']}문항"
+    )
+    for part in parts:
+        extra = ""
+        if part.get("slot_ids"):
+            extra = "  " + ",".join(part["slot_ids"])
+        print(f"  {part['axis']}  n={part['n']}{extra}")
+    return 0
+
+
+def cmd_plan(args: argparse.Namespace) -> int:
+    try:
+        plan = plan_for(args.band)
+    except KeyError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    yn = {True: "예", False: "아니오"}
+    print(f"밴드: {plan['band']}")
+    print(f"이름: {plan['label']}")
+    print(f"초점: {plan['focus']}")
+    print(f"하루 문항: {plan['daily_items']}")
+    print(
+        f"개념: {yn[plan['include_concept']]}  "
+        f"유형: {yn[plan['include_type']]}  "
+        f"기출슬롯: {yn[plan['include_bank_slots']]}"
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="gbot 문제은행 — 슬롯 조회 (원문 없음)")
+    parser = argparse.ArgumentParser(description="gbot — 고졸 검정고시 진단·계획 (원문 없음)")
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_stats = sub.add_parser("stats", help="은행 통계")
@@ -95,11 +155,23 @@ def build_parser() -> argparse.ArgumentParser:
     p_show.add_argument("id", help="문항 id (예: go-2026-2-kor-12)")
     p_show.set_defaults(func=cmd_show)
 
+    p_bands = sub.add_parser("bands", help="진단 밴드")
+    p_bands.set_defaults(func=cmd_bands)
+
+    p_diag = sub.add_parser("diag", help="과목 진단 설계")
+    p_diag.add_argument("--subject", required=True, help="과목명 또는 코드 (예: 국어, kor)")
+    p_diag.set_defaults(func=cmd_diag)
+
+    p_plan = sub.add_parser("plan", help="주간 계획 템플릿")
+    p_plan.add_argument("--band", required=True, help="밴드 (미달, 경계, 안정, 여유)")
+    p_plan.set_defaults(func=cmd_plan)
+
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
-    load()
+    load_bank()
+    load_app()
     parser = build_parser()
     args = parser.parse_args(argv)
     return args.func(args)

@@ -2,6 +2,7 @@
 
 공식 문항은 슬롯(메타데이터)만 로드한다. stem이 None이어도 조회·필터가 동작해야 한다.
 원문을 요구하거나 만들어 내지 않는다.
+없는 키는 로더가 기본값을 채운다: role=bank, unit/wiki_concept/wiki_type=null.
 """
 
 from __future__ import annotations
@@ -16,6 +17,13 @@ BANK_DIR = ROOT / "data" / "bank"
 Item = dict[str, Any]
 Exam = dict[str, Any]
 
+_ITEM_DEFAULTS: dict[str, Any] = {
+    "role": "bank",
+    "unit": None,
+    "wiki_concept": None,
+    "wiki_type": None,
+}
+
 
 def _read_json(path: Path) -> Any:
     with path.open(encoding="utf-8") as f:
@@ -29,6 +37,12 @@ def _normalize_exam_key(exam: Optional[str]) -> Optional[str]:
     if key.startswith("go-"):
         key = key[3:]
     return key
+
+
+def _with_item_defaults(item: Item) -> Item:
+    for key, default in _ITEM_DEFAULTS.items():
+        item.setdefault(key, default)
+    return item
 
 
 class Bank:
@@ -55,7 +69,8 @@ class Bank:
             batch = _read_json(path)
             if not isinstance(batch, list):
                 raise ValueError(f"item file must be an array: {path}")
-            items.extend(batch)
+            for raw in batch:
+                items.append(_with_item_defaults(raw))
         self.items = items
         self._by_id = {item["id"]: item for item in items}
         self._loaded = True

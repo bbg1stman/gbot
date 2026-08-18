@@ -1,8 +1,27 @@
-# gbot 문제은행
+# gbot — 고졸 검정고시 진단·계획 앱
 
-고졸 검정고시 **진단 → 학습 계획**을 위한 문제은행 기초다.
+수험생의 **현재 수준을 진단**하고, 밴드에 맞춰 **이번 주 무엇을 할지** 정하는 앱이다.
 
-이 저장소의 공식 문항은 **슬롯(메타데이터)만** 있다.
+위키를 돌아다니며 공부하는 구조가 아니다.
+
+## 앱 본체 = `data/`
+
+| 경로 | 역할 |
+|---|---|
+| `data/bank/` | 공식 기출 **슬롯**(원문 없음). 1740개 엠바고 |
+| `data/diagnostics/` | 밴드, 과목 진단 설계 |
+| `data/plans/` | 밴드별 주간 계획 템플릿 |
+| `data/app/` | 사용자·시도·세션·계획 기록 스키마 |
+
+수험생 런타임은 여기만 본다.
+
+## 위키 = 교무실
+
+`wiki/` 는 개념·유형·교육과정 **가르치는 그래프**다.
+
+- 문항 저장소가 아니다.
+- 수험생이 브라우징하지 않는다.
+- 시험별 위키 페이지는 두지 않는다. 시행 목록은 `data/bank/` 에 있다.
 
 ## 공식 문항 원문은 없음
 
@@ -12,26 +31,18 @@
 - 라이선스 확보 후 **같은 id로 ingest** 하면 은행 API는 그대로 쓴다.
 - 새 문제는 `source=original` 로 추가한다. 공식 기출을 흉내 내 만들지 않는다.
 
-## 은행이 하는 일
-
-라이선스 전에도 다음이 동작한다.
-
-- 시험(시행) 목록
-- 과목·연도·상태 필터
-- 공식 vs 자작 구분 (`source`)
-- 슬롯 id로 조회 (원문 없이)
-
-앱 목적과 에이전트 규칙은 `purpose.md`, `schema.md`를 본다.
-
 ## 구조
 
 ```
-data/bank/manifest.json          # 건수, 시행 목록, 엠바고 정책
-data/bank/exams/go-YYYY-N.json   # 시행 1파일
-data/bank/items/go-YYYY-N-<subj>.json
-wiki/                            # 사람·LLM용 색인 (원문 없음)
-gbot/bank.py                     # 로드·조회. stem 불필요
-main.py                          # CLI
+data/bank/          # 기출 슬롯 (원문 없음)
+data/diagnostics/   # 밴드·과목 설계
+data/plans/         # 주간 계획 템플릿
+data/app/           # 런타임 기록 스키마
+wiki/               # 교무실: 개념/유형/교육과정
+gbot/bank.py        # 은행 로드·조회. stem 불필요
+gbot/appdata.py     # 밴드·설계·계획
+gbot/diagnostic.py  # 진단 축 분배 (지문 없음)
+main.py             # CLI
 ```
 
 고졸 필수: 국어 25, 수학 20, 영어 25, 사회 25, 과학 25, 한국사 25 (시행당 145).
@@ -46,10 +57,10 @@ python3 main.py stats
 python3 main.py exams
 python3 main.py items --exam 2026-2 --subject 국어
 python3 main.py show go-2026-2-kor-12
-python3 -m unittest tests.test_bank
+python3 main.py bands
+python3 main.py diag --subject 국어
+python3 main.py plan --band 경계
+python3 -m unittest tests.test_bank tests.test_appdata
 ```
 
-## 다음 단계
-
-1. 라이선스 후 동일 id로 official 원문 ingest
-2. 진단·학습용 `source=original` 문항 추가
+자세한 목적과 규칙은 `purpose.md`, `schema.md` 를 본다.

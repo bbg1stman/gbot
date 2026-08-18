@@ -1,0 +1,37 @@
+{
+  "exam": "고졸 검정고시",
+  "pass_rules": {
+    "subject_min": 40,
+    "average_min": 60
+  },
+  "bands": [
+    {
+      "id": "미달",
+      "label": "미달",
+      "score_min": 0,
+      "score_max": 39,
+      "next_action": "개념+유형"
+    },
+    {
+      "id": "경계",
+      "label": "경계",
+      "score_min": 40,
+      "score_max": 59,
+      "next_action": "유형+기출슬롯"
+    },
+    {
+      "id": "안정",
+      "label": "안정",
+      "score_min": 60,
+      "score_max": 79,
+      "next_action": "기출 세트"
+    },
+    {
+      "id": "여유",
+      "label": "여유",
+      "score_min": 80,
+      "score_max": 100,
+      "next_action": "약한 과목 집중"
+    }
+  ]
+}
