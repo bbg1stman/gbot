@@ -401,5 +401,348 @@
         "format": "date-time"
       }
     }
+  },
+  "ItemStat": {
+    "type": "object",
+    "description": "문항 단위 숙달. 봤는지, 몇 번 틀렸는지, 복습 기한.",
+    "required": [
+      "id",
+      "user_id",
+      "item_id",
+      "subject_code",
+      "type_id",
+      "axis",
+      "attempts",
+      "misses",
+      "last_correct",
+      "last_choice",
+      "last_ts",
+      "streak_wrong",
+      "ease",
+      "next_review",
+      "history"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "item_id": {
+        "type": "string"
+      },
+      "subject_code": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "axis": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "misses": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "last_correct": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "last_choice": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "last_ts": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date-time"
+      },
+      "streak_wrong": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "ease": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "minimum": 0,
+        "maximum": 1,
+        "description": "0-1. 정답 비율. 시도 없으면 null"
+      },
+      "next_review": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "ISO date 또는 null"
+      },
+      "history": {
+        "type": "array",
+        "maxItems": 10,
+        "description": "최근 시도. 최대 10",
+        "items": {
+          "type": "object",
+          "required": [
+            "attempt_id",
+            "correct",
+            "ts"
+          ],
+          "properties": {
+            "attempt_id": {
+              "type": "string"
+            },
+            "correct": {
+              "type": "boolean"
+            },
+            "ts": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Evaluation": {
+    "type": "object",
+    "description": "종합 평가. 계산 결과이며 스냅샷으로도 저장한다. pass_rules: 과목 40, 평균 60.",
+    "required": [
+      "user_id",
+      "generated_at",
+      "overall",
+      "subjects",
+      "weak_axes",
+      "weak_types",
+      "weak_patterns",
+      "weak_items",
+      "focus"
+    ],
+    "properties": {
+      "user_id": {
+        "type": "string"
+      },
+      "generated_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "overall": {
+        "type": "object",
+        "required": [
+          "estimate_avg",
+          "pass_ready",
+          "subject_min_risk",
+          "average_risk"
+        ],
+        "properties": {
+          "estimate_avg": {
+            "type": "number"
+          },
+          "pass_ready": {
+            "type": "boolean",
+            "description": "모든 과목>=40 이고 평균>=60"
+          },
+          "subject_min_risk": {
+            "type": "boolean",
+            "description": "어느 과목 estimate < 40"
+          },
+          "average_risk": {
+            "type": "boolean",
+            "description": "평균 estimate < 60"
+          }
+        }
+      },
+      "subjects": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "code",
+            "band",
+            "estimate",
+            "attempts",
+            "accuracy",
+            "weak"
+          ],
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "band": {
+              "enum": [
+                "미달",
+                "경계",
+                "안정",
+                "여유"
+              ]
+            },
+            "estimate": {
+              "type": "number"
+            },
+            "attempts": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "accuracy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "weak": {
+              "type": "boolean",
+              "description": "estimate < 40 또는 band=미달"
+            }
+          }
+        }
+      },
+      "weak_axes": {
+        "type": "array",
+        "description": "accuracy < 0.6 또는 misses>=2",
+        "items": {
+          "type": "object",
+          "required": [
+            "subject_code",
+            "axis",
+            "attempts",
+            "misses",
+            "accuracy"
+          ],
+          "properties": {
+            "subject_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "axis": {
+              "type": "string"
+            },
+            "attempts": {
+              "type": "integer"
+            },
+            "misses": {
+              "type": "integer"
+            },
+            "accuracy": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "weak_types": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "type_id",
+            "subject_code",
+            "misses",
+            "streak_wrong"
+          ],
+          "properties": {
+            "type_id": {
+              "type": "string"
+            },
+            "subject_code": {
+              "type": "string"
+            },
+            "misses": {
+              "type": "integer"
+            },
+            "streak_wrong": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "weak_patterns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "pattern_id",
+            "miss_count"
+          ],
+          "properties": {
+            "pattern_id": {
+              "type": "string"
+            },
+            "miss_count": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "weak_items": {
+        "type": "array",
+        "description": "ItemStat misses>=1 이고 마지막이 미해결(last_correct가 true가 아님)",
+        "items": {
+          "type": "object",
+          "required": [
+            "item_id",
+            "misses",
+            "last_correct"
+          ],
+          "properties": {
+            "item_id": {
+              "type": "string"
+            },
+            "misses": {
+              "type": "integer"
+            },
+            "last_correct": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        }
+      },
+      "focus": {
+        "type": "array",
+        "description": "과락 위험 과목 먼저, 그다음 약한 유형",
+        "items": {
+          "type": "object",
+          "required": [
+            "subject_code",
+            "reason",
+            "action"
+          ],
+          "properties": {
+            "subject_code": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            },
+            "action": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
   }
 }

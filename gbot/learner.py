@@ -45,6 +45,19 @@ def hot_patterns(user: Learner) -> list[dict[str, Any]]:
     return sorted(rows, key=lambda r: int(r.get("miss_count") or 0), reverse=True)
 
 
+def item_stat(user: Learner, item_id: str) -> Optional[dict[str, Any]]:
+    """문항 단위 ItemStat. 저장분이 없으면 attempts에서 파생."""
+    for row in _rows(user, "item_stats", "ItemStat"):
+        if row.get("item_id") == item_id:
+            return row
+    from gbot.evaluate import item_stats_from_attempts
+
+    for row in item_stats_from_attempts(user):
+        if row.get("item_id") == item_id:
+            return row
+    return None
+
+
 def load_sample(path: Optional[Path] = None) -> Learner:
     """Load pack/sample_learner.json, falling back to data/app/sample_user.json."""
     if path is not None:

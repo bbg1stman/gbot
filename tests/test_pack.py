@@ -104,7 +104,7 @@ class TestPack(unittest.TestCase):
             PACK_DIR / "schema.json",
         ):
             schema = json.loads(schema_path.read_text(encoding="utf-8"))
-            for name in ("WrongNote", "ErrorPattern", "TypeStat", "User", "Attempt", "Session", "Plan"):
+            for name in ("WrongNote", "ErrorPattern", "TypeStat", "ItemStat", "Evaluation", "User", "Attempt", "Session", "Plan"):
                 self.assertIn(name, schema, msg=f"{schema_path.name} {name}")
             required = schema["Attempt"]["required"]
             for field in ("session_id", "choice", "time_ms", "axis", "type_id"):

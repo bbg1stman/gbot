@@ -17,7 +17,7 @@
 | `data/diagnostics/levels.json` | 밴드 4개, 합격 규칙 |
 | `data/diagnostics/subjects.json` | 필수 6과목 진단 설계 |
 | `data/plans/templates.json` | 밴드별 주간 템플릿 |
-| `data/app/schema.json` | User / Attempt / Session / Plan / WrongNote / ErrorPattern / TypeStat |
+| `data/app/schema.json` | User / Attempt / Session / Plan / WrongNote / ErrorPattern / TypeStat / ItemStat / Evaluation |
 | `data/app/sample_user.json` | 가짜 수험생 (실명 없음) |
 | `pack/` | 앱이 읽는 컴파일 테이블. `python3 main.py pack` |
 
@@ -47,6 +47,8 @@
 - **WrongNote 오답노트**: `id`, `user_id`, `item_id`, `attempt_id`, `subject_code`, `type_id`, `axis`, `wrong_choice`, `correct_choice`, `learner_note`, `auto_hint`, `pattern_id`, `review_count`, `next_review`, `resolved`, `created`, `updated`. 공식 엠바고는 `auto_hint=""`.
 - **ErrorPattern 오답패턴**: 목록은 `pack/error_patterns.json`. 수험생 행은 `id`, `user_id`, `pattern_id`, `subject_code`, `type_id`, `miss_count`, `last_missed`, `note`.
 - **TypeStat 반복 오답 유형**: `id`, `user_id`, `type_id`, `subject_code`, `attempts`, `misses`, `streak_wrong`, `last_missed`. `misses>=3` 또는 `streak_wrong>=2` 이면 반복 유형.
+- **ItemStat 문항 숙달**: `id`, `user_id`, `item_id`, `subject_code`, `type_id`, `axis`, `attempts`, `misses`, `last_correct`, `last_choice`, `last_ts`, `streak_wrong`, `ease` (0–1 또는 null), `next_review`, `history` (최근 최대 10). 봤는지·몇 번 틀렸는지·복습 기한.
+- **Evaluation 종합 평가**: 계산 결과 + 스냅샷. `overall{estimate_avg, pass_ready, subject_min_risk, average_risk}`, `subjects`, `weak_axes` (accuracy<0.6 또는 misses>=2), `weak_types`, `weak_patterns`, `weak_items` (misses>=1 미해결), `focus` (과락 과목 먼저, 그다음 약한 유형). 과목 40 / 평균 60.
 
 실제 개인정보를 두지 않는다.
 
@@ -141,6 +143,12 @@ pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `trap_tags=
 - `notes_open(user)` → 미해결 오답노트
 - `hot_types(user, min_misses=3)` → 반복 오답 유형
 - `hot_patterns(user)` → 오답 패턴 통계
+- `item_stat(user, item_id)` → 문항 숙달 ItemStat
+
+`gbot.evaluate`
+
+- `item_stats_from_attempts(user)` → 시도에서 ItemStat 파생
+- `evaluate(user)` → Evaluation (취약 과목·유형·문항)
 
 ## 코드표
 

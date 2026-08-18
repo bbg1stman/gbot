@@ -406,6 +406,7 @@ def build_pack(
     levels = dict(app.levels)
     blueprints = list(app.subjects.get("blueprints", []))
     plan_templates = list(app.templates.get("templates", []))
+    # runtime tables (ItemStat, Evaluation, WrongNote, ...) ride along
     schema = build_pack_schema(data)
     sample = _read_json(data / "app" / "sample_user.json")
 

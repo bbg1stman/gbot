@@ -50,7 +50,10 @@ python3 main.py pack
 ```bash
 python3 main.py notes   # 샘플 열린 오답노트
 python3 main.py hot     # 반복 유형·패턴
+python3 main.py eval    # 종합 평가 (취약 과목·유형·문항)
 ```
+
+문항별 **ItemStat**으로 봤는지·몇 번 틀렸는지·복습 기한을 관리하고, `evaluate()`가 취약 과목·유형·문항을 뽑는다. 합격선은 과목 40 / 평균 60.
 
 ## 위키 = 교무실
 
@@ -80,7 +83,8 @@ data/app/           # 런타임 기록 스키마
 wiki/               # 교무실: 개념/유형/교육과정
 gbot/bank.py        # 은행 로드·조회. stem 불필요
 gbot/pack.py        # data/+wiki/ → pack/
-gbot/learner.py     # 오답노트·반복 유형
+gbot/learner.py     # 오답노트·반복 유형·문항 숙달
+gbot/evaluate.py    # 종합 평가 (취약 과목/유형/문항)
 gbot/appdata.py     # 밴드·설계·계획
 gbot/diagnostic.py  # 진단 축 분배 (지문 없음)
 main.py             # CLI
@@ -104,7 +108,8 @@ python3 main.py diag --subject 국어
 python3 main.py plan --band 경계
 python3 main.py notes
 python3 main.py hot
-python3 -m unittest tests.test_bank tests.test_appdata tests.test_pack
+python3 main.py eval
+python3 -m unittest tests.test_bank tests.test_appdata tests.test_pack tests.test_evaluate
 ```
 
 자세한 목적과 규칙은 `purpose.md`, `schema.md` 를 본다.

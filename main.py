@@ -191,6 +191,57 @@ def cmd_hot(_args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_eval(_args: argparse.Namespace) -> int:
+    from gbot.evaluate import evaluate
+    from gbot.learner import load_sample
+
+    user = load_sample()
+    ev = evaluate(user)
+    names = {
+        "kor": "국어",
+        "math": "수학",
+        "eng": "영어",
+        "soc": "사회",
+        "sci": "과학",
+        "his": "한국사",
+    }
+    yn = {True: "예", False: "아니오"}
+    overall = ev["overall"]
+    print(f"수험생 {ev.get('user_id')}  종합 평가")
+    print(f"합격 가능: {yn[bool(overall['pass_ready'])]}")
+    print(
+        f"  추정 평균 {overall['estimate_avg']}  "
+        f"과락 위험 {yn[bool(overall['subject_min_risk'])]}  "
+        f"평균 미달 {yn[bool(overall['average_risk'])]}"
+    )
+    weak_subj = [s for s in ev.get("subjects") or [] if s.get("weak")]
+    print("취약 과목")
+    if not weak_subj:
+        print("  (없음)")
+    for s in weak_subj:
+        label = names.get(s["code"], s["code"])
+        print(f"  {label}({s['code']})  {s.get('band')}  {s.get('estimate')}")
+    print("취약 유형")
+    types = ev.get("weak_types") or []
+    if not types:
+        print("  (없음)")
+    for t in types:
+        label = names.get(t.get("subject_code"), t.get("subject_code"))
+        print(
+            f"  {t.get('type_id')}  {label}  "
+            f"misses={t.get('misses')}  streak={t.get('streak_wrong')}"
+        )
+    print("우선 복습 문항 3개")
+    items = (ev.get("weak_items") or [])[:3]
+    if not items:
+        print("  (없음)")
+    for w in items:
+        last = w.get("last_correct")
+        last_s = yn[last] if isinstance(last, bool) else "-"
+        print(f"  {w.get('item_id')}  misses={w.get('misses')}  last_correct={last_s}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="gbot — 고졸 검정고시 진단·계획 (원문 없음)")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -230,6 +281,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_hot = sub.add_parser("hot", help="샘플 수험생 반복 오답 유형·패턴")
     p_hot.set_defaults(func=cmd_hot)
+
+    p_eval = sub.add_parser("eval", help="샘플 수험생 종합 평가")
+    p_eval.set_defaults(func=cmd_eval)
 
     return parser
 
