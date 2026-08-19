@@ -1,0 +1,41 @@
+{
+  "$comment": "하루 순서. 주간 템플릿은 양과 재료, 이 파일은 오늘 칸. 오답이 항상 첫 칸.",
+  "order": [
+    "review",
+    "concept",
+    "type",
+    "new"
+  ],
+  "steps": {
+    "review": {
+      "id": "review",
+      "label": "오답 복습",
+      "source": "wrong_notes_due",
+      "required": true,
+      "default_count": 4
+    },
+    "concept": {
+      "id": "concept",
+      "label": "개념",
+      "source": "weak_chapters",
+      "when": "include_concept",
+      "required": false,
+      "default_count": 2
+    },
+    "type": {
+      "id": "type",
+      "label": "유형",
+      "source": "hot_types",
+      "when": "include_type",
+      "required": false,
+      "default_count": 2
+    },
+    "new": {
+      "id": "new",
+      "label": "새 문제",
+      "source": "original_ready",
+      "required": false,
+      "default_count": 4
+    }
+  }
+}

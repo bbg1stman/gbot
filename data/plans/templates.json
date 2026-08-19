@@ -7,7 +7,8 @@
       "daily_items": 8,
       "include_concept": true,
       "include_type": true,
-      "include_bank_slots": false
+      "include_bank_slots": false,
+      "day_counts": {"review": 3, "concept": 2, "type": 2, "new": 1}
     },
     {
       "band": "경계",
@@ -16,7 +17,8 @@
       "daily_items": 10,
       "include_concept": false,
       "include_type": true,
-      "include_bank_slots": true
+      "include_bank_slots": true,
+      "day_counts": {"review": 3, "concept": 0, "type": 3, "new": 4}
     },
     {
       "band": "안정",
@@ -25,7 +27,8 @@
       "daily_items": 12,
       "include_concept": false,
       "include_type": false,
-      "include_bank_slots": true
+      "include_bank_slots": true,
+      "day_counts": {"review": 3, "concept": 0, "type": 0, "new": 9}
     },
     {
       "band": "여유",
@@ -34,7 +37,8 @@
       "daily_items": 10,
       "include_concept": false,
       "include_type": true,
-      "include_bank_slots": true
+      "include_bank_slots": true,
+      "day_counts": {"review": 3, "concept": 0, "type": 2, "new": 5}
     }
   ]
 }
