@@ -8,6 +8,7 @@ from typing import Any, Optional
 
 from gbot.chapters import edition_for_year
 from gbot.learner import hot_patterns, hot_types
+from gbot.mastery import mastery_of
 
 Learner = dict[str, Any]
 ItemStat = dict[str, Any]
@@ -118,6 +119,15 @@ def item_stats_from_attempts(user: Learner) -> list[ItemStat]:
                 "ease": ease,
                 "next_review": next_review,
                 "history": history,
+                "mastery": mastery_of(
+                    {
+                        "attempts": n,
+                        "misses": misses,
+                        "last_correct": last_correct,
+                        "streak_wrong": streak,
+                        "ease": ease,
+                    }
+                ),
             }
         )
     out.sort(key=lambda r: str(r.get("item_id") or ""))

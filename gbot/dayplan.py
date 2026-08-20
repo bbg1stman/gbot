@@ -83,11 +83,14 @@ def _new_item_ids(
     ev: dict[str, Any],
     exclude: set[str],
     count: int,
+    user: Learner,
 ) -> list[str]:
     if count <= 0:
         return []
     from gbot.bank import list_items
+    from gbot.mastery import DONE_LEVELS, item_mastery_map
 
+    levels = item_mastery_map(user)
     weak_codes = {s.get("code") for s in ev.get("subjects") or [] if s.get("weak")}
     candidates: list[dict[str, Any]] = []
     for item in list_items():
@@ -99,6 +102,8 @@ def _new_item_ids(
             continue
         iid = item.get("id")
         if not iid or iid in exclude:
+            continue
+        if levels.get(str(iid)) in DONE_LEVELS:
             continue
         candidates.append(item)
     candidates.sort(
@@ -145,7 +150,7 @@ def build_day(user: Learner, on_date: str, target_year: int = 2026) -> DayPlan:
     ]
 
     new_n = counts.get("new", 0)
-    new_ids = _new_item_ids(ev, set(review_item_ids), new_n)
+    new_ids = _new_item_ids(ev, set(review_item_ids), new_n, user)
 
     filled = {
         "review": {

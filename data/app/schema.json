@@ -31,11 +31,15 @@
                 "미달",
                 "경계",
                 "안정",
-                "여유"
+                "여유",
+                "미정"
               ]
             },
             "estimate": {
-              "type": "number",
+              "type": [
+                "number",
+                "null"
+              ],
               "minimum": 0,
               "maximum": 100
             },
@@ -48,6 +52,10 @@
           }
         },
         "description": "키는 subject_code (kor, math, eng, soc, sci, his)"
+      },
+      "refused_diagnostic": {
+        "type": "boolean",
+        "description": "형식 진단(밴드 배정 문제)을 건너뛰면 true. live 모드로 한 문항씩 푼다."
       }
     }
   },
@@ -108,7 +116,8 @@
           "미달",
           "경계",
           "안정",
-          "여유"
+          "여유",
+          "미정"
         ]
       },
       "ts": {
@@ -138,7 +147,8 @@
         "enum": [
           "diagnostic",
           "drill",
-          "examset"
+          "examset",
+          "live"
         ]
       },
       "subject": {
@@ -201,6 +211,84 @@
             },
             "count": {
               "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  },
+  "DailyPlan": {
+    "type": "object",
+    "description": "하루 순서. 오답 복습이 항상 첫 칸.",
+    "required": [
+      "date",
+      "band",
+      "user_id",
+      "steps"
+    ],
+    "properties": {
+      "date": {
+        "type": "string",
+        "description": "YYYY-MM-DD"
+      },
+      "band": {
+        "enum": [
+          "미달",
+          "경계",
+          "안정",
+          "여유"
+        ]
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "steps": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "label",
+            "count"
+          ],
+          "properties": {
+            "id": {
+              "enum": [
+                "review",
+                "concept",
+                "type",
+                "new"
+              ]
+            },
+            "label": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer"
+            },
+            "item_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "note_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "chapter_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "type_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           }
         }
@@ -521,6 +609,15 @@
             }
           }
         }
+      },
+      "mastery": {
+        "enum": [
+          "미시도",
+          "익숙",
+          "숙달",
+          "완료"
+        ],
+        "description": "칸 숙달. 숙달·완료는 새 문제 칸에서 뺀다."
       }
     }
   },
@@ -607,7 +704,8 @@
                 "미달",
                 "경계",
                 "안정",
-                "여유"
+                "여유",
+                "미정"
               ]
             },
             "estimate": {
