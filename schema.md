@@ -88,10 +88,11 @@
 | `year` / `round` / `number` | 정수 | 동일 | 자작이면 exam 비움 가능 |
 | `answer` `topic` `skill` | `null` | 라이선스 범위 안 | 작성값 |
 | `official_index` | KICE 목록 URL | 동일 | `null` |
+| `difficulty` | `null` (라이선스+태깅 전) | 밴드 4값 | 필수. `미달` \| `경계` \| `안정` \| `여유` |
 | `stem` `choices` `explanation` | `null` | 라이선스 원문 | 자작 원문 |
 
-로더 기본값 (JSON에 없어도 됨): `role=bank`, `unit=null`, `wiki_concept=null`, `wiki_type=null`. `stem`은 없어도 된다.
-pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `chapter_id` (item.curriculum/year로 edition 선택 후 같은 축 → chapters.json, 없으면 null), `trap_tags=[]`, `media=null`.
+로더 기본값 (JSON에 없어도 됨): `role=bank`, `unit=null`, `wiki_concept=null`, `wiki_type=null`, `difficulty=null`. `stem`은 없어도 된다.
+pack 기본값: `type_id` (unit/skill에서 매핑, 없으면 null), `chapter_id` (item.curriculum/year로 edition 선택 후 같은 축 → chapters.json, 없으면 null), `trap_tags=[]`, `media=null`. 공식 슬롯 `difficulty`는 null. 자작에 없으면 infer 후 넣는다.
 
 공식 슬롯 예 (`go-2026-2-kor-12`):
 

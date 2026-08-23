@@ -88,9 +88,12 @@ def _new_item_ids(
     if count <= 0:
         return []
     from gbot.bank import list_items
+    from gbot.difficulty import adjacent
     from gbot.mastery import DONE_LEVELS, item_mastery_map
 
     levels = item_mastery_map(user)
+    focus = focus_band(user)
+    near = set(adjacent(focus))
     weak_codes = {s.get("code") for s in ev.get("subjects") or [] if s.get("weak")}
     candidates: list[dict[str, Any]] = []
     for item in list_items():
@@ -106,9 +109,19 @@ def _new_item_ids(
         if levels.get(str(iid)) in DONE_LEVELS:
             continue
         candidates.append(item)
-    candidates.sort(
-        key=lambda i: (0 if i.get("subject_code") in weak_codes else 1, i.get("id") or "")
-    )
+
+    def _rank(item: dict[str, Any]) -> tuple[int, int, str]:
+        diff = item.get("difficulty")
+        if diff == focus:
+            band_rank = 0
+        elif diff in near:
+            band_rank = 1
+        else:
+            band_rank = 2
+        weak_rank = 0 if item.get("subject_code") in weak_codes else 1
+        return (band_rank, weak_rank, item.get("id") or "")
+
+    candidates.sort(key=_rank)
     return [str(i["id"]) for i in candidates[:count]]
 
 

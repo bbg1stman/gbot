@@ -2,7 +2,7 @@
 
 공식 문항은 슬롯(메타데이터)만 로드한다. stem이 None이어도 조회·필터가 동작해야 한다.
 원문을 요구하거나 만들어 내지 않는다.
-없는 키는 로더가 기본값을 채운다: role=bank, unit/wiki_concept/wiki_type=null.
+없는 키는 로더가 기본값을 채운다: role=bank, unit/wiki_concept/wiki_type=null, difficulty=null.
 """
 
 from __future__ import annotations
@@ -22,6 +22,7 @@ _ITEM_DEFAULTS: dict[str, Any] = {
     "unit": None,
     "wiki_concept": None,
     "wiki_type": None,
+    "difficulty": None,
 }
 
 

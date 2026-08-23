@@ -16,6 +16,7 @@ from gbot import __version__
 from gbot.appdata import load as load_app
 from gbot.bank import load as load_bank
 from gbot.chapters import DEFAULT_YEAR, chapter_index, compile_chapters, edition_for_year, infer_chapter_id, load_editions
+from gbot.difficulty import BANDS, infer_difficulty
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -160,6 +161,11 @@ CONTENT_TABLES: dict[str, Any] = {
             "subject_code": {"type": "string"},
             "type_id": {"type": ["string", "null"], "description": "types.json id. unit/skill에서 매핑"},
             "chapter_id": {"type": ["string", "null"], "description": "chapters.json id. item.curriculum/year로 edition을 고른 뒤 unit/skill에서 매핑"},
+            "difficulty": {
+                "type": ["string", "null"],
+                "enum": ["미달", "경계", "안정", "여유", None],
+                "description": "학생 밴드와 같은 말. original ready는 필수, official 슬롯은 null",
+            },
             "trap_tags": {"type": "array", "items": {"type": "string"}, "default": []},
             "media": {
                 "type": ["object", "null"],
@@ -414,6 +420,10 @@ def pack_item(
     out.setdefault("trap_tags", [])
     if "media" not in out:
         out["media"] = None
+    if out.get("source") == "official" or out.get("status") == "embargoed":
+        out["difficulty"] = None
+    elif out.get("difficulty") not in BANDS:
+        out["difficulty"] = infer_difficulty(out)
     return out
 
 
